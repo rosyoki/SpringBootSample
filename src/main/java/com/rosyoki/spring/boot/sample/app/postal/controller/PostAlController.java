@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.rosyoki.spring.boot.sample.app.controller.postal;
+package com.rosyoki.spring.boot.sample.app.postal.controller;
 
 import java.util.List;
 
