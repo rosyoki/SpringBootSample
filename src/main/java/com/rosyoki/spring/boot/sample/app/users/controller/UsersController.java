@@ -26,9 +26,7 @@ public class UsersController {
 
     @RequestMapping("/user/userList")
     public String userList() {
-        List<Users> usersList = usersService.findAll();
-        logger.info(">>>>> " + usersList.size());
-
+        
         return "users/usersList";
     }
 
