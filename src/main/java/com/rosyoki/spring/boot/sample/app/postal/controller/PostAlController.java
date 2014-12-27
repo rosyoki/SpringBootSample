@@ -18,17 +18,15 @@ import com.rosyoki.spring.boot.sample.app.users.entity.PostZipData;
  */
 @Controller
 public class PostAlController {
-    
+
     private Logger logger = Logger.getLogger(PostAlController.class);
-    
+
     @Autowired
     PostAlService postAlService;
-    
-    @RequestMapping(value="/postal/postalList")
+
+    @RequestMapping(value = "/postal/postalList")
     public String viewPostAlList() {
-        
-        List<PostZipData> postZipDataList = postAlService.getPostAlAllData();
-        logger.info(">>>>> " + postZipDataList.size());
+        logger.debug(">>>>>>>>>>>>>>>>> viewPostAlList >>>>>>>>>>>>>>>>");
         return "postal/postAlList";
     }
 }

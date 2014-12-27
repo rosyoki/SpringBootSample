@@ -14,5 +14,5 @@ import com.rosyoki.spring.boot.sample.app.users.entity.Users;
  */
 @Repository
 public interface UsersRepository extends JpaRepository<Users, Integer> {
-
+    Users findByLoginName(String loginName);
 }
