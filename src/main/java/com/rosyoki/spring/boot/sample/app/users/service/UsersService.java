@@ -6,6 +6,7 @@ package com.rosyoki.spring.boot.sample.app.users.service;
 import java.util.List;
 
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.rosyoki.spring.boot.sample.app.users.entity.Users;
@@ -23,7 +24,21 @@ public class UsersService {
     @Autowired
     UsersRepository usersRepository;
 
-    public List<Users> findAll() {
+    public List<Users> getAllUsersData() {
         return usersRepository.findAll();
+    }
+    
+    public void registUser(Users users) {
+        usersRepository.saveAndFlush(users);
+    }
+    
+    public boolean checkExistLoginName(String loginName) {
+        
+        Users users = usersRepository.findByLoginName(loginName);
+        if(users != null) {
+            return true;
+        }
+        
+        return false;
     }
 }

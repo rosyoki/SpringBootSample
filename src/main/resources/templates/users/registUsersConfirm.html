@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ユーザ登録</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	ユーザ登録
+	<form action="/users/registConfirm">
+    ログイン名：<span th:text="${loginName}">test</span> <input type="hidden" name="loginName" />
+    <p />パスワード：passwd<input type="hidden" name="passwd" />
+    
+    <p />
+    <input type="submit" value="確認" /><input type="reset" value="リセット" />
+    </form>
+</body>
+</html>

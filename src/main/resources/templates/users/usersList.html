@@ -19,7 +19,15 @@
 <body>
 	ユーザ一覧
 	<div id="content">
-		<div id="content-inner">content</div>
+		<table>
+			<tr>
+				<th>ログイン名</th><th>パスワード</th>
+			</tr>
+			<tr th:each="userData: ${users}">
+				<td th:text="${userData.loginName}">ログイン名</td>
+				<td th:text="${userData.passwd}">パスワード</td>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>
