@@ -24,7 +24,7 @@ public class UsersController {
 
     private Logger logger = Logger.getLogger(UsersController.class);
 
-    @RequestMapping("/user/userList")
+    @RequestMapping("/users/userList")
     public String userList() {
         
         return "users/usersList";

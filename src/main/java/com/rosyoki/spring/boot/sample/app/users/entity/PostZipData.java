@@ -14,6 +14,11 @@ import javax.persistence.Table;
 @Table(name = "post_zip_data", catalog = "blog_db")
 public class PostZipData implements java.io.Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -8612975531804578030L;
+    
     private long id;
     private String oldZip;
     private String zip;
