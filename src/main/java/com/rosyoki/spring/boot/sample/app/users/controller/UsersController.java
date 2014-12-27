@@ -45,19 +45,21 @@ public class UsersController {
     public String registUser(Model model) {
         //logger.debug(">>> " + usersService.checkExistLoginName("rosyoki"));
         logger.info(">>>> start registUser >>>>");
-        return "users/registUsersInput";
+        return "users/registInput";
     }
     
-    @RequestMapping("/users/registConfirm")
+    @RequestMapping("/users/confirm")
     public String registUserConfirm(@Validated UsersForm usersForm, BindingResult result, Model model) {
         logger.info(">>>>>> start registUserConfirm >>>>>>>>>");
+        //入力エラーチェック
         if(result.hasErrors()) {
             logger.debug(">>> error >>>>");
             
-            return "users/registUsersInput";
+            return "users/registInput";
         }
-        model.addAttribute("loginName", "test");
         
-        return "users/registUsersConfirm";
+        model.addAttribute("usersForm",usersForm);
+        
+        return "users/confirm";
     }
 }
