@@ -139,7 +139,9 @@
     </logger>
 
 
-
+	<logger name="com.rosyoki.spring.boot.sample.app">
+    	<level value="DEBUG" />
+  	</logger>
 
     <root level="${ROOT_LEVEL}">
         <appender-ref ref="ASYNC_STDOUT1"/>
