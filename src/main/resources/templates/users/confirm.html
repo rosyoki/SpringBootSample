@@ -3,15 +3,25 @@
 <head>
     <title>ユーザ登録</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+
+<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+	th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
 </head>
 <body>
+	<div class="container">
 	ユーザ登録
 	<form action="/users/commit" method="post">
     ログイン名：<span th:text="${usersForm.loginName}">test</span> 
     <input type="hidden" name="loginName" value="loginName" th:attr="value=${usersForm.loginName}" />
     <p />パスワード：passwd<input type="hidden" name="passwd" value="password" th:attr="value=${usersForm.passwd}"/>
     <br/>
-    <input type="submit" value="登録" /><input type="button" onclick="history.back();" value="戻る" />
+    <input type="submit" class="btn btn-primary" value="登録" />
+    <input type="button" class="btn btn-primary" onclick="history.back();" value="戻る" />
     </form>
+    </div>
 </body>
 </html>

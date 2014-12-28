@@ -1,17 +1,31 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>ユーザ登録</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ユーザ登録</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+
+<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+	th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
 </head>
+
 <body>
+	<div class="container">
 	ユーザ登録
-	<form action="/users/confirm" th:attr="action=@{/users/confirm}" method="POST">
-    <p />ログイン名：<input type="text" name="loginName" />
-    <p />パスワード：<input type="password" name="passwd" />
-    
-    <p />
-    <input type="submit" value="確認" /><input type="reset" value="リセット" />
-    </form>
+	<form action="/users/confirm" th:attr="action=@{/users/confirm}"
+		method="POST">
+		<p />
+		ログイン名：<input type="text" name="loginName" />
+		<p />
+		パスワード：<input type="password" name="passwd" />
+
+		<p />
+		<input type="submit" class="btn btn-primary" value="確認" />
+		<input type="reset" class="btn btn-primary" value="リセット" />
+	</form>
+	</div>
 </body>
 </html>
