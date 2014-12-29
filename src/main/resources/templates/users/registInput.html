@@ -8,24 +8,43 @@
 	th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
 	rel="stylesheet" media="screen" />
 
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap-theme.min.css"
+	th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap-theme.min.css}"
+	rel="stylesheet" media="screen" />
+	
 <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
 	th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
 </head>
 
 <body>
 	<div class="container">
-	ユーザ登録
-	<form action="/users/confirm" th:attr="action=@{/users/confirm}"
-		method="POST">
-		<p />
-		ログイン名：<input type="text" name="loginName" />
-		<p />
-		パスワード：<input type="password" name="passwd" />
+		ユーザ登録
+		<form action="/users/confirm" th:attr="action=@{/users/confirm}"
+			method="POST">
 
-		<p />
-		<input type="submit" class="btn btn-primary" value="確認" />
-		<input type="reset" class="btn btn-primary" value="リセット" />
-	</form>
+			<div class="form-group">
+				<label for="loginName">ログイン名</label> <input type="text"
+					id="loginName" class="form-control" name="loginName"
+					placeholder="ログイン名を入力してください。" /> 
+			</div>
+
+			<div class="form-group">
+				<label for="pass">パスワード</label> <input type="password" id="passwd"
+					class="form-control" name="passwd" placeholder="パスワードを入力してください。" />
+			</div>
+
+			<hr />
+
+			<div class="row">
+				<div class="col-xs-4">
+					<input type="submit" class="btn btn-primary btn-block" value="確認" />
+				</div>
+				<div class="col-xs-4">
+					<input type="reset" class="btn btn-primary btn-block" value="リセット" />
+				</div>
+			</div>
+		</form>
 	</div>
 </body>
 </html>
