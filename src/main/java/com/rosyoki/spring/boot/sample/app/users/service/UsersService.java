@@ -32,13 +32,7 @@ public class UsersService {
         usersRepository.saveAndFlush(users);
     }
     
-    public boolean checkExistLoginName(String loginName) {
-        
-        Users users = usersRepository.findByLoginName(loginName);
-        if(users != null) {
-            return true;
-        }
-        
-        return false;
+    public Users getUserByLoginName(String loginName) {
+        return usersRepository.findByLoginName(loginName);
     }
 }

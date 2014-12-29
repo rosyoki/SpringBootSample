@@ -3,11 +3,11 @@
  */
 package com.rosyoki.spring.boot.sample.app.users.controller;
 
+import java.beans.Beans;
 import java.util.List;
 
-import javax.jws.WebParam.Mode;
-
 import org.apache.log4j.Logger;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,35 +31,66 @@ public class UsersController {
 
     private Logger logger = Logger.getLogger(UsersController.class);
 
+    @RequestMapping("/users/")
+    public String index(Model model) {
+        return userList(model);
+    }
+
     @RequestMapping("/users/userList")
     public String userList(Model model) {
-        
+
         logger.debug(">>>>>>>> userList >>>>>>>>");
         List<Users> usersList = usersService.getAllUsersData();
         model.addAttribute("users", usersList);
-        
+
         return "users/usersList";
     }
 
     @RequestMapping("/users/regist")
     public String registUser(Model model) {
-        //logger.debug(">>> " + usersService.checkExistLoginName("rosyoki"));
+        // logger.debug(">>> " + usersService.checkExistLoginName("rosyoki"));
         logger.info(">>>> start registUser >>>>");
         return "users/registInput";
     }
-    
+
     @RequestMapping("/users/confirm")
-    public String registUserConfirm(@Validated UsersForm usersForm, BindingResult result, Model model) {
+    public String registUserConfirm(@Validated UsersForm usersForm,
+            BindingResult result, Model model) {
         logger.info(">>>>>> start registUserConfirm >>>>>>>>>");
-        //入力エラーチェック
-        if(result.hasErrors()) {
+        // 入力エラーチェック
+        if (result.hasErrors()) {
             logger.debug(">>> error >>>>");
-            
+
             return "users/registInput";
         }
-        
-        model.addAttribute("usersForm",usersForm);
-        
+
+        // ユーザ存在チェック
+        Users users = usersService.getUserByLoginName(usersForm.getLoginName());
+        if (users != null) {
+            return "users/registInput";
+        }
+
+        model.addAttribute("usersForm", usersForm);
+
         return "users/confirm";
+    }
+
+    @RequestMapping("/users/commit")
+    public String registUserCommit(@Validated UsersForm usersForm,
+            BindingResult result, Model model) {
+        logger.info(">>>>>> start registUserCommit >>>>>>>>>");
+
+        // パラメーターチェック
+        if (result.hasErrors()) {
+            logger.debug(">>> error >>>>");
+            return "users/registInput";
+        }
+
+        // データ登録
+        Users users = new Users();
+        BeanUtils.copyProperties(usersForm, users);
+        usersService.registUser(users);
+
+        return "users/commit";
     }
 }
