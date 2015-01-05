@@ -48,8 +48,6 @@ public class UsersController {
 
     @RequestMapping("/users/regist")
     public String registUser(Model model) {
-        // logger.debug(">>> " + usersService.checkExistLoginName("rosyoki"));
-        logger.info(">>>> start registUser >>>>");
         return "users/registInput";
     }
 
@@ -61,7 +59,7 @@ public class UsersController {
         if (result.hasErrors()) {
             logger.debug(">>> error >>>>");
 
-            return "users/registInput";
+            return registUser(model);
         }
 
         // ユーザ存在チェック
