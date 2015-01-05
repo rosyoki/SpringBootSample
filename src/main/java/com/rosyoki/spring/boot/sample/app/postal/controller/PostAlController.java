@@ -26,7 +26,8 @@ public class PostAlController {
 
     @RequestMapping(value = "/postal/postalList")
     public String viewPostAlList() {
-        logger.debug(">>>>>>>>>>>>>>>>> viewPostAlList >>>>>>>>>>>>>>>>");
-        return "postal/postAlList";
+        logger.debug(">>>>>>>>>>>>>>>>> viewPostalList >>>>>>>>>>>>>>>>");
+
+        return "postal/postalList";
     }
 }
