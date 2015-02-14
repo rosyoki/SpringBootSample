@@ -21,6 +21,11 @@ import javax.persistence.TemporalType;
 @Table(name = "users", catalog = "blog_db")
 public class Users implements java.io.Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -5225274134277627058L;
+    
     private Long id;
     private String loginName;
     private String passwd;

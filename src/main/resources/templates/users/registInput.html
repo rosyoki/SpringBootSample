@@ -26,7 +26,7 @@
 			<div class="form-group">
 				<label for="loginName">ログイン名</label> 
 				<input type="text" id="loginName" class="form-control" th:field="*{loginName}" placeholder="ログイン名を入力してください。" th:errorclass="fieldError" /> 
-				<span th:if="${#fields.hasErrors('loginName')}" th:errors="*{loginName}" class="error-messages"></span>
+				<span th:if="${#fields.hasErrors('loginName')}" th:errors="*{loginName}" class="help-block">error!</span>
 			</div>
 
 			<div class="form-group">
