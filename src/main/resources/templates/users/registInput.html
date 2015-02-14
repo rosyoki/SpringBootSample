@@ -21,17 +21,18 @@
 	<div class="container">
 		<label for="registLabel">ユーザ登録</label> 
 		
-		<form action="/users/confirm" th:attr="action=@{/users/confirm}"
-			method="POST">
+		<form id="form" th:action="@{/users/confirm}" th:object="${usersForm}" method="POST">
 
 			<div class="form-group">
 				<label for="loginName">ログイン名</label> 
-				<input type="text" id="loginName" class="form-control" name="loginName" placeholder="ログイン名を入力してください。" /> 
+				<input type="text" id="loginName" class="form-control" th:field="*{loginName}" placeholder="ログイン名を入力してください。" th:errorclass="fieldError" /> 
+				<span th:if="${#fields.hasErrors('loginName')}" th:errors="*{loginName}" class="error-messages"></span>
 			</div>
 
 			<div class="form-group">
 				<label for="pass">パスワード</label> 
-					<input type="password" id="passwd" class="form-control" name="passwd" placeholder="パスワードを入力してください。" />
+				<input type="password" id="passwd" class="form-control" th:field="*{passwd}" placeholder="パスワードを入力してください。" th:errorclass="fieldError" />
+				<span th:if="${#fields.hasErrors('passwd')}" th:errors="*{passwd}" class="error-messages"></span>
 			</div>
 
 			<div class="row">

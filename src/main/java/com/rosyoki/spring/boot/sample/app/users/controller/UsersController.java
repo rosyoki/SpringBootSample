@@ -5,6 +5,9 @@ package com.rosyoki.spring.boot.sample.app.users.controller;
 
 
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rosyoki.spring.boot.sample.app.users.entity.Users;
 import com.rosyoki.spring.boot.sample.app.users.form.UsersForm;
@@ -46,19 +51,21 @@ public class UsersController {
     }
 
     @RequestMapping("/users/regist")
-    public String registUser(Model model) {
+    public String registUser(UsersForm usersForm, Model model) {
+        model.addAttribute(usersForm);
+        
         return "users/registInput";
     }
 
     @RequestMapping("/users/confirm")
-    public String registUserConfirm(@Validated UsersForm usersForm,
-            BindingResult result, Model model) {
+    public String registUserConfirm(@Validated @ModelAttribute("usersForm") UsersForm usersForm,
+            BindingResult result,Model model) {
         logger.info(">>>>>> start registUserConfirm >>>>>>>>>");
         // 入力エラーチェック
         if (result.hasErrors()) {
             logger.debug(">>> error >>>>");
 
-            return registUser(model);
+            return registUser(usersForm, model);
         }
 
         // ユーザ存在チェック
