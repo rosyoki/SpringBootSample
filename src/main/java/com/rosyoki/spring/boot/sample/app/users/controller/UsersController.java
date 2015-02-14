@@ -3,9 +3,8 @@
  */
 package com.rosyoki.spring.boot.sample.app.users.controller;
 
-import java.beans.Beans;
-import java.util.List;
 
+import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
