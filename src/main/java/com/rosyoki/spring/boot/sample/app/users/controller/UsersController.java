@@ -87,7 +87,7 @@ public class UsersController {
         // ユーザ存在チェック
         Users users = usersService.getUserByLoginName(usersForm.getLoginName());
         if (users != null) {
-            return "users/registInput";
+            return registUser(usersForm, model);
         }
 
         model.addAttribute("usersForm", usersForm);
