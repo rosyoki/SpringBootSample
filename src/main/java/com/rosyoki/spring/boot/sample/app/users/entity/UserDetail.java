@@ -25,6 +25,11 @@ import org.hibernate.annotations.Parameter;
         "EML_NAME", "EML_DOMAIN" }))
 public class UserDetail implements java.io.Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 7974281298321737417L;
+    
     private long usersId;
     private Users users;
     private String firstName;
