@@ -18,7 +18,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.2.4.RELEASE</version>
+    <version>1.2.5.RELEASE</version>
   </parent>
 
   <dependencies>
@@ -52,7 +52,7 @@
 	<dependency>
 		<groupId>mysql</groupId>
 		<artifactId>mysql-connector-java</artifactId>
-		<version>5.1.35</version>
+		<version>5.1.36</version>
 	</dependency>
 
 	<dependency>
@@ -95,7 +95,7 @@
                     <dependency>
                         <groupId>org.springframework</groupId>
                         <artifactId>springloaded</artifactId>
-                        <version>1.2.1.RELEASE</version>
+                        <version>1.2.4.RELEASE</version>
                     </dependency>
                 </dependencies>
             </plugin>
