@@ -11,8 +11,8 @@
     		<th>市名</th><th>町名</th>
     	</tr>
       	<tr th:each="postal: ${postalList}">
-    		<td th:text="${postal.city}">市名</td>
-    		<td th:text="${postal.town}">町名</td>
+    		<td th:text="${postal.city}">市</td>
+    		<td th:text="${postal.town}">町</td>
       	</tr>
     </table>
 </body>
