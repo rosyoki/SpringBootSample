@@ -119,6 +119,6 @@ public class UsersController {
         BeanUtils.copyProperties(usersForm, users);
         usersService.registUser(users);
 
-        return "users/commit";
+        return "users/usersList";
     }
 }
