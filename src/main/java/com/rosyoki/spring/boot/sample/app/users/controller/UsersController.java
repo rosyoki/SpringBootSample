@@ -44,7 +44,7 @@ public class UsersController {
     @RequestMapping("/users/userList")
     public String userList(Model model) {
 
-        logger.debug(">>>>>>>> userList >>>>>>>>");
+        logger.debug(">>>>>>>> userList start >>>>>>>>");
         List<Users> usersList = usersService.getAllUsersData();
         model.addAttribute("users", usersList);
 
