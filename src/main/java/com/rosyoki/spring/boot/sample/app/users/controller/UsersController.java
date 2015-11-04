@@ -52,6 +52,21 @@ public class UsersController {
     }
 
     /**
+     * 
+     * @param usersForm
+     * @param model
+     * @return
+     */
+    @RequestMapping("/users/edit")
+    public String editUser(UsersForm usersForm, Model model) {
+        logger.info(">>>>>> start editUser >>>>>>>>>");
+
+        model.addAttribute(usersForm);
+        
+        return "users/registInput";
+    }
+    
+    /**
      * ユーザ登録トップ画面
      * 
      * @param usersForm
