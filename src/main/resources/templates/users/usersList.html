@@ -21,9 +21,10 @@
 	<div id="container">
 		<table border="1">
 			<tr>
-				<th>ログイン名</th><th>パスワード</th>
+				<th>ID</th><th>ログイン名</th><th>パスワード</th>
 			</tr>
 			<tr th:each="userData: ${users}">
+				<td align="center"><a th:href="@{edit(id=${userData.id})}" th:text="${userData.id}">ID</a></td>
 				<td th:text="${userData.loginName}">ログイン名</td>
 				<td th:text="${userData.passwd}">パスワード</td>
 			</tr>

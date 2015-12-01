@@ -44,13 +44,28 @@ public class UsersController {
     @RequestMapping("/users/userList")
     public String userList(Model model) {
 
-        logger.debug(">>>>>>>> userList >>>>>>>>");
+        logger.debug(">>>>>>>> userList start >>>>>>>>");
         List<Users> usersList = usersService.getAllUsersData();
         model.addAttribute("users", usersList);
 
         return "users/usersList";
     }
 
+    /**
+     * 
+     * @param usersForm
+     * @param model
+     * @return
+     */
+    @RequestMapping("/users/edit")
+    public String editUser(UsersForm usersForm, Model model) {
+        logger.info(">>>>>> start editUser >>>>>>>>>");
+
+        model.addAttribute(usersForm);
+        
+        return "users/registInput";
+    }
+    
     /**
      * ユーザ登録トップ画面
      * 
