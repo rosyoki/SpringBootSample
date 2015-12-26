@@ -5,6 +5,8 @@ package com.rosyoki.spring.boot.sample.app.users.controller;
 
 
 import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.rosyoki.spring.boot.sample.app.users.entity.Users;
 import com.rosyoki.spring.boot.sample.app.users.form.UsersForm;
 import com.rosyoki.spring.boot.sample.app.users.service.UsersService;
@@ -61,8 +64,13 @@ public class UsersController {
     public String editUser(UsersForm usersForm, Model model) {
         logger.info(">>>>>> start editUser >>>>>>>>>");
         
-        logger.debug(">>>>>> " + usersForm.getId());
-      
+        Users users = null;
+        if(usersForm.getId() != null) {
+            users = usersService.getUsersById(usersForm.getId());
+        }
+        
+        logger.debug(">>>>>> " + users.getLoginName());
+        
         model.addAttribute(usersForm);
         
         return "users/registInput";

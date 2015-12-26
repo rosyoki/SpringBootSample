@@ -30,7 +30,7 @@ public class UserDetail implements java.io.Serializable {
      */
     private static final long serialVersionUID = 7974281298321737417L;
     
-    private long usersId;
+    private Integer usersId;
     private Users users;
     private String firstName;
     private String lastName;
@@ -75,11 +75,11 @@ public class UserDetail implements java.io.Serializable {
     @Id
     @GeneratedValue(generator = "generator")
     @Column(name = "USERS_ID", unique = true, nullable = false)
-    public long getUsersId() {
+    public Integer getUsersId() {
         return this.usersId;
     }
 
-    public void setUsersId(long usersId) {
+    public void setUsersId(Integer usersId) {
         this.usersId = usersId;
     }
 

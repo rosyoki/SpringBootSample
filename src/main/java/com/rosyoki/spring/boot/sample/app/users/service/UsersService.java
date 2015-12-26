@@ -28,6 +28,10 @@ public class UsersService {
         return usersRepository.findAll();
     }
     
+    public Users getUsersById(Integer id) {
+        return usersRepository.findOne(id);
+    }
+    
     public void registUser(Users users) {
         usersRepository.saveAndFlush(users);
     }
