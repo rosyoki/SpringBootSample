@@ -57,10 +57,12 @@ public class UsersController {
      * @param model
      * @return
      */
-    @RequestMapping("/users/edit")
+    @RequestMapping("/users/edit//{id}")
     public String editUser(UsersForm usersForm, Model model) {
         logger.info(">>>>>> start editUser >>>>>>>>>");
-
+        
+        logger.debug(">>>>>> " + usersForm.getId());
+      
         model.addAttribute(usersForm);
         
         return "users/registInput";
