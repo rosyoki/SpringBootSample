@@ -70,6 +70,7 @@ public class UsersController {
         }
         
         logger.debug(">>>>>> " + users.getLoginName());
+        usersForm.setLoginName(users.getLoginName());
         
         model.addAttribute(usersForm);
         
