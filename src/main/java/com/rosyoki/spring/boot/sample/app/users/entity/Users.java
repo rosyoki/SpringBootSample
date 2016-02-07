@@ -31,7 +31,6 @@ public class Users implements java.io.Serializable {
     private String passwd;
     private Date created;
     private Date modified;
-    private UserDetail userDetail;
 
     public Users() {
     }
@@ -47,7 +46,6 @@ public class Users implements java.io.Serializable {
         this.passwd = passwd;
         this.created = created;
         this.modified = modified;
-        this.userDetail = userDetail;
     }
 
     @Id
@@ -98,14 +96,4 @@ public class Users implements java.io.Serializable {
     public void setModified(Date modified) {
         this.modified = modified;
     }
-
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "users")
-    public UserDetail getUserDetail() {
-        return this.userDetail;
-    }
-
-    public void setUserDetail(UserDetail userDetail) {
-        this.userDetail = userDetail;
-    }
-
 }

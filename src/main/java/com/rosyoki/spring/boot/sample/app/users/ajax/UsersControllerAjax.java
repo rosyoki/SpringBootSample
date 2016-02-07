@@ -5,12 +5,14 @@ package com.rosyoki.spring.boot.sample.app.users.ajax;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rosyoki.spring.boot.sample.app.users.controller.UsersController;
 import com.rosyoki.spring.boot.sample.app.users.entity.Users;
 import com.rosyoki.spring.boot.sample.app.users.service.UsersService;
 
@@ -19,22 +21,25 @@ import com.rosyoki.spring.boot.sample.app.users.service.UsersService;
  *
  */
 @RestController
-@RequestMapping("ajax/users")
 public class UsersControllerAjax {
     
     @Autowired
     UsersService usersService;
+    private Logger logger = Logger.getLogger(UsersControllerAjax.class);
     
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value="/ajax/users/userList", method = RequestMethod.GET,produces = "application/json")
     public List<Users> getUsersList() {
         List<Users> usersList = usersService.getAllUsersData();
 
         return usersList;
     }
 
-    @RequestMapping(value="{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/ajax/users/{id}", method = RequestMethod.GET)
     public Users getUsers(@PathVariable Integer id) {
         Users users = usersService.getUsersById(id);
+        
+        logger.debug(">>>>>>>>>>>>>>>>> ");
+        
         return users;
     }
 }
