@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,8 +28,11 @@ public class UsersControllerAjax {
     UsersService usersService;
     private Logger logger = Logger.getLogger(UsersControllerAjax.class);
     
-    @RequestMapping(value="/ajax/users/userList", method = RequestMethod.GET,produces = "application/json")
+    @CrossOrigin(origins = "http://localhost")
+    @RequestMapping(value="/ajax/users", method = RequestMethod.GET,produces = "application/json")
     public List<Users> getUsersList() {
+        logger.info(">>>>> start getUsersList >>>>>");
+        
         List<Users> usersList = usersService.getAllUsersData();
 
         return usersList;
@@ -36,9 +40,8 @@ public class UsersControllerAjax {
 
     @RequestMapping(value="/ajax/users/{id}", method = RequestMethod.GET)
     public Users getUsers(@PathVariable Integer id) {
+
         Users users = usersService.getUsersById(id);
-        
-        logger.debug(">>>>>>>>>>>>>>>>> ");
         
         return users;
     }
