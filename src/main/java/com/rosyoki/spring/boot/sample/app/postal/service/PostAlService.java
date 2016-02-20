@@ -26,4 +26,23 @@ public class PostAlService {
     public List<PostZipData> getPostAlAllData() {
         return postAlRepository.findAll();
     }
+    
+    /**
+     * IDで検索する。
+     * @param Id
+     * @return
+     */
+    public PostZipData getPostData(Long Id) {
+        return postAlRepository.findOne(Id);
+    }
+    
+    /**
+     * 市名で検索する。
+     * 
+     * @param city
+     * @return
+     */
+    public List<PostZipData> getPostAlDataByCity(String city) {
+        return postAlRepository.findByCity(city);
+    }
 }
