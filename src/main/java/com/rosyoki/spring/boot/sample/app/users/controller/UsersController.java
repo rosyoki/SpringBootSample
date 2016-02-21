@@ -17,7 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.rosyoki.spring.boot.sample.app.users.entity.Users;
+import com.rosyoki.spring.boot.sample.app.entity.Users;
 import com.rosyoki.spring.boot.sample.app.users.form.UsersForm;
 import com.rosyoki.spring.boot.sample.app.users.service.UsersService;
 

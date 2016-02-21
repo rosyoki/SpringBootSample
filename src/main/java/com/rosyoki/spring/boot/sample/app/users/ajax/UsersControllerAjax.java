@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rosyoki.spring.boot.sample.app.entity.Users;
 import com.rosyoki.spring.boot.sample.app.users.controller.UsersController;
-import com.rosyoki.spring.boot.sample.app.users.entity.Users;
 import com.rosyoki.spring.boot.sample.app.users.service.UsersService;
 
 /**

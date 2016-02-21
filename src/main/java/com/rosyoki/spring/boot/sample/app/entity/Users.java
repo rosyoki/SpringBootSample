@@ -1,4 +1,4 @@
-package com.rosyoki.spring.boot.sample.app.users.entity;
+package com.rosyoki.spring.boot.sample.app.entity;
 
 // Generated 2014/12/21 16:47:50 by Hibernate Tools 3.4.0.CR1
 
