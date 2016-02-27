@@ -31,7 +31,11 @@
         	<activeByDefault>false</activeByDefault>
         </activation>
         <properties>
-			<resources.directory>src/main/resources/dev</resources.directory>
+        	<resources.directory>src/main/resources/dev</resources.directory>
+            <jdbc.url>jdbc:mysql://localhost/blog_db</jdbc.url>
+            <jdbc.username>tsutsui</jdbc.username>
+            <jdbc.password>n5ercg7b</jdbc.password>
+			
         </properties>
   	</profile>
      <profile>
