@@ -22,8 +22,11 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
         <properties>
+            <jdbc.url>jdbc:mysql://localhost:10000/blog_db</jdbc.url>
+            <jdbc.username>tsutsui</jdbc.username>
+            <jdbc.password>n5ercg7b</jdbc.password>
             <resources.directory>src/main/resources</resources.directory>
-        </properties>
+       </properties>
      </profile>
      <profile>
      	<id>dev</id>
