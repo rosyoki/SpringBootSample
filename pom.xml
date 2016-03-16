@@ -15,14 +15,52 @@
     <java.version>1.8</java.version>
   </properties>
 
+  <profiles>
+  	<profile>
+    	<id>local</id>
+        	<activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        <properties>
+            <jdbc.url>jdbc:mysql://localhost:10000/blog_db</jdbc.url>
+            <jdbc.username>tsutsui</jdbc.username>
+            <jdbc.password>n5ercg7b</jdbc.password>
+            <resources.directory>src/main/resources</resources.directory>
+       </properties>
+     </profile>
+     <profile>
+     	<id>dev</id>
+        <activation>
+        	<activeByDefault>false</activeByDefault>
+        </activation>
+        <properties>
+        	<resources.directory>src/main/resources/dev</resources.directory>
+            <jdbc.url>jdbc:mysql://localhost/blog_db</jdbc.url>
+            <jdbc.username>tsutsui</jdbc.username>
+            <jdbc.password>n5ercg7b</jdbc.password>
+			
+        </properties>
+  	</profile>
+     <profile>
+     	<id>live</id>
+        <activation>
+        	<activeByDefault>false</activeByDefault>
+        </activation>
+        <properties>
+        	<jdbc.url>jdbc:mysql://localhost/blog_db</jdbc.url>
+            <jdbc.username>tsutsui</jdbc.username>
+            <jdbc.password>n5ercg7b</jdbc.password>
+        </properties>
+  	</profile>
+  </profiles>
+
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.2.0.RELEASE</version>
+    <version>1.3.2.RELEASE</version>
   </parent>
 
   <dependencies>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -39,39 +77,69 @@
 	</dependency>
 
 	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-data-jpa</artifactId>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-data-jpa</artifactId>
 	</dependency>
 
 	<dependency>
-		<groupId>org.projectlombok</groupId>
-		<artifactId>lombok</artifactId>
-		<version>1.14.8</version>
+	<groupId>org.projectlombok</groupId>
+	<artifactId>lombok</artifactId>
+	<version>1.14.8</version>
 	</dependency>
 
 	<dependency>
-		<groupId>mysql</groupId>
-		<artifactId>mysql-connector-java</artifactId>
-		<version>5.1.34</version>
+	<groupId>mysql</groupId>
+	<artifactId>mysql-connector-java</artifactId>
+	<version>5.1.37</version>
+	</dependency>
+
+	<dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-validator</artifactId>
+	</dependency>
+
+	<dependency>
+	<groupId>org.lazyluke</groupId>
+	<artifactId>log4jdbc-remix</artifactId>
+	<version>0.2.7</version>
 	</dependency>
 	
 	<dependency>
-		<groupId>org.lazyluke</groupId>
-		<artifactId>log4jdbc-remix</artifactId>
-		<version>0.2.7</version>
-	</dependency>
-	
-	<dependency>
-		<groupId>org.webjars</groupId>
-		<artifactId>bootstrap</artifactId>
-		<version>3.2.0</version>
+	<groupId>org.webjars</groupId>
+	<artifactId>bootstrap</artifactId>
+	<version>3.3.5</version>
 	</dependency>
 	<dependency>
-		<groupId>org.webjars</groupId>
-		<artifactId>jquery</artifactId>
-		<version>2.1.1</version>
+	<groupId>org.webjars</groupId>
+	<artifactId>jquery</artifactId>
+	<version>2.1.4</version>
 	</dependency>
     
+	<dependency>
+	  <groupId>org.mybatis</groupId>
+	  <artifactId>mybatis</artifactId>
+	  <version>3.2.8</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.mybatis</groupId>
+	  <artifactId>mybatis-spring</artifactId>
+	  <version>1.2.3</version>
+	</dependency>
+	<dependency>
+	  <groupId>commons-dbcp</groupId>
+	  <artifactId>commons-dbcp</artifactId>
+	  <version>1.4</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.apache.commons</groupId>
+	  <artifactId>commons-dbcp2</artifactId>
+	  <version>2.1.1</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-lang</groupId>
+		<artifactId>commons-lang</artifactId>
+		<version>2.6</version>
+	</dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -81,6 +149,11 @@
   </dependencies>
 
   <build>
+      <resources>
+      <resource>
+        <directory>${resources.directory}</directory>
+      </resource>
+    </resources>
   	<plugins>
 		<plugin>
         	<groupId>org.springframework.boot</groupId>
@@ -89,7 +162,7 @@
                     <dependency>
                         <groupId>org.springframework</groupId>
                         <artifactId>springloaded</artifactId>
-                        <version>1.2.1.RELEASE</version>
+                        <version>1.2.4.RELEASE</version>
                     </dependency>
                 </dependencies>
             </plugin>

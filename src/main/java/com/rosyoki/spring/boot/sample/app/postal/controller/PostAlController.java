@@ -3,14 +3,12 @@
  */
 package com.rosyoki.spring.boot.sample.app.postal.controller;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.rosyoki.spring.boot.sample.app.postal.service.PostAlService;
-import com.rosyoki.spring.boot.sample.app.users.entity.PostZipData;
+
 
 /**
  * @author hirofumi_tsutsui
@@ -26,7 +24,8 @@ public class PostAlController {
 
     @RequestMapping(value = "/postal/postalList")
     public String viewPostAlList() {
-        logger.debug(">>>>>>>>>>>>>>>>> viewPostAlList >>>>>>>>>>>>>>>>");
-        return "postal/postAlList";
+        logger.debug(">>>>>>>>>>>>>>>>> viewPostalList >>>>>>>>>>>>>>>>");
+
+        return "postal/postalList";
     }
 }

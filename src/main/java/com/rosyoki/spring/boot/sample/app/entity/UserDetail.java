@@ -1,4 +1,4 @@
-package com.rosyoki.spring.boot.sample.app.users.entity;
+package com.rosyoki.spring.boot.sample.app.entity;
 
 // Generated 2014/12/21 16:47:50 by Hibernate Tools 3.4.0.CR1
 
@@ -30,7 +30,7 @@ public class UserDetail implements java.io.Serializable {
      */
     private static final long serialVersionUID = 7974281298321737417L;
     
-    private long usersId;
+    private Integer usersId;
     private Users users;
     private String firstName;
     private String lastName;
@@ -75,11 +75,11 @@ public class UserDetail implements java.io.Serializable {
     @Id
     @GeneratedValue(generator = "generator")
     @Column(name = "USERS_ID", unique = true, nullable = false)
-    public long getUsersId() {
+    public Integer getUsersId() {
         return this.usersId;
     }
 
-    public void setUsersId(long usersId) {
+    public void setUsersId(Integer usersId) {
         this.usersId = usersId;
     }
 

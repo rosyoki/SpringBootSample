@@ -1,4 +1,4 @@
-package com.rosyoki.spring.boot.sample.app.users.entity;
+package com.rosyoki.spring.boot.sample.app.entity;
 
 // Generated 2014/12/21 16:47:50 by Hibernate Tools 3.4.0.CR1
 
@@ -26,12 +26,11 @@ public class Users implements java.io.Serializable {
      */
     private static final long serialVersionUID = -5225274134277627058L;
     
-    private Long id;
+    private Integer id;
     private String loginName;
     private String passwd;
     private Date created;
     private Date modified;
-    private UserDetail userDetail;
 
     public Users() {
     }
@@ -47,17 +46,16 @@ public class Users implements java.io.Serializable {
         this.passwd = passwd;
         this.created = created;
         this.modified = modified;
-        this.userDetail = userDetail;
     }
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
-    public Long getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -98,14 +96,4 @@ public class Users implements java.io.Serializable {
     public void setModified(Date modified) {
         this.modified = modified;
     }
-
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "users")
-    public UserDetail getUserDetail() {
-        return this.userDetail;
-    }
-
-    public void setUserDetail(UserDetail userDetail) {
-        this.userDetail = userDetail;
-    }
-
 }

@@ -9,7 +9,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.rosyoki.spring.boot.sample.app.users.entity.Users;
+
+import com.rosyoki.spring.boot.sample.app.entity.Users;
 import com.rosyoki.spring.boot.sample.app.users.repository.UsersRepository;
 
 /**
@@ -26,6 +27,10 @@ public class UsersService {
 
     public List<Users> getAllUsersData() {
         return usersRepository.findAll();
+    }
+    
+    public Users getUsersById(Integer id) {
+        return usersRepository.findOne(id);
     }
     
     public void registUser(Users users) {

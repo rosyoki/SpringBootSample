@@ -5,6 +5,8 @@ package com.rosyoki.spring.boot.sample.app.users.controller;
 
 
 import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.rosyoki.spring.boot.sample.app.users.entity.Users;
+
+import com.rosyoki.spring.boot.sample.app.entity.Users;
 import com.rosyoki.spring.boot.sample.app.users.form.UsersForm;
 import com.rosyoki.spring.boot.sample.app.users.service.UsersService;
 
@@ -44,13 +47,36 @@ public class UsersController {
     @RequestMapping("/users/userList")
     public String userList(Model model) {
 
-        logger.debug(">>>>>>>> userList >>>>>>>>");
+        logger.debug(">>>>>>>> userList start >>>>>>>>");
         List<Users> usersList = usersService.getAllUsersData();
         model.addAttribute("users", usersList);
 
         return "users/usersList";
     }
 
+    /**
+     * 
+     * @param usersForm
+     * @param model
+     * @return
+     */
+    @RequestMapping("/users/edit//{id}")
+    public String editUser(UsersForm usersForm, Model model) {
+        logger.info(">>>>>> start editUser >>>>>>>>>");
+        
+        Users users = null;
+        if(usersForm.getId() != null) {
+            users = usersService.getUsersById(usersForm.getId());
+        }
+        
+        logger.debug(">>>>>> " + users.getLoginName());
+        usersForm.setLoginName(users.getLoginName());
+        
+        model.addAttribute(usersForm);
+        
+        return "users/registInput";
+    }
+    
     /**
      * ユーザ登録トップ画面
      * 
@@ -119,6 +145,6 @@ public class UsersController {
         BeanUtils.copyProperties(usersForm, users);
         usersService.registUser(users);
 
-        return "users/commit";
+        return userList(model);
     }
 }
