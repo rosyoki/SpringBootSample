@@ -40,7 +40,8 @@ public class UsersControllerAjax {
 
     @RequestMapping(value="/ajax/users/{id}", method = RequestMethod.GET)
     public Users getUsers(@PathVariable Integer id) {
-
+        logger.info(">>>>> start getUsers >>>>>");
+        
         Users users = usersService.getUsersById(id);
         
         return users;
