@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rosyoki.spring.boot.sample.app.entity.Users;
-import com.rosyoki.spring.boot.sample.app.users.controller.UsersController;
 import com.rosyoki.spring.boot.sample.app.users.service.UsersService;
 
 /**
@@ -28,7 +27,7 @@ public class UsersControllerAjax {
     UsersService usersService;
     private Logger logger = Logger.getLogger(UsersControllerAjax.class);
     
-    @CrossOrigin(origins = "http://localhost")
+    @CrossOrigin
     @RequestMapping(value="/ajax/users", method = RequestMethod.GET,produces = "application/json")
     public List<Users> getUsersList() {
         logger.info(">>>>> start getUsersList >>>>>");
@@ -38,6 +37,7 @@ public class UsersControllerAjax {
         return usersList;
     }
 
+    @CrossOrigin
     @RequestMapping(value="/ajax/users/{id}", method = RequestMethod.GET)
     public Users getUsers(@PathVariable Integer id) {
         logger.info(">>>>> start getUsers >>>>>");
