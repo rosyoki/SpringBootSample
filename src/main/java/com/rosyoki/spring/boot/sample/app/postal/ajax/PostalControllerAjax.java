@@ -35,6 +35,8 @@ public class PostalControllerAjax {
         
         PostZipData postZipData = postAlService.getPostData(id);
 
+        logger.info(">>>>> end getPostalData >>>>>");
+        
         return postZipData;
     }
     
@@ -45,6 +47,8 @@ public class PostalControllerAjax {
         
         List<PostZipData> postZipDatas = postAlService.getPostAlDataByCity(city);
 
+        logger.info(">>>>> end getPostalData >>>>>");
+        
         return postZipDatas;
     }
 }
