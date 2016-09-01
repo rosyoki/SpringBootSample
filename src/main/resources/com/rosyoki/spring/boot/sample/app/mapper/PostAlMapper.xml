@@ -6,4 +6,7 @@
     <select id="select" resultType="com.rosyoki.spring.boot.sample.app.entity.PostZipData">
         SELECT id, city, old_zip, pref,town,zip FROM post_zip_data WHERE id = #{id}
     </select>
+    <select id="selectByCity" resultType="map" parameterType="java.lang.String">
+        SELECT id, city, old_zip, pref,town,zip FROM post_zip_data WHERE city = #{city}
+    </select>
 </mapper>
