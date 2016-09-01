@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rosyoki.spring.boot.sample.app.entity.PostZipData;
+import com.rosyoki.spring.boot.sample.app.mapper.PostAlMapper;
 import com.rosyoki.spring.boot.sample.app.users.repository.PostAlRepository;
 
 /**
@@ -23,6 +24,9 @@ public class PostAlService {
     @Autowired
     PostAlRepository postAlRepository;
     
+    @Autowired
+    PostAlMapper postAlMappler;
+    
     public List<PostZipData> getPostAlAllData() {
         return postAlRepository.findAll();
     }
@@ -33,7 +37,7 @@ public class PostAlService {
      * @return
      */
     public PostZipData getPostData(Long Id) {
-        return postAlRepository.findOne(Id);
+        return postAlMappler.select(Id);
     }
     
     /**
@@ -44,5 +48,9 @@ public class PostAlService {
      */
     public List<PostZipData> getPostAlDataByCity(String city) {
         return postAlRepository.findByCity(city);
+    }
+    
+    public PostZipData getPostAlDataByZip(String zip) {
+        return postAlRepository.findByZip(zip);
     }
 }

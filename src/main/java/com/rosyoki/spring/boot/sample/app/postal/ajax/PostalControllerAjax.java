@@ -51,4 +51,16 @@ public class PostalControllerAjax {
         
         return postZipDatas;
     }
+    
+    @CrossOrigin
+    @RequestMapping(value="/ajax/postcd/{newcode}", method = RequestMethod.GET,produces = "application/json")
+    public PostZipData getPostalDataByNewCode(@PathVariable String newCode) {
+        logger.info(">>>>> start getPostalDataByNewCode >>>>>");
+        
+        PostZipData postZipData = postAlService.getPostAlDataByZip(newCode);
+
+        logger.info(">>>>> end getPostalDataByNewCode >>>>>");
+        
+        return postZipData;
+    }
 }

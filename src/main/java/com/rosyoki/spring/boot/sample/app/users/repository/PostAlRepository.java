@@ -10,4 +10,5 @@ import com.rosyoki.spring.boot.sample.app.entity.PostZipData;
 @Repository
 public interface PostAlRepository extends JpaRepository<PostZipData, Long>{
     public List<PostZipData> findByCity(String city);
+    public PostZipData findByZip(String zip);
 }
