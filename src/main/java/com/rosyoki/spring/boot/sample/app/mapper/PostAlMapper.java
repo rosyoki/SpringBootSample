@@ -17,4 +17,5 @@ import com.rosyoki.spring.boot.sample.app.entity.PostZipData;
 public interface PostAlMapper {
     PostZipData select(Long Id);
     List<PostZipData> selectByCity(String city);
+    PostZipData selectByZip(String zip);
 }

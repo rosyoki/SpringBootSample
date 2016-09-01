@@ -20,7 +20,7 @@ public class PostZipData implements java.io.Serializable {
     private static final long serialVersionUID = -8612975531804578030L;
     
     private long id;
-    private String oldZip;
+    private String old_zip;
     private String zip;
     private String pref;
     private String city;
@@ -34,10 +34,10 @@ public class PostZipData implements java.io.Serializable {
         this.town = town;
     }
 
-    public PostZipData(long id, String oldZip, String zip, String pref,
+    public PostZipData(long id, String old_zip, String zip, String pref,
             String city, String town) {
         this.id = id;
-        this.oldZip = oldZip;
+        this.setOld_zip(old_zip);
         this.zip = zip;
         this.pref = pref;
         this.city = city;
@@ -52,15 +52,6 @@ public class PostZipData implements java.io.Serializable {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    @Column(name = "old_zip", length = 5)
-    public String getOldZip() {
-        return this.oldZip;
-    }
-
-    public void setOldZip(String oldZip) {
-        this.oldZip = oldZip;
     }
 
     @Column(name = "zip", length = 7)
@@ -97,6 +88,15 @@ public class PostZipData implements java.io.Serializable {
 
     public void setTown(String town) {
         this.town = town;
+    }
+
+    @Column(name = "old_zip", length = 5)
+    public String getOld_zip() {
+        return old_zip;
+    }
+
+    public void setOld_zip(String old_zip) {
+        this.old_zip = old_zip;
     }
 
 }

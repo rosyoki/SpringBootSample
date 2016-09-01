@@ -38,4 +38,8 @@ public class PostAlService {
     public List<PostZipData> getPostAlDataByCity(String city) {
         return postAlMappler.selectByCity(city);
     }
+    
+    public PostZipData getPostDataByZip(String zip) {
+        return postAlMappler.selectByZip(zip);
+    }
 }

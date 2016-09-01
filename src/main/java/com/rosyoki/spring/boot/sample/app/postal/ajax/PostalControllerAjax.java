@@ -47,8 +47,20 @@ public class PostalControllerAjax {
         
         List<PostZipData> postZipDatas = postAlService.getPostAlDataByCity(city);
 
-        logger.info(">>>>> end getPostalData >>>>>");
+        logger.info(">>>>> end getPostalDataByCity >>>>>");
         
         return postZipDatas;
+    }
+    
+    @CrossOrigin
+    @RequestMapping(value="/ajax/zip/{zip}", method = RequestMethod.GET,produces = "application/json")
+    public PostZipData getPostalDataByZip(@PathVariable String zip) {
+        logger.info(">>>>> start getPostalDataByZip >>>>>");
+        
+        PostZipData postZipData = postAlService.getPostDataByZip(zip);
+                
+        logger.info(">>>>> end getPostalDataByZip >>>>>");
+        
+        return postZipData;
     }
 }
