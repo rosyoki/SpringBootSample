@@ -66,8 +66,7 @@ public class UsersController {
         if(usersForm.getId() != null) {
             users = usersService.getUsersById(usersForm.getId());
         }
-        
-        logger.debug(">>>>>> " + users.getLoginName());
+
         usersForm.setLoginName(users.getLoginName());
         
         model.addAttribute(usersForm);
