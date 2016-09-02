@@ -25,6 +25,10 @@ public class UsersService {
     @Autowired
     UsersRepository usersRepository;
 
+    /**
+     * 
+     * @return
+     */
     public List<Users> getAllUsersData() {
         return usersRepository.findAll();
     }
