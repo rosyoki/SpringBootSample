@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rosyoki.spring.boot.sample.app.entity.Users;
+import com.rosyoki.spring.boot.sample.app.mapper.UsersMapper;
 import com.rosyoki.spring.boot.sample.app.users.repository.UsersRepository;
 
 /**
@@ -24,6 +25,9 @@ public class UsersService {
 
     @Autowired
     UsersRepository usersRepository;
+    
+    @Autowired
+    UsersMapper usersMapper;
 
     /**
      * 
@@ -34,7 +38,7 @@ public class UsersService {
     }
     
     public Users getUsersById(Integer id) {
-        return usersRepository.findOne(id);
+        return usersMapper.select(id);
     }
     
     public void registUser(Users users) {
