@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 public class UsersForm {
     
-    private Integer id;
+    private Long id;
     
     @NotEmpty
     private String loginName;

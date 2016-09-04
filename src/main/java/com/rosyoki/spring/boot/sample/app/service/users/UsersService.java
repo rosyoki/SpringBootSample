@@ -7,9 +7,9 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.rosyoki.spring.boot.sample.app.entity.Users;
 import com.rosyoki.spring.boot.sample.app.entity.UsersExample;
 import com.rosyoki.spring.boot.sample.app.mapper.UsersMapper;
@@ -26,6 +26,8 @@ public class UsersService {
     @Autowired
     UsersMapper usersMapper;
 
+    private Logger logger = Logger.getLogger(UsersService.class);
+    
     /**
      * 
      * @return
@@ -45,6 +47,15 @@ public class UsersService {
     public Users getUserByLoginName(String loginName) {
         UsersExample usersExample = new UsersExample();
         usersExample.createCriteria().andLoginNameEqualTo(loginName);
+        
+        if(usersMapper.selectByExample(usersExample) == null) {
+            return null;
+        } else {
+            if(usersMapper.selectByExample(usersExample).size() == 0) {
+                return null;
+            }
+        }
+        
         return usersMapper.selectByExample(usersExample).get(0);
     }
 }

@@ -63,13 +63,12 @@ public class UsersController {
     public String editUser(UsersForm usersForm, Model model) {
         logger.info(">>>>>> start editUser >>>>>>>>>");
         
-        //Users users = null;
+        Users users = null;
         if(usersForm.getId() != null) {
-            //users = usersService.getUsersById(usersForm.getId());
+            users = usersService.getUsersById(usersForm.getId());
         }
 
-        //usersForm.setLoginName(users.getLoginName());
-        
+        usersForm.setLoginName(users.getLoginName());
         model.addAttribute(usersForm);
         
         return "users/registInput";
