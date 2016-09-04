@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rosyoki.spring.boot.sample.app.entity.PostZipData;
+import com.rosyoki.spring.boot.sample.app.entity.PostZipDataExample;
 import com.rosyoki.spring.boot.sample.app.mapper.PostZipDataMapper;
 
 /**
@@ -39,11 +40,15 @@ public class PostAlService {
      * @return
      */
     public List<PostZipData> getPostAlDataByCity(String city) {
-        return null;
+        PostZipDataExample postZipDataExample = new PostZipDataExample();
+        postZipDataExample.createCriteria().andCityEqualTo(city);
+        
+        return postZipDataMapper.selectByExampleWithBLOBs(postZipDataExample);
     }
     
     public PostZipData getPostDataByZip(String zip) {
-       
-        return null;
+        PostZipDataExample postZipDataExample = new PostZipDataExample();
+        postZipDataExample.createCriteria().andZipEqualTo(zip);
+        return postZipDataMapper.selectByExampleWithBLOBs(postZipDataExample).get(0);
     }
 }
