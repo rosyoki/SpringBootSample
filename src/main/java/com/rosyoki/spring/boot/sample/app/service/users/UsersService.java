@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.rosyoki.spring.boot.sample.app.users.service;
+package com.rosyoki.spring.boot.sample.app.service.users;
 
 import java.util.List;
 
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.rosyoki.spring.boot.sample.app.entity.Users;
 import com.rosyoki.spring.boot.sample.app.mapper.UsersMapper;
-import com.rosyoki.spring.boot.sample.app.users.repository.UsersRepository;
 
 /**
  * @author hirofumi_tsutsui
@@ -22,9 +21,6 @@ import com.rosyoki.spring.boot.sample.app.users.repository.UsersRepository;
 @Service
 @Transactional
 public class UsersService {
-
-    @Autowired
-    UsersRepository usersRepository;
     
     @Autowired
     UsersMapper usersMapper;
@@ -34,18 +30,18 @@ public class UsersService {
      * @return
      */
     public List<Users> getAllUsersData() {
-        return usersRepository.findAll();
+        return usersMapper.selectByExample(null);
     }
     
-    public Users getUsersById(Integer id) {
-        return usersMapper.select(id);
+    public Users getUsersById(Long id) {
+        return null;
     }
     
     public void registUser(Users users) {
-        usersRepository.saveAndFlush(users);
+        usersMapper.insert(users);
     }
     
     public Users getUserByLoginName(String loginName) {
-        return usersRepository.findByLoginName(loginName);
+        return usersMapper.selectByExample(null).get(0);
     }
 }

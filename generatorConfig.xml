@@ -17,5 +17,6 @@
     <!-- Mapperインタフェース作成先 -->
     <javaClientGenerator targetPackage="com.rosyoki.spring.boot.sample.app.mapper" targetProject="src/main/java" type="XMLMAPPER" />
     <table tableName="%" />
+
   </context>
 </generatorConfiguration>

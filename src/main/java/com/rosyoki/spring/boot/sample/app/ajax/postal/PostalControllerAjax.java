@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.rosyoki.spring.boot.sample.app.postal.ajax;
+package com.rosyoki.spring.boot.sample.app.ajax.postal;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rosyoki.spring.boot.sample.app.entity.PostZipData;
-import com.rosyoki.spring.boot.sample.app.postal.service.PostAlService;
+import com.rosyoki.spring.boot.sample.app.service.postal.PostAlService;
 
 /**
  * @author hirofumi_tsutsui

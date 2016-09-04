@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.rosyoki.spring.boot.sample.app.users.ajax;
+package com.rosyoki.spring.boot.sample.app.ajax.users;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rosyoki.spring.boot.sample.app.entity.Users;
-import com.rosyoki.spring.boot.sample.app.users.service.UsersService;
+import com.rosyoki.spring.boot.sample.app.service.users.UsersService;
 
 /**
  * @author hirofumi_tsutsui
@@ -39,7 +39,7 @@ public class UsersControllerAjax {
 
     @CrossOrigin
     @RequestMapping(value="/ajax/users/{id}", method = RequestMethod.GET)
-    public Users getUsers(@PathVariable Integer id) {
+    public Users getUsers(@PathVariable Long id) {
         logger.info(">>>>> start getUsers >>>>>");
         
         Users users = usersService.getUsersById(id);

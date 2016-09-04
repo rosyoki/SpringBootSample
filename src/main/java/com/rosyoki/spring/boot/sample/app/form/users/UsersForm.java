@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.rosyoki.spring.boot.sample.app.users.form;
+package com.rosyoki.spring.boot.sample.app.form.users;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

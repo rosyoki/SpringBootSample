@@ -1,14 +1,17 @@
 /**
  * 
  */
-package com.rosyoki.spring.boot.sample.app.postal.service;
+package com.rosyoki.spring.boot.sample.app.service.postal;
 
 import java.util.List;
+
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.rosyoki.spring.boot.sample.app.entity.PostZipData;
-import com.rosyoki.spring.boot.sample.app.mapper.PostAlMapper;
+import com.rosyoki.spring.boot.sample.app.mapper.PostZipDataMapper;
 
 /**
  * @author hirofumi_tsutsui
@@ -18,7 +21,7 @@ import com.rosyoki.spring.boot.sample.app.mapper.PostAlMapper;
 @Transactional
 public class PostAlService {
     @Autowired
-    PostAlMapper postAlMappler;
+    PostZipDataMapper postZipDataMapper;
     
     /**
      * IDで検索する。
@@ -26,7 +29,7 @@ public class PostAlService {
      * @return
      */
     public PostZipData getPostData(Long Id) {
-        return postAlMappler.select(Id);
+        return postZipDataMapper.selectByPrimaryKey(Id);
     }
     
     /**
@@ -36,10 +39,11 @@ public class PostAlService {
      * @return
      */
     public List<PostZipData> getPostAlDataByCity(String city) {
-        return postAlMappler.selectByCity(city);
+        return null;
     }
     
     public PostZipData getPostDataByZip(String zip) {
-        return postAlMappler.selectByZip(zip);
+       
+        return null;
     }
 }
