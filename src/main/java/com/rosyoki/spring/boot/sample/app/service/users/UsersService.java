@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rosyoki.spring.boot.sample.app.entity.Users;
+import com.rosyoki.spring.boot.sample.app.entity.UsersExample;
 import com.rosyoki.spring.boot.sample.app.mapper.UsersMapper;
 
 /**
@@ -34,7 +35,7 @@ public class UsersService {
     }
     
     public Users getUsersById(Long id) {
-        return null;
+        return usersMapper.selectByPrimaryKey(id);
     }
     
     public void registUser(Users users) {
@@ -42,6 +43,8 @@ public class UsersService {
     }
     
     public Users getUserByLoginName(String loginName) {
-        return usersMapper.selectByExample(null).get(0);
+        UsersExample usersExample = new UsersExample();
+        usersExample.createCriteria().andLoginNameEqualTo(loginName);
+        return usersMapper.selectByExample(usersExample).get(0);
     }
 }
