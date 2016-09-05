@@ -33,6 +33,7 @@ public class PostalControllerAjax {
     public PostZipData getPostalData(@PathVariable Long id) {
         logger.info(">>>>> start getPostalData >>>>>");
         
+        //郵便番号情報を取得する。
         PostZipData postZipData = postAlService.getPostData(id);
 
         logger.info(">>>>> end getPostalData >>>>>");
@@ -40,11 +41,12 @@ public class PostalControllerAjax {
         return postZipData;
     }
     
-    @CrossOrigin
+    @CrossOrigin(origins={"http://localhost","http://mac.rosyoki.com"})
     @RequestMapping(value="/ajax/town/{city}", method = RequestMethod.POST,produces = "application/json")
     public List<PostZipData> getPostalDataByCity(@PathVariable String city) {
         logger.info(">>>>> start getPostalDataByCity >>>>>");
         
+        //郵便番号一覧情報を取得する。
         List<PostZipData> postZipDatas = postAlService.getPostAlDataByCity(city);
 
         logger.info(">>>>> end getPostalDataByCity >>>>>");
@@ -52,11 +54,12 @@ public class PostalControllerAjax {
         return postZipDatas;
     }
     
-    @CrossOrigin
+    @CrossOrigin(origins={"http://localhost"})
     @RequestMapping(value="/ajax/zip/{zip}", method = RequestMethod.GET,produces = "application/json")
     public PostZipData getPostalDataByZip(@PathVariable String zip) {
         logger.info(">>>>> start getPostalDataByZip >>>>>");
         
+        // 郵便番号から住所を取得する。
         PostZipData postZipData = postAlService.getPostDataByZip(zip);
                 
         logger.info(">>>>> end getPostalDataByZip >>>>>");
