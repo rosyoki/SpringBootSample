@@ -71,7 +71,7 @@ public class UsersController {
         usersForm.setLoginName(users.getLoginName());
         model.addAttribute(usersForm);
         
-        return "users/registInput";
+        return "users/editInput";
     }
     
     /**
