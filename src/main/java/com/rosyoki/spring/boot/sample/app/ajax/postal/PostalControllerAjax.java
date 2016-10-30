@@ -41,7 +41,7 @@ public class PostalControllerAjax {
         return postZipData;
     }
     
-    @CrossOrigin(origins={"http://localhost","http://mac.rosyoki.com"})
+    @CrossOrigin(origins={"http://localhost","http://server1.rosyoki.com"})
     @RequestMapping(value="/ajax/town/{city}", method = RequestMethod.POST,produces = "application/json")
     public List<PostZipData> getPostalDataByCity(@PathVariable String city) {
         logger.info(">>>>> start getPostalDataByCity >>>>>");
