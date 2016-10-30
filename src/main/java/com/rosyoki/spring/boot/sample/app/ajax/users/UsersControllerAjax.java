@@ -34,6 +34,7 @@ public class UsersControllerAjax {
         
         List<Users> usersList = usersService.getAllUsersData();
 
+        logger.info(">>>>> end getusersList >>>>>>>>>>>> ");
         return usersList;
     }
 
