@@ -27,18 +27,19 @@ public class UsersControllerAjax {
     UsersService usersService;
     private Logger logger = Logger.getLogger(UsersControllerAjax.class);
     
-    @CrossOrigin
+    @CrossOrigin(origins={"http://localhost","http://server1.rosyoki.com"})
     @RequestMapping(value="/ajax/users", method = RequestMethod.GET,produces = "application/json")
     public List<Users> getUsersList() {
         logger.info(">>>>> start getUsersList >>>>>");
         
         List<Users> usersList = usersService.getAllUsersData();
 
-        logger.info(">>>>> end getusersList >>>>>>>>>>>> ");
+        logger.info(">>>>> end getUsersList >>>>>");
+        
         return usersList;
     }
 
-    @CrossOrigin
+    @CrossOrigin(origins={"http://localhost","http://server1.rosyoki.com"})
     @RequestMapping(value="/ajax/users/{id}", method = RequestMethod.GET)
     public Users getUsers(@PathVariable Long id) {
         logger.info(">>>>> start getUsers >>>>>");
