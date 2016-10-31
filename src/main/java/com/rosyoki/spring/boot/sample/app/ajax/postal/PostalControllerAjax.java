@@ -52,7 +52,16 @@ public class PostalControllerAjax {
         }
         //郵便番号一覧情報を取得する。
         List<PostZipData> postZipDatas = postAlService.getPostAlDataByCity(city);
-
+        
+        //データ取得チェック
+        if(postZipDatas == null) {
+        	return null;
+        }
+        
+        if(postZipDatas.size() == 0) {
+        	return null;
+        }
+        
         logger.info(">>>>> end getPostalDataByCity >>>>>");
         
         return postZipDatas;
@@ -68,7 +77,10 @@ public class PostalControllerAjax {
         }
         // 郵便番号から住所を取得する。
         PostZipData postZipData = postAlService.getPostDataByZip(zip);
-                
+        //データチェック
+        if(postZipData == null) {
+        	return null;
+        }
         logger.info(">>>>> end getPostalDataByZip >>>>>");
         
         return postZipData;
