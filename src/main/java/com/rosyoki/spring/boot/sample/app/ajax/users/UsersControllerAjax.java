@@ -3,6 +3,7 @@
  */
 package com.rosyoki.spring.boot.sample.app.ajax.users;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -28,15 +29,17 @@ public class UsersControllerAjax {
     private Logger logger = Logger.getLogger(UsersControllerAjax.class);
     
     @CrossOrigin(origins={"http://localhost","http://server1.rosyoki.com"})
-    @RequestMapping(value="/ajax/users", method = RequestMethod.GET,produces = "application/json")
-    public List<Users> getUsersList() {
+    @RequestMapping(value="/ajax/users", method = RequestMethod.POST,produces = "application/json")
+    public HashMap<String, List<Users>> getUsersList() {
         logger.info(">>>>> start getUsersList >>>>>");
         
         List<Users> usersList = usersService.getAllUsersData();
+        HashMap<String, List<Users>> data = new HashMap<String, List<Users>>();
+        data.put("records", usersList);
 
         logger.info(">>>>> end getUsersList >>>>>");
         
-        return usersList;
+        return data;
     }
 
     @CrossOrigin(origins={"http://localhost","http://server1.rosyoki.com"})
