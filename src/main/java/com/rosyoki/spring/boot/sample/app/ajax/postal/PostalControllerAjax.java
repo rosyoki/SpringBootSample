@@ -5,6 +5,7 @@ package com.rosyoki.spring.boot.sample.app.ajax.postal;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -46,6 +47,9 @@ public class PostalControllerAjax {
     public List<PostZipData> getPostalDataByCity(@PathVariable String city) {
         logger.info(">>>>> start getPostalDataByCity >>>>>");
         
+        if(StringUtils.isEmpty(city)) {
+        	return null;
+        }
         //郵便番号一覧情報を取得する。
         List<PostZipData> postZipDatas = postAlService.getPostAlDataByCity(city);
 
@@ -58,7 +62,10 @@ public class PostalControllerAjax {
     @RequestMapping(value="/ajax/zip/{zip}", method = RequestMethod.GET,produces = "application/json")
     public PostZipData getPostalDataByZip(@PathVariable String zip) {
         logger.info(">>>>> start getPostalDataByZip >>>>>");
-        
+
+        if(StringUtils.isEmpty(zip)) {
+        	return null;
+        }
         // 郵便番号から住所を取得する。
         PostZipData postZipData = postAlService.getPostDataByZip(zip);
                 
