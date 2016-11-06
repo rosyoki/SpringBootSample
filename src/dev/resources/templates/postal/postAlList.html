@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>郵便番号検索結果</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    検索結果一覧
+    <table>
+    	<tr>
+    		<th>市名</th><th>町名</th>
+    	</tr>
+      	<tr th:each="postal: ${postalList}">
+    		<td th:text="${postal.city}">市</td>
+    		<td th:text="${postal.town}">町</td>
+      	</tr>
+    </table>
+</body>
+</html>

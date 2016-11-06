@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>ユーザ登録</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap-theme.min.css"
+	th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap-theme.min.css}"
+	rel="stylesheet" media="screen" />
+	
+<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+	th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+</head>
+
+<body>
+	<div class="container">
+		<label for="registLabel">ユーザ登録</label> 
+		
+		<form id="form" th:action="@{/users/confirm}" th:object="${usersForm}" method="POST">
+
+			<div class="form-group">
+				<label for="loginName">ログイン名</label> 
+				<input type="text" id="loginName" class="form-control" th:field="*{loginName}" placeholder="ログイン名を入力してください。" th:errorclass="fieldError" /> 
+				<span th:if="${#fields.hasErrors('loginName')}" th:errors="*{loginName}" class="help-block">error!</span>
+			</div>
+
+			<div class="form-group">
+				<label for="pass">パスワード</label> 
+				<input type="password" id="passwd" class="form-control" th:field="*{passwd}" placeholder="パスワードを入力してください。" th:errorclass="fieldError" />
+				<span th:if="${#fields.hasErrors('passwd')}" th:errors="*{passwd}" class="error-messages"></span>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-4">
+					<input type="submit" class="btn btn-primary btn-block" value="確認" />
+				</div>
+				<div class="col-xs-4">
+					<input type="reset" class="btn btn-primary btn-block" value="リセット" />
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
