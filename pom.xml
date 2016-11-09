@@ -39,7 +39,6 @@
             <jdbc.url>jdbc:mysql://localhost/blog_db</jdbc.url>
             <jdbc.username>tsutsui</jdbc.username>
             <jdbc.password>n5ercg7b</jdbc.password>
-			
         </properties>
   	</profile>
      <profile>
@@ -48,6 +47,7 @@
         	<activeByDefault>false</activeByDefault>
         </activation>
         <properties>
+        	<resources.directory>src/dev/resources</resources.directory>
         	<jdbc.url>jdbc:mysql://localhost/blog_db</jdbc.url>
             <jdbc.username>tsutsui</jdbc.username>
             <jdbc.password>n5ercg7b</jdbc.password>
@@ -97,7 +97,7 @@
 	<dependency>
 	<groupId>mysql</groupId>
 	<artifactId>mysql-connector-java</artifactId>
-	<version>5.1.39</version>
+	<version>5.1.40</version>
 	</dependency>
 
 	<dependency>
