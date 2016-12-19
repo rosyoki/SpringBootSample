@@ -23,4 +23,5 @@ public class UsersForm {
     
     @NotEmpty
     private String passwd;
+    
 }
