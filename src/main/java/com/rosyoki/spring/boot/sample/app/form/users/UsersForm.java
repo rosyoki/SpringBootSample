@@ -18,7 +18,6 @@ public class UsersForm {
     private Long id;
     
     @NotEmpty
-    @Range(min=6, max=99)
     private String loginName;
     
     @NotEmpty
