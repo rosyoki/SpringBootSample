@@ -4,7 +4,6 @@
 package com.rosyoki.spring.boot.sample.app.form.users;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
 
 import lombok.Data;
 
