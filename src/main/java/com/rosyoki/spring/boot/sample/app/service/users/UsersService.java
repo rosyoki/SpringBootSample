@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.rosyoki.spring.boot.sample.app.entity.Users;
@@ -26,7 +26,7 @@ public class UsersService {
     @Autowired
     UsersMapper usersMapper;
 
-    private Logger logger = Logger.getLogger(UsersService.class);
+    //private Logger logger = Logger.getLogger(UsersService.class);
     
     /**
      * 
