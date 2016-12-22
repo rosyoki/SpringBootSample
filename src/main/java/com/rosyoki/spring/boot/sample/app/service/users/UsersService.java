@@ -20,7 +20,6 @@ import com.rosyoki.spring.boot.sample.app.mapper.UsersMapper;
  */
 
 @Service
-@Transactional
 public class UsersService {
     
     @Autowired
@@ -40,6 +39,7 @@ public class UsersService {
         return usersMapper.selectByPrimaryKey(id);
     }
     
+    @Transactional
     public void registUser(Users users) {
         usersMapper.insert(users);
     }
