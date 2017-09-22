@@ -17,42 +17,42 @@
   </properties>
 
   <profiles>
-  	<profile>
-    	<id>local</id>
-        	<activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        <properties>
-            <jdbc.url>jdbc:mysql://localhost:10000/blog_db</jdbc.url>
-            <jdbc.username>tsutsui</jdbc.username>
-            <jdbc.password>n5ercg7b</jdbc.password>
-            <resources.directory>src/main/resources</resources.directory>
+    <profile>
+      <id>local</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <jdbc.url>jdbc:mysql://localhost:10000/blog_db</jdbc.url>
+        <jdbc.username>tsutsui</jdbc.username>
+        <jdbc.password>n5ercg7b</jdbc.password>
+        <resources.directory>src/main/resources</resources.directory>
+      </properties>
+    </profile>
+    <profile>
+      <id>dev</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <resources.directory>src/dev/resources</resources.directory>
+        <jdbc.url>jdbc:mysql://localhost/blog_db</jdbc.url>
+        <jdbc.username>tsutsui</jdbc.username>
+        <jdbc.password>n5ercg7b</jdbc.password>
+      </properties>
+    </profile>
+     <profile>
+       <id>live</id>
+       <activation>
+         <activeByDefault>false</activeByDefault>
+       </activation>
+       <properties>
+         <resources.directory>src/dev/resources</resources.directory>
+         <jdbc.url>jdbc:mysql://localhost/blog_db</jdbc.url>
+         <jdbc.username>tsutsui</jdbc.username>
+         <jdbc.password>n5ercg7b</jdbc.password>
        </properties>
      </profile>
-     <profile>
-     	<id>dev</id>
-        <activation>
-        	<activeByDefault>false</activeByDefault>
-        </activation>
-        <properties>
-        	<resources.directory>src/dev/resources</resources.directory>
-            <jdbc.url>jdbc:mysql://localhost/blog_db</jdbc.url>
-            <jdbc.username>tsutsui</jdbc.username>
-            <jdbc.password>n5ercg7b</jdbc.password>
-        </properties>
-  	</profile>
-     <profile>
-     	<id>live</id>
-        <activation>
-        	<activeByDefault>false</activeByDefault>
-        </activation>
-        <properties>
-        	<resources.directory>src/dev/resources</resources.directory>
-        	<jdbc.url>jdbc:mysql://localhost/blog_db</jdbc.url>
-            <jdbc.username>tsutsui</jdbc.username>
-            <jdbc.password>n5ercg7b</jdbc.password>
-        </properties>
-  	</profile>
   </profiles>
 
   <parent>
@@ -73,14 +73,14 @@
     </dependency>
 
 	<dependency>
-    	<groupId>org.springframework.boot</groupId>
-    	<artifactId>spring-boot-starter-thymeleaf</artifactId>
+    	  <groupId>org.springframework.boot</groupId>
+    	  <artifactId>spring-boot-starter-thymeleaf</artifactId>
 	</dependency>
 
 	<dependency>
-    	<groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-freemarker</artifactId>
-    </dependency>
+    	  <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-freemarker</artifactId>
+	</dependency>
 	
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
@@ -111,21 +111,21 @@
 	</dependency>
 
 	<dependency>
-		<groupId>org.lazyluke</groupId>
-		<artifactId>log4jdbc-remix</artifactId>
-		<version>0.2.7</version>
+	  <groupId>org.lazyluke</groupId>
+	  <artifactId>log4jdbc-remix</artifactId>
+	  <version>0.2.7</version>
 	</dependency>
 	
 	<dependency>
-		<groupId>org.webjars</groupId>
-		<artifactId>bootstrap</artifactId>
-		<version>3.3.5</version>
+	  <groupId>org.webjars</groupId>
+	  <artifactId>bootstrap</artifactId>
+	  <version>3.3.5</version>
 	</dependency>
 	
 	<dependency>
-		<groupId>org.webjars</groupId>
-		<artifactId>jquery</artifactId>
-		<version>2.1.4</version>
+	  <groupId>org.webjars</groupId>
+	  <artifactId>jquery</artifactId>
+	  <version>2.1.4</version>
 	</dependency>
 	
 	<dependency>
@@ -141,49 +141,44 @@
 	</dependency>
 	
 	<dependency>
-		<groupId>commons-lang</groupId>
-		<artifactId>commons-lang</artifactId>
-		<version>2.6</version>
+	  <groupId>commons-lang</groupId>
+	  <artifactId>commons-lang</artifactId>
+	  <version>2.6</version>
 	</dependency>
-    
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-    
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-devtools</artifactId>
-    </dependency>
-
+        <dependency>
+	  <groupId>junit</groupId>
+	  <artifactId>junit</artifactId>
+	  <scope>test</scope>
+	</dependency>
+	<dependency>
+	  <groupId>org.springframework.boot</groupId>
+	  <artifactId>spring-boot-devtools</artifactId>
+	</dependency>
   </dependencies>
 
   <build>
       <resources>
-      <resource>
-        <directory>${resources.directory}</directory>
-      </resource>
-    </resources>
-  	<plugins>
-		<plugin>
-        	<groupId>org.springframework.boot</groupId>
-            	<artifactId>spring-boot-maven-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>springloaded</artifactId>
-                        <version>1.2.7.RELEASE</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            
-        <plugin>
-      	  <groupId>org.mybatis.generator</groupId>
-      	  <artifactId>mybatis-generator-maven-plugin</artifactId>
-          <version>1.3.4</version>
-        </plugin>
+	<resource>
+          <directory>${resources.directory}</directory>
+	</resource>
+      </resources>
+      <plugins>
+	<plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <dependencies>
+            <dependency>
+              <groupId>org.springframework</groupId>
+              <artifactId>springloaded</artifactId>
+              <version>1.2.7.RELEASE</version>
+            </dependency>
+          </dependencies>
+          </plugin>
+          <plugin>
+      	    <groupId>org.mybatis.generator</groupId>
+      	    <artifactId>mybatis-generator-maven-plugin</artifactId>
+            <version>1.3.4</version>
+          </plugin>
     	</plugins>
-	</build>
-  
+  </build>
 </project>
