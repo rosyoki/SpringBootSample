@@ -4,7 +4,7 @@
  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration >
-  <classPathEntry location="/Users/hirofumi_tsutsui/.m2/repository/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar"/>
+  <classPathEntry location="M2_REPO/mysql/mysql-connector-java/5.1.44/mysql-connector-java-5.1.44.jar"/>
   <context id="context1" >
     <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:10000/blog_db" userId="tsutsui" password="n5ercg7b" />
  
