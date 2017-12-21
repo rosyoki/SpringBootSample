@@ -4,6 +4,7 @@ logs/
 /.gitignore
 /bin/
 /build/
+/out/
 /.settings/
 /.idea/
 /.gradle/
