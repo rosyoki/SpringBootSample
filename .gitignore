@@ -4,3 +4,4 @@ logs/
 /.gitignore
 /bin/
 /.settings/
+/.idea/
