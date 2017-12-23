@@ -28,17 +28,26 @@ public class UsersService {
     //private Logger logger = Logger.getLogger(UsersService.class);
     
     /**
-     * 
+     * 全てのユーザデータを取得する。
      * @return
      */
     public List<Users> getAllUsersData() {
         return usersMapper.selectByExample(null);
     }
-    
+
+    /**
+     * 指定されたIDのユーザを取得する。
+     * @param id
+     * @return
+     */
     public Users getUsersById(Long id) {
         return usersMapper.selectByPrimaryKey(id);
     }
-    
+
+    /**
+     * 新規ユーザの登録を行う。
+     * @param users
+     */
     @Transactional
     public void registUser(Users users) {
         usersMapper.insert(users);
