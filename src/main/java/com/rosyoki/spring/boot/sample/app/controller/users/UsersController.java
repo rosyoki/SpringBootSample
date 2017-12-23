@@ -4,6 +4,7 @@
 package com.rosyoki.spring.boot.sample.app.controller.users;
 
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -140,6 +141,11 @@ public class UsersController {
         // データ登録
         Users users = new Users();
         BeanUtils.copyProperties(usersForm, users);
+
+        //現在時刻取得
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        users.setCreated(timestamp);
+
         usersService.registUser(users);
 
         return userList(model);
