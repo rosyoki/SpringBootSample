@@ -30,7 +30,7 @@ public class PostalControllerAjax {
     private Logger logger = Logger.getLogger(PostalControllerAjax.class);
     
     @CrossOrigin
-    @RequestMapping(value="/ajax/postal/{id}", method = RequestMethod.GET,produces = "application/json")
+    @RequestMapping(value="/ajax/postal/{id}", produces = "application/json")
     public PostZipData getPostalData(@PathVariable Long id) {
         logger.info(">>>>> start getPostalData >>>>>");
         
@@ -43,7 +43,7 @@ public class PostalControllerAjax {
     }
     
     @CrossOrigin(origins={"http://localhost","http://server1.rosyoki.com"})
-    @RequestMapping(value="/ajax/town/{city}", method = RequestMethod.POST,produces = "application/json")
+    @RequestMapping(value="/ajax/postal/town/{city}", method = RequestMethod.POST,produces = "application/json")
     public List<PostZipData> getPostalDataByCity(@PathVariable String city) {
         logger.info(">>>>> start getPostalDataByCity >>>>>");
         
@@ -68,7 +68,7 @@ public class PostalControllerAjax {
     }
     
     @CrossOrigin(origins={"http://localhost","http://server1.rosyoki.com"})
-    @RequestMapping(value="/ajax/zip/{zip}", method = RequestMethod.GET,produces = "application/json")
+    @RequestMapping(value="/ajax/postal/zip/{zip}",produces = "application/json")
     public PostZipData getPostalDataByZip(@PathVariable String zip) {
         logger.info(">>>>> start getPostalDataByZip >>>>>");
 
