@@ -17,7 +17,7 @@
 	<form action="/users/commit" method="post">
     ログイン名：<span th:text="${usersForm.loginName}">test</span> 
     <input type="hidden" name="loginName" value="loginName" th:attr="value=${usersForm.loginName}" />
-    <p />パスワード：passwd<input type="hidden" name="passwd" value="password" th:attr="value=${usersForm.passwd}"/>
+    <p />パスワード：表示されません。<input type="hidden" name="passwd" value="password" th:attr="value=${usersForm.passwd}"/>
     
     <hr/>
     

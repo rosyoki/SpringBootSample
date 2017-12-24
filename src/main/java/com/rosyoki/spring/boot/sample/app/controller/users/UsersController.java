@@ -60,7 +60,7 @@ public class UsersController {
      * @param model
      * @return
      */
-    @RequestMapping("/users/edit//{id}")
+    @RequestMapping("/users/edit/{id}")
     public String editUser(UsersForm usersForm, Model model) {
         logger.info(">>>>>> start editUser >>>>>>>>>");
         
@@ -119,6 +119,28 @@ public class UsersController {
         return "users/confirm";
     }
 
+    @RequestMapping("/users/editconfirm")
+    public String editUserConfirm(@Validated @ModelAttribute("usersForm") UsersForm usersForm,
+                                    BindingResult result,Model model) {
+        logger.info(">>>>>> start editUserConfirm >>>>>>>>>");
+        // 入力エラーチェック
+        if (result.hasErrors()) {
+            logger.debug(">>> error >>>>");
+
+            return "users/editInput/" + usersForm.getId();
+        }
+
+        // ユーザ存在チェック
+        Users users = usersService.getUserByLoginName(usersForm.getLoginName());
+        if (users == null) {
+            return "users/usersList";
+        }
+        logger.debug(">>>>>>>> " + usersForm.getId());
+        model.addAttribute("usersForm", usersForm);
+
+        return "users/confirm";
+    }
+
     /**
      * ユーザ登録処理
      * 
@@ -140,6 +162,7 @@ public class UsersController {
 
         // データ登録
         Users users = new Users();
+        logger.debug(">>>>>>> " + usersForm.getId());
         BeanUtils.copyProperties(usersForm, users);
 
         //現在時刻取得
