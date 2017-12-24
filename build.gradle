@@ -17,11 +17,11 @@ description = """SpringBootSample"""
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+def enc = 'UTF-8'
 tasks.withType(JavaCompile) {
-	options.encoding = 'UTF-8'
+	options.encoding = enc
 }
-
-
 
 repositories {
 	mavenCentral()
@@ -42,6 +42,7 @@ exclude(module: 'commons-logging')
     compile group: 'org.webjars', name: 'bootstrap', version: '3.3.7-1'
     compile group: 'org.webjars', name: 'jquery', version: '3.2.1'
     compile group: 'commons-dbcp', name: 'commons-dbcp', version:'1.4'
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.11'
     compile group: 'org.apache.commons', name: 'commons-dbcp2', version:'2.1.1'
     compile group: 'commons-lang', name: 'commons-lang', version:'2.6'
     compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version:'1.5.9.RELEASE'
