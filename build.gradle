@@ -1,14 +1,20 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
+
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
+        classpath "gradle.plugin.com.arenagod.gradle:mybatis-generator-plugin:1.4"
     }
 }
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: "com.arenagod.gradle.MybatisGenerator"
 
 group = 'com.rosyoki.spring.boot.sample.app'
 version = '1.0-SNAPSHOT'
