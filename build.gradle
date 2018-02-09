@@ -14,6 +14,8 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'spring-boot'
+apply plugin: 'war'
 apply plugin: "com.arenagod.gradle.MybatisGenerator"
 
 group = 'com.rosyoki.spring.boot.sample.app'
@@ -26,11 +28,11 @@ targetCompatibility = 1.8
 
 def enc = 'UTF-8'
 tasks.withType(JavaCompile) {
-	options.encoding = enc
+    options.encoding = enc
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.5.9.RELEASE'
@@ -54,4 +56,6 @@ exclude(module: 'commons-logging')
     compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version:'1.5.9.RELEASE'
     compile group: 'com.google.guava', name: 'guava', version: '23.5-jre'
     testCompile group: 'junit', name: 'junit', version:'4.12'
+
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 }
