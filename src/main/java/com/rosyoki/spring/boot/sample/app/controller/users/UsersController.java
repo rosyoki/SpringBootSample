@@ -159,7 +159,6 @@ public class UsersController {
 
         // データ登録
         Users users = new Users();
-        logger.debug(">>>>>>> " + usersForm.getId());
         BeanUtils.copyProperties(usersForm, users);
 
         //現在時刻取得
