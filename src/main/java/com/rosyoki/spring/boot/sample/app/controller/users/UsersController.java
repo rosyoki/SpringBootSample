@@ -135,7 +135,6 @@ public class UsersController {
         if (users == null) {
             return "users/usersList";
         }
-        logger.debug(">>>>>>>> " + usersForm.getId());
         model.addAttribute("usersForm", usersForm);
 
         return "users/confirm";
