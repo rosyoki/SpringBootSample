@@ -61,11 +61,15 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+
+    runtime "com.h2database:h2"
 }
 
-def environment = project.hasProperty( 'env' ) ? env : 'dev'
-if( environment.equals( 'prod' ))
+def environment = project.hasProperty('env') ? env : 'local'
+if (environment.equals('prod'))
     sourceSets.main.resources.srcDirs 'src/main/resources/production'
-else
+else if (environment.equals('dev'))
     sourceSets.main.resources.srcDirs 'src/main/resources/development'
+else
+    sourceSets.main.resources.srcDirs 'src/main/resources/local'
 println "Target environment: $environment"
