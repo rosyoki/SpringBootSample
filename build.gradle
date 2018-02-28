@@ -62,3 +62,10 @@ dependencies {
 
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 }
+
+def environment = project.hasProperty( 'env' ) ? env : 'dev'
+if( environment.equals( 'prod' ))
+    sourceSets.main.resources.srcDirs 'src/main/resources/production'
+else
+    sourceSets.main.resources.srcDirs 'src/main/resources/development'
+println "Target environment: $environment"
