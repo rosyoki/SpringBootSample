@@ -23,7 +23,7 @@ version = '1.0-SNAPSHOT'
 description = 'Sample Spring-Boot Project'
 
 war {
-    archiveName = 'SpringBootSample.war'
+    archiveName = 'SampleSpringApp.war'
 }
 
 sourceCompatibility = 1.8
