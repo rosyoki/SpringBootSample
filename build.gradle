@@ -7,7 +7,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RELEASE")
         classpath "gradle.plugin.com.arenagod.gradle:mybatis-generator-plugin:1.4"
     }
 }
@@ -38,13 +38,11 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.9.RELEASE'
-    compile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.9.RELEASE') {
-        exclude(module: 'commons-logging')
-    }
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '1.5.9.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: '1.5.9.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '1.5.9.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.0.0.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.0.0.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.0.0.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: '2.0.0.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.0.0.RELEASE'
     compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '1.1.1'
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
     compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
@@ -56,10 +54,10 @@ dependencies {
     compile group: 'commons-codec', name: 'commons-codec', version: '1.11'
     compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1.1'
     compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
-    compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '1.5.9.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.0.0.RELEASE'
     compile group: 'com.google.guava', name: 'guava', version: '23.5-jre'
     testCompile group: 'junit', name: 'junit', version: '4.12'
-
+    compile group: 'org.apache.logging.log4j', name: 'log4j-1.2-api', version: '2.10.0'
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 
     runtime "com.h2database:h2"
