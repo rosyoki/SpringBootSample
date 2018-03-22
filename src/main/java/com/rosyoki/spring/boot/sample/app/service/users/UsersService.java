@@ -1,34 +1,32 @@
 /**
- * 
+ *
  */
 package com.rosyoki.spring.boot.sample.app.service.users;
 
-import java.util.List;
-
-import javax.transaction.Transactional;
-
-//import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.rosyoki.spring.boot.sample.app.entity.Users;
 import com.rosyoki.spring.boot.sample.app.entity.UsersExample;
 import com.rosyoki.spring.boot.sample.app.mapper.UsersMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+//import org.apache.log4j.Logger;
 
 /**
  * @author hirofumi_tsutsui
- *
  */
 
 @Service
 public class UsersService {
-    
+
     @Autowired
     UsersMapper usersMapper;
 
-    //private Logger logger = Logger.getLogger(UsersService.class);
-    
     /**
      * 全てのユーザデータを取得する。
+     *
      * @return
      */
     public List<Users> getAllUsersData() {
@@ -37,6 +35,7 @@ public class UsersService {
 
     /**
      * 指定されたIDのユーザを取得する。
+     *
      * @param id
      * @return
      */
@@ -46,25 +45,26 @@ public class UsersService {
 
     /**
      * 新規ユーザの登録を行う。
+     *
      * @param users
      */
     @Transactional
     public void registUser(Users users) {
         usersMapper.insert(users);
     }
-    
+
     public Users getUserByLoginName(String loginName) {
         UsersExample usersExample = new UsersExample();
         usersExample.createCriteria().andLoginNameEqualTo(loginName);
-        
-        if(usersMapper.selectByExample(usersExample) == null) {
+
+        if (usersMapper.selectByExample(usersExample) == null) {
             return null;
         } else {
-            if(usersMapper.selectByExample(usersExample).size() == 0) {
+            if (usersMapper.selectByExample(usersExample).size() == 0) {
                 return null;
             }
         }
-        
+
         return usersMapper.selectByExample(usersExample).get(0);
     }
 }

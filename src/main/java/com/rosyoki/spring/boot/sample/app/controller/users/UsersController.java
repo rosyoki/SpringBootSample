@@ -1,13 +1,13 @@
 /**
- * 
+ *
  */
 package com.rosyoki.spring.boot.sample.app.controller.users;
 
 
-import java.sql.Timestamp;
-import java.util.List;
-
-import org.apache.log4j.Logger;
+import com.rosyoki.spring.boot.sample.app.entity.Users;
+import com.rosyoki.spring.boot.sample.app.form.users.UsersForm;
+import com.rosyoki.spring.boot.sample.app.service.users.UsersService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,21 +17,18 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.rosyoki.spring.boot.sample.app.entity.Users;
-import com.rosyoki.spring.boot.sample.app.form.users.UsersForm;
-import com.rosyoki.spring.boot.sample.app.service.users.UsersService;
+import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * @author hirofumi_tsutsui
- *
  */
 @Controller
+@Slf4j
 public class UsersController {
 
     @Autowired
     UsersService usersService;
-
-    private Logger logger = Logger.getLogger(UsersController.class);
 
     @RequestMapping("/users/")
     public String index(Model model) {
@@ -40,14 +37,14 @@ public class UsersController {
 
     /**
      * ユーザリスト
-     * 
+     *
      * @param model
      * @return
      */
     @RequestMapping("/users/userList")
     public String userList(Model model) {
 
-        logger.debug(">>>>>>>> userList start >>>>>>>>");
+        log.debug(">>>>>>>> userList start >>>>>>>>");
         List<Users> usersList = usersService.getAllUsersData();
         model.addAttribute("users", usersList);
 
@@ -55,29 +52,28 @@ public class UsersController {
     }
 
     /**
-     * 
      * @param usersForm
      * @param model
      * @return
      */
     @RequestMapping("/users/edit/{id}")
     public String editUser(UsersForm usersForm, Model model) {
-        logger.info(">>>>>> start editUser >>>>>>>>>");
-        
+        log.info(">>>>>> start editUser >>>>>>>>>");
+
         Users users = null;
-        if(usersForm.getId() != null) {
+        if (usersForm.getId() != null) {
             users = usersService.getUsersById(usersForm.getId());
         }
 
         usersForm.setLoginName(users.getLoginName());
         model.addAttribute(usersForm);
-        
+
         return "users/editInput";
     }
-    
+
     /**
      * ユーザ登録トップ画面
-     * 
+     *
      * @param usersForm
      * @param model
      * @return
@@ -85,13 +81,13 @@ public class UsersController {
     @RequestMapping("/users/regist")
     public String registUser(UsersForm usersForm, Model model) {
         model.addAttribute(usersForm);
-        
+
         return "users/registInput";
     }
 
     /**
      * ユーザ登録確認画面
-     * 
+     *
      * @param usersForm
      * @param result
      * @param model
@@ -99,8 +95,8 @@ public class UsersController {
      */
     @RequestMapping("/users/confirm")
     public String registUserConfirm(@Validated @ModelAttribute("usersForm") UsersForm usersForm,
-            BindingResult result,Model model) {
-        logger.info(">>>>>> start registUserConfirm >>>>>>>>>");
+                                    BindingResult result, Model model) {
+        log.info(">>>>>> start registUserConfirm >>>>>>>>>");
         // 入力エラーチェック
         if (result.hasErrors()) {
 
@@ -120,8 +116,8 @@ public class UsersController {
 
     @RequestMapping("/users/editconfirm")
     public String editUserConfirm(@Validated @ModelAttribute("usersForm") UsersForm usersForm,
-                                    BindingResult result,Model model) {
-        logger.info(">>>>>> start editUserConfirm >>>>>>>>>");
+                                  BindingResult result, Model model) {
+        log.info(">>>>>> start editUserConfirm >>>>>>>>>");
         // 入力エラーチェック
         if (result.hasErrors()) {
 
@@ -140,7 +136,7 @@ public class UsersController {
 
     /**
      * ユーザ登録処理
-     * 
+     *
      * @param usersForm
      * @param result
      * @param model
@@ -148,8 +144,8 @@ public class UsersController {
      */
     @RequestMapping("/users/commit")
     public String registUserCommit(@Validated UsersForm usersForm,
-            BindingResult result, Model model) {
-        logger.info(">>>>>> start registUserCommit >>>>>>>>>");
+                                   BindingResult result, Model model) {
+        log.info(">>>>>> start registUserCommit >>>>>>>>>");
 
         // パラメーターチェック
         if (result.hasErrors()) {

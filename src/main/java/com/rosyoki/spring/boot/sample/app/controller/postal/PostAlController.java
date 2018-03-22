@@ -1,31 +1,28 @@
 /**
- * 
+ *
  */
 package com.rosyoki.spring.boot.sample.app.controller.postal;
 
-import org.apache.log4j.Logger;
+import com.rosyoki.spring.boot.sample.app.service.postal.PostAlService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.rosyoki.spring.boot.sample.app.service.postal.PostAlService;
-
 
 /**
  * @author hirofumi_tsutsui
- *
  */
 @Controller
+@Slf4j
 public class PostAlController {
-
-    private Logger logger = Logger.getLogger(PostAlController.class);
 
     @Autowired
     PostAlService postAlService;
 
     @RequestMapping(value = "/postal/postalList")
     public String viewPostAlList() {
-        logger.debug(">>>>>>>>>>>>>>>>> viewPostalList >>>>>>>>>>>>>>>>");
+        log.debug(">>>>>>>>>>>>>>>>> viewPostalList >>>>>>>>>>>>>>>>");
 
         return "postal/postalList";
     }
