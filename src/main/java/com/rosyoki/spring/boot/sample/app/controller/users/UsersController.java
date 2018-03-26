@@ -157,8 +157,7 @@ public class UsersController {
         BeanUtils.copyProperties(usersForm, users);
 
         //現在時刻取得
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        users.setCreated(timestamp);
+        users.setCreated(new Timestamp(System.currentTimeMillis()));
 
         usersService.registUser(users);
 
