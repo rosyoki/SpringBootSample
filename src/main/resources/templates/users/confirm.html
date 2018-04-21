@@ -14,7 +14,7 @@
 <body>
 	<div class="container">
 	ユーザ登録
-	<form action="/users/commit" method="post">
+	<form id="form" th:action="@{/users/commit}" th:object="${usersForm}" method="POST">
     ログイン名：<span th:text="${usersForm.loginName}">test</span> 
     <input type="hidden" name="loginName" value="loginName" th:attr="value=${usersForm.loginName}" />
     <p />パスワード：表示されません。<input type="hidden" name="passwd" value="password" th:attr="value=${usersForm.passwd}"/>
