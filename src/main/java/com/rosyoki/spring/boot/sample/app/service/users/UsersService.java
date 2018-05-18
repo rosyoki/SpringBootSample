@@ -53,6 +53,12 @@ public class UsersService {
         usersMapper.insert(users);
     }
 
+    /**
+     * ログイン名からユーザ情報を取得する。
+     *
+     * @param loginName
+     * @return
+     */
     public Users getUserByLoginName(String loginName) {
         UsersExample usersExample = new UsersExample();
         usersExample.createCriteria().andLoginNameEqualTo(loginName);
