@@ -11,15 +11,20 @@ public class SampleApp {
         strs.add("cccccc");
 
         strs.stream()
-                .filter(e -> e.length() > 5)
-                .forEach(
-                        (e) -> System.out.println(e)
+                .filter(e -> e.length() < 5)
+                .forEach(System.out::println
                 );
 
-        System.out.println(">>>>>>>>>");
+        String[] array = strs.toArray(new String[strs.size()]);
 
-        strs.stream().forEach(System.out::println);
+        System.out.println(join(array));
 
     }
 
+    private static String join(String... words) {
+        return io.vavr.collection.List.of(words)
+                .intersperse(",")
+                .foldLeft(new StringBuilder(), StringBuilder::append)
+                .toString();
+    }
 }
