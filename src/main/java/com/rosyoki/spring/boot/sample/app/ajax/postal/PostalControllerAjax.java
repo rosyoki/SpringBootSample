@@ -3,6 +3,8 @@
  */
 package com.rosyoki.spring.boot.sample.app.ajax.postal;
 
+import com.rosyoki.spring.boot.sample.app.domain.City;
+import com.rosyoki.spring.boot.sample.app.domain.NewZip;
 import com.rosyoki.spring.boot.sample.app.entity.PostZipData;
 import com.rosyoki.spring.boot.sample.app.service.postal.PostAlService;
 import lombok.extern.slf4j.Slf4j;
@@ -26,19 +28,6 @@ public class PostalControllerAjax {
     @Autowired
     PostAlService postAlService;
 
-    @CrossOrigin
-    @RequestMapping(value = "/ajax/postal/{id}", produces = "application/json")
-    public PostZipData getPostalData(@PathVariable Long id) {
-        log.info(">>>>> start getPostalData >>>>>");
-
-        //郵便番号情報を取得する。
-        PostZipData postZipData = postAlService.getPostData(id);
-
-        log.info(">>>>> end getPostalData >>>>>");
-
-        return postZipData;
-    }
-
     @CrossOrigin(origins = {"http://localhost", "http://server1.rosyoki.com"})
     @RequestMapping(value = "/ajax/postal/town/{city}", method = RequestMethod.POST, produces = "application/json")
     public List<PostZipData> getPostalDataByCity(@PathVariable String city) {
@@ -48,7 +37,7 @@ public class PostalControllerAjax {
             return null;
         }
         //郵便番号一覧情報を取得する。
-        List<PostZipData> postZipDatas = postAlService.getPostAlDataByCity(city);
+        List<PostZipData> postZipDatas = postAlService.getPostAlDataByCity(new City(city));
 
         //データ取得チェック
         if (postZipDatas == null) {
@@ -73,7 +62,8 @@ public class PostalControllerAjax {
             return null;
         }
         // 郵便番号から住所を取得する。
-        PostZipData postZipData = postAlService.getPostDataByZip(zip);
+
+        PostZipData postZipData = postAlService.getPostDataByZip(new NewZip(zip));
         //データチェック
         if (postZipData == null) {
             return null;
