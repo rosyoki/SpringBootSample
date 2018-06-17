@@ -7,15 +7,13 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import com.rosyoki.spring.boot.sample.app.datasource.PostAlDb;
+import com.rosyoki.spring.boot.sample.app.datasource.PostAlRepositryDb;
 import com.rosyoki.spring.boot.sample.app.domain.City;
 import com.rosyoki.spring.boot.sample.app.domain.NewZip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rosyoki.spring.boot.sample.app.entity.PostZipData;
-import com.rosyoki.spring.boot.sample.app.entity.PostZipDataExample;
-import com.rosyoki.spring.boot.sample.app.mapper.PostZipDataMapper;
 
 /**
  * @author hirofumi_tsutsui
@@ -26,7 +24,7 @@ import com.rosyoki.spring.boot.sample.app.mapper.PostZipDataMapper;
 public class PostAlService {
 
     @Autowired
-    PostAlDb postAlDb;
+    PostAlRepositryDb postAlRepositryDb;
 
     /**
      * 市名で検索する。
@@ -35,10 +33,10 @@ public class PostAlService {
      * @return
      */
     public List<PostZipData> getPostAlDataByCity(City city) {
-       return postAlDb.getPostAlDataByCity(city);
+       return postAlRepositryDb.getPostAlDataByCity(city);
     }
     
     public PostZipData getPostDataByZip(NewZip newZip) {
-        return postAlDb.getPostDataByZip(newZip);
+        return postAlRepositryDb.getPostDataByZip(newZip);
     }
 }
