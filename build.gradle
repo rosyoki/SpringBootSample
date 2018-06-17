@@ -75,6 +75,9 @@ if (environment.equals('prod'))
     sourceSets.main.resources.srcDirs 'src/main/resources/production'
 else if (environment.equals('dev'))
     sourceSets.main.resources.srcDirs 'src/main/resources/development'
+else if (environment.equals('docker'))
+    sourceSets.main.resources.srcDirs 'src/main/resources/docker'
 else
     sourceSets.main.resources.srcDirs 'src/main/resources/local'
+
 println "Target environment: $environment"
