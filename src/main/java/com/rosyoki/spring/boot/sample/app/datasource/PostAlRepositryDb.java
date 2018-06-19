@@ -2,16 +2,18 @@ package com.rosyoki.spring.boot.sample.app.datasource;
 
 import com.rosyoki.spring.boot.sample.app.domain.City;
 import com.rosyoki.spring.boot.sample.app.domain.NewZip;
+import com.rosyoki.spring.boot.sample.app.domain.PostAlRepositry;
 import com.rosyoki.spring.boot.sample.app.entity.PostZipData;
 import com.rosyoki.spring.boot.sample.app.entity.PostZipDataExample;
 import com.rosyoki.spring.boot.sample.app.mapper.PostZipDataMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Component
-public class PostAlRepositryDb {
+@Repository
+public class PostAlRepositryDb implements PostAlRepositry {
 
     @Autowired
     PostZipDataMapper postZipDataMapper;
