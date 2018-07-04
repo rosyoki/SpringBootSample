@@ -89,6 +89,7 @@ jooq {
         generator {
             target {
                 packageName = 'com.rosyoki.spring.boot.sample.app.jooq'
+                directory = 'src/main/java'
             }
         }
     }
