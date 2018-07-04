@@ -27,7 +27,7 @@ public class UsersControllerAjax {
     UsersService usersService;
 
     @CrossOrigin(origins = {"http://localhost", "http://server1.rosyoki.com"})
-    @RequestMapping(value = "/ajax/users", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/ajax/users", method = RequestMethod.GET, produces = "application/json")
     public HashMap<String, List<Users>> getUsersList() {
         log.info(">>>>> start getUsersList >>>>>");
 
