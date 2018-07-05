@@ -67,10 +67,10 @@ dependencies {
     compile('commons-codec:commons-codec:1.11')
     compile('commons-lang:commons-lang:2.6')
 
-    compile('org.springframework.boot:spring-boot-devtools')
+
     compile('com.google.guava:guava:24.0-jre')
-    compile group: 'org.jooq', name:'jooq', version: '3.8.3'
-    compile group: 'org.jooq', name:'jooq-meta', version: '3.8.3'
+    compile group: 'org.jooq', name: 'jooq', version: '3.8.3'
+    compile group: 'org.jooq', name: 'jooq-meta', version: '3.8.3'
 
     testCompile('junit:junit:4.12')
 
@@ -79,7 +79,7 @@ dependencies {
 }
 
 jooq {
-    library (sourceSets.main) {
+    library(sourceSets.main) {
         jdbc {
             driver = "com.mysql.cj.jdbc.Driver"
             url = 'jdbc:mysql://127.0.0.1:53306/blog_db'
