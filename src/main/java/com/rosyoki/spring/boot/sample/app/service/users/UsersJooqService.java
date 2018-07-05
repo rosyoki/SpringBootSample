@@ -3,7 +3,9 @@
  */
 package com.rosyoki.spring.boot.sample.app.service.users;
 
+import static com.rosyoki.spring.boot.sample.app.jooq.blog_db.tables.Users.USERS;
 import com.rosyoki.spring.boot.sample.app.entity.Users;
+import lombok.extern.slf4j.Slf4j;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
@@ -18,6 +20,7 @@ import java.util.List;
  */
 
 @Service
+@Slf4j
 public class UsersJooqService {
 
     @Autowired
@@ -29,10 +32,8 @@ public class UsersJooqService {
      * @return
      */
     public List<Users> getAllUsersData() {
-        Result<Record> result = dslContext.select()
-                .from(com.rosyoki.spring.boot.sample.app.jooq.blog_db.tables.Users.USERS)
-                .fetch();
-
+        Result<Record> result = dslContext.select().from(USERS).fetch();
+        log.debug(">>>>>>>> " + result.size());
         return null;
     }
 
@@ -57,6 +58,7 @@ public class UsersJooqService {
      */
     @Transactional
     public void registUser(Users users) {
+
     }
 
 }
