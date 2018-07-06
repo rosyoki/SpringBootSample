@@ -3,7 +3,6 @@
  */
 package com.rosyoki.spring.boot.sample.app.service.users;
 
-import static com.rosyoki.spring.boot.sample.app.jooq.blog_db.tables.Users.USERS;
 import com.rosyoki.spring.boot.sample.app.entity.Users;
 import lombok.extern.slf4j.Slf4j;
 import org.jooq.DSLContext;
@@ -14,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+
+import static com.rosyoki.spring.boot.sample.app.jooq.blog_db.tables.Users.USERS;
 
 /**
  * @author hirofumi_tsutsui
@@ -58,7 +59,9 @@ public class UsersJooqService {
      */
     @Transactional
     public void registUser(Users users) {
-
+        dslContext.insertInto(USERS, USERS.LOGIN_NAME, USERS.PASSWD)
+                .values(users.getLoginName(), users.getPasswd())
+                .execute();
     }
 
 }
