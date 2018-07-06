@@ -74,7 +74,7 @@ dependencies {
 
     testCompile('junit:junit:4.12')
 
-    if (environment.equals('docker'))
+    if (environment == 'docker')
         providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 }
 
@@ -96,11 +96,11 @@ jooq {
 }
 
 
-if (environment.equals('prod'))
+if (environment == 'prod')
     sourceSets.main.resources.srcDirs 'src/main/resources/production'
-else if (environment.equals('dev'))
+else if (environment == 'dev')
     sourceSets.main.resources.srcDirs 'src/main/resources/development'
-else if (environment.equals('docker'))
+else if (environment == 'docker')
     sourceSets.main.resources.srcDirs 'src/main/resources/docker'
 else
     sourceSets.main.resources.srcDirs 'src/main/resources/local'
