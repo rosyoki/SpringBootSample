@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.sql.Timestamp;
 import java.util.List;
 
 import static com.rosyoki.spring.boot.sample.app.jooq.blog_db.tables.Users.USERS;
@@ -59,8 +60,12 @@ public class UsersJooqService {
      */
     @Transactional
     public void registUser(Users users) {
-        dslContext.insertInto(USERS, USERS.LOGIN_NAME, USERS.PASSWD)
-                .values(users.getLoginName(), users.getPasswd())
+        dslContext.insertInto(USERS,
+                USERS.LOGIN_NAME, USERS.PASSWD, USERS.CREATED, USERS.MODIFIED)
+                .values(users.getLoginName(),
+                        users.getPasswd(),
+                        new Timestamp(System.currentTimeMillis()),
+                        new Timestamp(System.currentTimeMillis()))
                 .execute();
     }
 
