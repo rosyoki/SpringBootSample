@@ -35,7 +35,10 @@ public class UsersJooqService {
      */
     public List<Users> getAllUsersData() {
         Result<Record> result = dslContext.select().from(USERS).fetch();
-        log.debug(">>>>>>>> " + result.size());
+
+        result.forEach(
+                record -> log.debug(record.getValue(USERS.LOGIN_NAME))
+        );
         return null;
     }
 
@@ -61,11 +64,14 @@ public class UsersJooqService {
     @Transactional
     public void registUser(Users users) {
         dslContext.insertInto(USERS,
-                USERS.LOGIN_NAME, USERS.PASSWD, USERS.CREATED, USERS.MODIFIED)
-                .values(users.getLoginName(),
+                              USERS.LOGIN_NAME, USERS.PASSWD, USERS.CREATED, USERS.MODIFIED
+        )
+                .values(
+                        users.getLoginName(),
                         users.getPasswd(),
                         new Timestamp(System.currentTimeMillis()),
-                        new Timestamp(System.currentTimeMillis()))
+                        new Timestamp(System.currentTimeMillis())
+                )
                 .execute();
     }
 
