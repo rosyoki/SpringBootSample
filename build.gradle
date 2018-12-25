@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.5.10.RELEASE'
+        springBootVersion = '2.1.1.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -12,15 +12,16 @@ buildscript {
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
         classpath "gradle.plugin.com.arenagod.gradle:mybatis-generator-plugin:1.4"
-        classpath group: 'nu.studer', name: 'gradle-jooq-plugin', version: '2.0.11'
+        classpath group: 'nu.studer', name: 'gradle-jooq-plugin', version: '3.0.2'
     }
 }
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'war'
-apply plugin: "com.arenagod.gradle.MybatisGenerator"
-apply plugin: 'nu.studer.jooq'
+plugins {
+    id 'java'
+    id 'idea'
+    id 'war'
+    id 'org.springframework.boot' version '2.1.1.RELEASE'
+    id 'nu.studer.jooq' version '3.0.2'
+}
 
 group = 'com.rosyoki.spring.boot.sample.app'
 version = '1.0-SNAPSHOT'
@@ -67,10 +68,13 @@ dependencies {
     compile('commons-codec:commons-codec:1.11')
     compile('commons-lang:commons-lang:2.6')
 
-
-    compile('com.google.guava:guava:24.0-jre')
-    compile group: 'org.jooq', name: 'jooq', version: '3.8.3'
-    compile group: 'org.jooq', name: 'jooq-meta', version: '3.8.3'
+    //jooq関連のjarを追加
+    compile group: 'org.jooq', name: 'jooq', version: '3.11.2'
+    compile group: 'org.jooq', name: 'jooq-parent', version: '3.11.2'/*, ext: 'pom'*/
+    compile group: 'org.jooq', name: 'jooq-meta', version: '3.11.2'
+    compile group: 'org.jooq', name: 'jooq-meta-extensions', version: '3.11.2'
+    compile group: 'org.jooq', name: 'jooq-codegen', version: '3.11.2'
+    compile group: 'org.jooq', name: 'jooq-codegen-maven', version: '3.11.2'
 
     testCompile('junit:junit:4.12')
 
@@ -79,7 +83,9 @@ dependencies {
 }
 
 jooq {
-    library(sourceSets.main) {
+    version = '3.11.2'
+    edition = 'OSS'
+    tables(sourceSets.main) {
         jdbc {
             driver = "com.mysql.cj.jdbc.Driver"
             url = 'jdbc:mysql://127.0.0.1:53306/blog_db'
@@ -87,6 +93,14 @@ jooq {
             password = 'sboot'
         }
         generator {
+            name = 'org.jooq.codegen.DefaultGenerator'
+            database {
+                //対象とするデータベースを表すクラス名(後述)
+                name = 'org.jooq.meta.mysql.MySQLDatabase'
+                inputSchema = ''
+                includes = '.*'
+                excludes = ''
+            }
             target {
                 packageName = 'com.rosyoki.spring.boot.sample.app.jooq'
                 directory = 'src/main/java'
