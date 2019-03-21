@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.1.1.RELEASE'
+        springBootVersion = '2.1.3.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -15,13 +15,13 @@ buildscript {
         classpath group: 'nu.studer', name: 'gradle-jooq-plugin', version: '3.0.2'
     }
 }
-plugins {
-    id 'java'
-    id 'idea'
-    id 'war'
-    id 'org.springframework.boot' version '2.1.1.RELEASE'
-    id 'nu.studer.jooq' version '3.0.2'
-}
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+apply plugin: 'nu.studer.jooq'
 
 group = 'com.rosyoki.spring.boot.sample.app'
 version = '1.0-SNAPSHOT'
@@ -78,37 +78,12 @@ dependencies {
 
     testCompile('junit:junit:4.12')
 
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    compile('com.h2database:h2')
+    
     if (environment == 'docker')
         providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 }
-
-jooq {
-    version = '3.11.2'
-    edition = 'OSS'
-    tables(sourceSets.main) {
-        jdbc {
-            driver = "com.mysql.cj.jdbc.Driver"
-            url = 'jdbc:mysql://127.0.0.1:53306/blog_db'
-            user = 'sboot'
-            password = 'sboot'
-        }
-        generator {
-            name = 'org.jooq.codegen.DefaultGenerator'
-            database {
-                //対象とするデータベースを表すクラス名(後述)
-                name = 'org.jooq.meta.mysql.MySQLDatabase'
-                inputSchema = ''
-                includes = '.*'
-                excludes = ''
-            }
-            target {
-                packageName = 'com.rosyoki.spring.boot.sample.app.jooq'
-                directory = 'src/main/java'
-            }
-        }
-    }
-}
-
 
 if (environment == 'prod')
     sourceSets.main.resources.srcDirs 'src/main/resources/production'
