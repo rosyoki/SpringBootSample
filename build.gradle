@@ -13,15 +13,18 @@ buildscript {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
         classpath "gradle.plugin.com.arenagod.gradle:mybatis-generator-plugin:1.4"
         classpath group: 'nu.studer', name: 'gradle-jooq-plugin', version: '3.0.2'
+        classpath 'com.h2database:h2:1.4.197'
     }
 }
-apply plugin: 'java'
-apply plugin: 'groovy'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-apply plugin: 'war'
-apply plugin: 'nu.studer.jooq'
+plugins {
+    id 'java'
+    id 'idea'
+    id 'war'
+    id 'org.springframework.boot' version '2.1.3.RELEASE'
+    id 'nu.studer.jooq' version '3.0.2'
+    id "org.flywaydb.flyway" version "5.2.4"
+}
+
 
 group = 'com.rosyoki.spring.boot.sample.app'
 version = '1.0-SNAPSHOT'
@@ -47,18 +50,11 @@ repositories {
 def environment = project.hasProperty('env') ? env : 'local'
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.springframework.boot:spring-boot-starter-test') {
-        exclude(module: 'commons-logging')
-    }
-    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-    compile('org.springframework.boot:spring-boot-starter-freemarker')
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.springframework.boot:spring-boot-devtools')
-    compile('org.springframework.boot:spring-boot-starter-jooq')
+    compile 'org.springframework.boot:spring-boot-starter-web:2.1.3.RELEASE'
     compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1')
-    compileOnly('org.projectlombok:lombok')
+    
     runtime('mysql:mysql-connector-java:6.0.6')
+    compileOnly "org.projectlombok:lombok:1.16.16"
     jooqRuntime('mysql:mysql-connector-java:6.0.6')
     compile('org.hibernate:hibernate-validator:5.3.5.Final')
     compile('org.lazyluke:log4jdbc-remix:0.2.7')
@@ -95,3 +91,9 @@ else
     sourceSets.main.resources.srcDirs 'src/main/resources/local'
 
 println "Target environment: $environment"
+
+flyway {
+    user = 'sa'
+    url = "jdbc:h2:file:./target/postal;MODE=MYSQL;DATABASE_TO_UPPER=false"
+    driver = 'org.h2.Driver'
+}
