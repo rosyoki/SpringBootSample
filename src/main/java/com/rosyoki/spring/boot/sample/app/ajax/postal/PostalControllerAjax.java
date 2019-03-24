@@ -5,6 +5,7 @@ package com.rosyoki.spring.boot.sample.app.ajax.postal;
 
 import com.rosyoki.spring.boot.sample.app.domain.City;
 import com.rosyoki.spring.boot.sample.app.domain.NewZip;
+import com.rosyoki.spring.boot.sample.app.domain.Postal;
 import com.rosyoki.spring.boot.sample.app.entity.PostZipData;
 import com.rosyoki.spring.boot.sample.app.service.postal.PostAlService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,32 +31,32 @@ public class PostalControllerAjax {
 
     @CrossOrigin(origins = {"http://localhost", "http://server1.rosyoki.com"})
     @RequestMapping(value = "/ajax/postal/town/{city}", method = RequestMethod.POST, produces = "application/json")
-    public List<PostZipData> getPostalDataByCity(@PathVariable String city) {
+    public List<Postal> getPostalDataByCity(@PathVariable String city) {
         log.info(">>>>> start getPostalDataByCity >>>>>");
 
         if (StringUtils.isEmpty(city)) {
             return null;
         }
         //郵便番号一覧情報を取得する。
-        List<PostZipData> postZipDatas = postAlService.getPostAlDataByCity(new City(city));
+        List<Postal> postals = postAlService.getPostAlDataByCity(new City(city));
 
         //データ取得チェック
-        if (postZipDatas == null) {
+        if (postals == null) {
             return null;
         }
 
-        if (postZipDatas.size() == 0) {
+        if (postals.size() == 0) {
             return null;
         }
 
         log.info(">>>>> end getPostalDataByCity >>>>>");
 
-        return postZipDatas;
+        return postals;
     }
 
     @CrossOrigin(origins = {"http://localhost", "http://server1.rosyoki.com"})
     @RequestMapping(value = "/ajax/postal/zip/{zip}", produces = "application/json")
-    public PostZipData getPostalDataByZip(@PathVariable String zip) {
+    public Postal getPostalDataByZip(@PathVariable String zip) {
         log.info(">>>>> start getPostalDataByZip >>>>>");
 
         if (StringUtils.isEmpty(zip)) {
@@ -63,7 +64,7 @@ public class PostalControllerAjax {
         }
         // 郵便番号から住所を取得する。
 
-        PostZipData postZipData = postAlService.getPostDataByZip(new NewZip(zip));
+        Postal postZipData = postAlService.getPostDataByZip(new NewZip(zip));
         //データチェック
         if (postZipData == null) {
             return null;
