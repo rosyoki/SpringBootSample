@@ -4,7 +4,6 @@
 package com.rosyoki.spring.boot.sample.app.ajax.users;
 
 import com.rosyoki.spring.boot.sample.app.entity.Users;
-import com.rosyoki.spring.boot.sample.app.service.users.UsersJooqService;
 import com.rosyoki.spring.boot.sample.app.service.users.UsersService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +26,7 @@ public class UsersControllerAjax {
     @Autowired
     UsersService usersService;
 
-    @Autowired
-    UsersJooqService usersJooqService;
+
 
 
     @CrossOrigin(origins = {"http://localhost", "http://server1.rosyoki.com"})
@@ -40,7 +38,7 @@ public class UsersControllerAjax {
         HashMap<String, List<Users>> data = new HashMap<String, List<Users>>();
         data.put("records", usersList);
 
-        usersJooqService.getAllUsersData();
+        //usersJooqService.getAllUsersData();
 
         log.info(">>>>> end getUsersList >>>>>");
 

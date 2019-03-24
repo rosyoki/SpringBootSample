@@ -6,7 +6,6 @@ package com.rosyoki.spring.boot.sample.app.controller.users;
 
 import com.rosyoki.spring.boot.sample.app.entity.Users;
 import com.rosyoki.spring.boot.sample.app.form.users.UsersForm;
-import com.rosyoki.spring.boot.sample.app.service.users.UsersJooqService;
 import com.rosyoki.spring.boot.sample.app.service.users.UsersService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -31,8 +30,8 @@ public class UsersController {
     @Autowired
     UsersService usersService;
 
-    @Autowired
-    UsersJooqService usersJooqService;
+    //@Autowired
+    //UsersJooqService usersJooqService;
 
     @RequestMapping("/users/")
     public String index(Model model) {
@@ -163,7 +162,7 @@ public class UsersController {
         //現在時刻取得
         users.setCreated(new Timestamp(System.currentTimeMillis()));
 
-        usersJooqService.registUser(users);
+        //usersJooqService.registUser(users);
 
         return userList(model);
     }
