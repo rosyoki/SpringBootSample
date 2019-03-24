@@ -11,6 +11,7 @@ import com.rosyoki.spring.boot.sample.app.datasource.PostAlRepositryDb;
 import com.rosyoki.spring.boot.sample.app.domain.City;
 import com.rosyoki.spring.boot.sample.app.domain.NewZip;
 import com.rosyoki.spring.boot.sample.app.domain.PostAlRepositry;
+import com.rosyoki.spring.boot.sample.app.domain.Postal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,11 +34,11 @@ public class PostAlService {
      * @param city
      * @return
      */
-    public List<PostZipData> getPostAlDataByCity(City city) {
+    public List<Postal> getPostAlDataByCity(City city) {
        return postAlRepositry.getPostAlDataByCity(city);
     }
     
-    public PostZipData getPostDataByZip(NewZip newZip) {
+    public Postal getPostDataByZip(NewZip newZip) {
         return postAlRepositry.getPostDataByZip(newZip);
     }
 }
