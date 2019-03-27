@@ -35,6 +35,7 @@ public class PostAlRepositryDb implements PostAlRepositry {
         ).from(POST_ZIP_DATA)
                 .where(POST_ZIP_DATA.CITY
                         .eq(city.getValue()))
+                .orderBy(POST_ZIP_DATA.ZIP)
                 .fetch()
                 .stream()
                 .map(
