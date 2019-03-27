@@ -4,18 +4,25 @@
 package com.rosyoki.spring.boot.sample.app.jooq.public_.tables;
 
 
+import com.rosyoki.spring.boot.sample.app.jooq.public_.Indexes;
+import com.rosyoki.spring.boot.sample.app.jooq.public_.Keys;
 import com.rosyoki.spring.boot.sample.app.jooq.public_.Public;
 import com.rosyoki.spring.boot.sample.app.jooq.public_.tables.records.PostZipDataRecord;
+
+import java.util.Arrays;
+import java.util.List;
 
 import javax.annotation.Generated;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
+import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
+import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
 import org.jooq.impl.TableImpl;
 
@@ -33,7 +40,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class PostZipData extends TableImpl<PostZipDataRecord> {
 
-    private static final long serialVersionUID = 1104224110;
+    private static final long serialVersionUID = -2089349500;
 
     /**
      * The reference instance of <code>public.post_zip_data</code>
@@ -117,6 +124,30 @@ public class PostZipData extends TableImpl<PostZipDataRecord> {
     @Override
     public Schema getSchema() {
         return Public.PUBLIC;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Index> getIndexes() {
+        return Arrays.<Index>asList(Indexes.PRIMARY_KEY_8);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public UniqueKey<PostZipDataRecord> getPrimaryKey() {
+        return Keys.CONSTRAINT_8;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<UniqueKey<PostZipDataRecord>> getKeys() {
+        return Arrays.<UniqueKey<PostZipDataRecord>>asList(Keys.CONSTRAINT_8);
     }
 
     /**

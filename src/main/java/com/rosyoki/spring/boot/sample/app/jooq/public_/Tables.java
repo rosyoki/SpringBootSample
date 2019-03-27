@@ -5,6 +5,8 @@ package com.rosyoki.spring.boot.sample.app.jooq.public_;
 
 
 import com.rosyoki.spring.boot.sample.app.jooq.public_.tables.PostZipData;
+import com.rosyoki.spring.boot.sample.app.jooq.public_.tables.UserDetail;
+import com.rosyoki.spring.boot.sample.app.jooq.public_.tables.Users;
 
 import javax.annotation.Generated;
 
@@ -26,4 +28,14 @@ public class Tables {
      * The table <code>public.post_zip_data</code>.
      */
     public static final PostZipData POST_ZIP_DATA = com.rosyoki.spring.boot.sample.app.jooq.public_.tables.PostZipData.POST_ZIP_DATA;
+
+    /**
+     * The table <code>public.user_detail</code>.
+     */
+    public static final UserDetail USER_DETAIL = com.rosyoki.spring.boot.sample.app.jooq.public_.tables.UserDetail.USER_DETAIL;
+
+    /**
+     * The table <code>public.users</code>.
+     */
+    public static final Users USERS = com.rosyoki.spring.boot.sample.app.jooq.public_.tables.Users.USERS;
 }

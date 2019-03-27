@@ -6,6 +6,8 @@ package com.rosyoki.spring.boot.sample.app.jooq.public_;
 
 import com.rosyoki.spring.boot.sample.app.jooq.DefaultCatalog;
 import com.rosyoki.spring.boot.sample.app.jooq.public_.tables.PostZipData;
+import com.rosyoki.spring.boot.sample.app.jooq.public_.tables.UserDetail;
+import com.rosyoki.spring.boot.sample.app.jooq.public_.tables.Users;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +33,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 689920224;
+    private static final long serialVersionUID = -915252692;
 
     /**
      * The reference instance of <code>public</code>
@@ -42,6 +44,16 @@ public class Public extends SchemaImpl {
      * The table <code>public.post_zip_data</code>.
      */
     public final PostZipData POST_ZIP_DATA = com.rosyoki.spring.boot.sample.app.jooq.public_.tables.PostZipData.POST_ZIP_DATA;
+
+    /**
+     * The table <code>public.user_detail</code>.
+     */
+    public final UserDetail USER_DETAIL = com.rosyoki.spring.boot.sample.app.jooq.public_.tables.UserDetail.USER_DETAIL;
+
+    /**
+     * The table <code>public.users</code>.
+     */
+    public final Users USERS = com.rosyoki.spring.boot.sample.app.jooq.public_.tables.Users.USERS;
 
     /**
      * No further instances allowed
@@ -68,6 +80,8 @@ public class Public extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
-            PostZipData.POST_ZIP_DATA);
+            PostZipData.POST_ZIP_DATA,
+            UserDetail.USER_DETAIL,
+            Users.USERS);
     }
 }
