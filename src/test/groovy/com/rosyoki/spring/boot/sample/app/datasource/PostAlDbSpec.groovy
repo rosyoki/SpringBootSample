@@ -41,8 +41,8 @@ class PostAlDbSpec extends Specification {
 
         where:
         zip || actual
-        new NewZip("2420007")||FixturePostData.get()[0]
-        new NewZip("2420001")||FixturePostData.get()[1]
+        new NewZip("2420007")||FixturePostData.get()
+        new NewZip("2420001")||FixturePostData.get(1)
     }
 
     def "市名で検索"() {
@@ -51,6 +51,6 @@ class PostAlDbSpec extends Specification {
 
         expect:
         postalList.size() == 26
-        postalList.get(7) == FixturePostData.get()[0]
+        postalList.get(7) == FixturePostData.get()
     }
 }

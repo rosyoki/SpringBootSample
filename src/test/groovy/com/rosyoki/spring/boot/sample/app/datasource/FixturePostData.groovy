@@ -8,7 +8,7 @@ import com.rosyoki.spring.boot.sample.app.domain.Pref
 import com.rosyoki.spring.boot.sample.app.domain.Town
 
 class FixturePostData {
-    static Postal[] get() {
+    static Postal get(int n=0) {
         [
                 new Postal(
                         new NewZip("2420007"),
@@ -24,6 +24,6 @@ class FixturePostData {
                         new City("大和市"),
                         new Town("下鶴間")
                 )
-        ]
+        ].get(n)
     }
 }
