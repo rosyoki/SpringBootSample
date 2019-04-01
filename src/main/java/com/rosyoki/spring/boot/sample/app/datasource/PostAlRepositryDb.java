@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.rosyoki.spring.boot.sample.app.jooq.public_.tables.PostZipData.POST_ZIP_DATA;
@@ -49,7 +50,7 @@ public class PostAlRepositryDb implements PostAlRepositry {
                 ).collect(Collectors.toList());
     }
 
-    public Postal getPostDataByZip(NewZip newZip) {
+    public Optional<Postal> getPostDataByZip(NewZip newZip) {
        return dslContext.select(
                POST_ZIP_DATA.ZIP,
                POST_ZIP_DATA.OLD_ZIP,
@@ -58,8 +59,7 @@ public class PostAlRepositryDb implements PostAlRepositry {
                POST_ZIP_DATA.TOWN
        ).from(POST_ZIP_DATA)
                .where(POST_ZIP_DATA.ZIP.eq(newZip.getValue()))
-               .fetchOne()
-               .map(
+               .fetchOptional(
                        record -> new Postal(
                                new NewZip(record.getValue(POST_ZIP_DATA.ZIP)),
                                new OldZip(record.getValue(POST_ZIP_DATA.OLD_ZIP)),
@@ -67,6 +67,7 @@ public class PostAlRepositryDb implements PostAlRepositry {
                                new City(record.getValue(POST_ZIP_DATA.CITY)),
                                new Town(record.getValue(POST_ZIP_DATA.TOWN))
                        )
-               );
+               )
+       ;
     }
 }

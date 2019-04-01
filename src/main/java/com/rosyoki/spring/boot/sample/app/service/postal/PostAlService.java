@@ -4,7 +4,9 @@
 package com.rosyoki.spring.boot.sample.app.service.postal;
 
 import java.util.List;
+import java.util.Optional;
 
+import javax.swing.text.html.Option;
 import javax.transaction.Transactional;
 
 import com.rosyoki.spring.boot.sample.app.datasource.PostAlRepositryDb;
@@ -44,7 +46,7 @@ public class PostAlService {
      * @param newZip
      * @return
      */
-    public Postal getPostDataByZip(NewZip newZip) {
+    public Optional<Postal> getPostDataByZip(NewZip newZip) {
         return postAlRepositry.getPostDataByZip(newZip);
     }
 }
