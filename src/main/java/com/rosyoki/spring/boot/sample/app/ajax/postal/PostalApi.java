@@ -35,24 +35,17 @@ public class PostalApi {
 
     @CrossOrigin(origins = {"http://localhost", "http://server1.rosyoki.com"})
     @RequestMapping(value = "/api/postal/town/{city}", method = RequestMethod.POST, produces = "application/json")
-    public List<Postal> getPostalDataByCity(@PathVariable @Valid @NotNull String city) {
+    public ResponseEntity<List<Postal>> getPostalDataByCity(@PathVariable @Valid @NotNull String city) {
         log.info(">>>>> start getPostalDataByCity >>>>>");
 
         //郵便番号一覧情報を取得する。
         List<Postal> postals = postAlService.getPostAlDataByCity(new City(city));
 
-        //データ取得チェック
-        if (postals == null) {
-            return null;
-        }
-
-        if (postals.size() == 0) {
-            return null;
-        }
-
         log.info(">>>>> end getPostalDataByCity >>>>>");
 
-        return postals;
+        return new ResponseEntity<List<Postal>>(
+                postals,HttpStatus.OK
+        );
     }
 
     @CrossOrigin(origins = {"http://localhost", "http://server1.rosyoki.com"})
