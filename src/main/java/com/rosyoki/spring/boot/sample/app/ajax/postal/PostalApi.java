@@ -39,12 +39,14 @@ public class PostalApi {
         log.info(">>>>> start getPostalDataByCity >>>>>");
 
         //郵便番号一覧情報を取得する。
-        List<Postal> postals = postAlService.getPostAlDataByCity(new City(city));
+        Optional<List<Postal>> postals = postAlService.getPostAlDataByCity(new City(city));
 
         log.info(">>>>> end getPostalDataByCity >>>>>");
 
         return new ResponseEntity<List<Postal>>(
-                postals,HttpStatus.OK
+                postals.orElseThrow(
+                        () -> new RuntimeException("List Error")
+                ),HttpStatus.OK
         );
     }
 
