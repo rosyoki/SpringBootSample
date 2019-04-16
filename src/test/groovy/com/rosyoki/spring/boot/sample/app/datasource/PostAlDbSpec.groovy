@@ -6,6 +6,7 @@ import com.rosyoki.spring.boot.sample.app.domain.NewZip
 import com.rosyoki.spring.boot.sample.app.domain.PostAlRepositry
 import com.rosyoki.spring.boot.sample.app.domain.Postal
 import com.rosyoki.spring.boot.sample.app.entity.PostZipData
+import org.hibernate.bytecode.enhance.spi.UnloadedClass
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.springframework.beans.factory.annotation.Autowired
@@ -23,7 +24,6 @@ import spock.lang.Unroll
 
 import javax.sql.DataSource
 
-@Unroll
 @SpringBootTest
 class PostAlDbSpec extends Specification {
 
@@ -33,24 +33,32 @@ class PostAlDbSpec extends Specification {
     @Autowired
     private PostAlRepositry postAlRepositry
 
-    def "郵便番号で検索"() {
+    @Unroll
+    def "郵便番号で検索 #zip"() {
         setup:
 
         expect:
-        actual == postAlRepositry.getPostDataByZip(zip)
+        actual == postAlRepositry.getPostDataByZip(new NewZip(zip))
 
         where:
         zip || actual
-        new NewZip("2420007")||FixturePostData.get()
-        new NewZip("2420001")||FixturePostData.get(1)
+        "2420007"||FixturePostData.get()
+        "2420001"||FixturePostData.get(1)
+        "2420010"||Optional.empty()
     }
 
-    def "市名で検索"() {
+    @Unroll
+    def "市名で検索 #city"() {
         setup:
-        List<Postal> postalList = postAlRepositry.getPostAlDataByCity(new City("大和市"))
+        List<Postal> postalList = postAlRepositry.getPostAlDataByCity(new City(city))
 
         expect:
-        postalList.size() == 26
-        postalList.get(7) == FixturePostData.get()
+        size == postalList.size()
+
+        where:
+        city||size
+        "大和市"||26
+        "神戸市中央区"||79
+        "相模原市"||0
     }
 }
