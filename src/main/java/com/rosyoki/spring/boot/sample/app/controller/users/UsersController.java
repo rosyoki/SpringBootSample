@@ -65,7 +65,7 @@ public class UsersController {
 
         Users users = null;
         if (usersForm.getId() != null) {
-            users = usersService.getUsersById(usersForm.getId());
+            users = usersService.getUsersById(usersForm.getId()).orElseThrow(() -> new RuntimeException("NotFund"));
         }
 
         usersForm.setLoginName(users.getLoginName());

@@ -36,8 +36,10 @@ public class PostAlService {
      * @param city
      * @return
      */
-    public List<Postal> getPostAlDataByCity(City city) {
-       return postAlRepositry.getPostAlDataByCity(city);
+    public Optional<List<Postal>> getPostAlDataByCity(City city) {
+       return Optional.ofNullable(
+               postAlRepositry.getPostAlDataByCity(city)
+       );
     }
 
     /**

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 //import org.apache.log4j.Logger;
 
@@ -39,8 +40,8 @@ public class UsersService {
      * @param id
      * @return
      */
-    public Users getUsersById(Long id) {
-        return usersMapper.selectByPrimaryKey(id);
+    public Optional<Users> getUsersById(Long id) {
+        return Optional.of(usersMapper.selectByPrimaryKey(id));
     }
 
     /**
