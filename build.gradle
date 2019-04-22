@@ -70,12 +70,12 @@ dependencies {
     compile('commons-lang:commons-lang:2.6')
 
     //jooq関連のjarを追加
-    compile group: 'org.jooq', name: 'jooq', version: '3.11.9'
-    compile group: 'org.jooq', name: 'jooq-parent', version: '3.11.9'/*, ext: 'pom'*/
-    compile group: 'org.jooq', name: 'jooq-meta', version: '3.11.9'
-    compile group: 'org.jooq', name: 'jooq-meta-extensions', version: '3.11.9'
-    compile group: 'org.jooq', name: 'jooq-codegen', version: '3.11.9'
-    compile group: 'org.jooq', name: 'jooq-codegen-maven', version: '3.11.9'
+    compile group: 'org.jooq', name: 'jooq', version: '3.11.11'
+    compile group: 'org.jooq', name: 'jooq-parent', version: '3.11.11'/*, ext: 'pom'*/
+    compile group: 'org.jooq', name: 'jooq-meta', version: '3.11.11'
+    compile group: 'org.jooq', name: 'jooq-meta-extensions', version: '3.11.11'
+    compile group: 'org.jooq', name: 'jooq-codegen', version: '3.11.11'
+    compile group: 'org.jooq', name: 'jooq-codegen-maven', version: '3.11.11'
 
     testCompile('junit:junit:4.12')
 
@@ -111,7 +111,7 @@ flyway {
 }
 
 jooq {
-    version = '3.11.9'
+    version = '3.11.11'
     edition = 'OSS'
     tafbles(sourceSets.main) {
         jdbc {
