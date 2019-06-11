@@ -1,7 +1,6 @@
 buildscript {
     ext {
         springBootVersion = '2.1.5.RELEASE'
-        jooqVersion = '3.3.1'
     }
     repositories {
         mavenCentral()
@@ -50,8 +49,7 @@ repositories {
 
 def environment = project.hasProperty('env') ? env : 'local'
 
-springBootVersion = '2.1.5.RELEASE'
-jooqVersion = '3.11.11'
+def jooqVersion = '3.11.11'
 
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
