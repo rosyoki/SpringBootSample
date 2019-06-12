@@ -48,7 +48,6 @@ repositories {
 }
 
 def environment = project.hasProperty('env') ? env : 'local'
-
 def jooqVersion = '3.11.11'
 
 dependencies {
@@ -75,7 +74,7 @@ dependencies {
     compile "org.jooq:jooq:${jooqVersion}"
     compile "org.jooq:jooq-parent:${jooqVersion}"
     compile "org.jooq:jooq-meta:${jooqVersion}"
-    compile "org.jooq:jooq-meta:jooq-meta-extensions:${jooqVersion}"
+    compile "org.jooq:jooq-meta-extensions:${jooqVersion}"
     compile "org.jooq:jooq-codegen:${jooqVersion}"
     compile "org.jooq:jooq-codegen-maven:${jooqVersion}"
 
