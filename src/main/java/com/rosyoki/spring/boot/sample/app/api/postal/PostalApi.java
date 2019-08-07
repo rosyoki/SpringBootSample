@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.rosyoki.spring.boot.sample.app.ajax.postal;
+package com.rosyoki.spring.boot.sample.app.api.postal;
 
 import com.rosyoki.spring.boot.sample.app.domain.City;
 import com.rosyoki.spring.boot.sample.app.domain.NewZip;
