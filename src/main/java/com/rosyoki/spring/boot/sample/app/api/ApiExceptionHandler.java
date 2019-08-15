@@ -1,4 +1,4 @@
-package com.rosyoki.spring.boot.sample.app.ajax;
+package com.rosyoki.spring.boot.sample.app.api;
 
 import com.rosyoki.spring.boot.sample.app.domain.exception.NotFoundException;
 import org.springframework.http.HttpHeaders;

@@ -9,8 +9,6 @@ import com.rosyoki.spring.boot.sample.app.domain.Pref;
 import com.rosyoki.spring.boot.sample.app.domain.Town;
 import com.rosyoki.spring.boot.sample.app.entity.PostZipData;
 import org.jooq.DSLContext;
-import org.jooq.Record5;
-import org.jooq.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
