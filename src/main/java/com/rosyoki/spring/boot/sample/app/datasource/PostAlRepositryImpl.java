@@ -7,10 +7,7 @@ import com.rosyoki.spring.boot.sample.app.domain.PostAlRepositry;
 import com.rosyoki.spring.boot.sample.app.domain.Postal;
 import com.rosyoki.spring.boot.sample.app.domain.Pref;
 import com.rosyoki.spring.boot.sample.app.domain.Town;
-import com.rosyoki.spring.boot.sample.app.entity.PostZipData;
 import org.jooq.DSLContext;
-import org.jooq.Record5;
-import org.jooq.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -21,7 +18,7 @@ import java.util.stream.Collectors;
 import static com.rosyoki.spring.boot.sample.app.jooq.public_.tables.PostZipData.POST_ZIP_DATA;
 
 @Repository
-public class PostAlRepositryDb implements PostAlRepositry {
+public class PostAlRepositryImpl implements PostAlRepositry {
 
     @Autowired
     private DSLContext dslContext;
