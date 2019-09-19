@@ -13,8 +13,6 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-//import org.apache.log4j.Logger;
-
 /**
  * @author hirofumi_tsutsui
  */
