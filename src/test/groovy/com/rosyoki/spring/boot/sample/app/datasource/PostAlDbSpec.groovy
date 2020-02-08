@@ -10,13 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import javax.sql.DataSource
 
 @SpringBootTest
 class PostAlDbSpec extends Specification {
-
-    @Autowired
-    DataSource dataSource
 
     @Autowired
     private PostAlRepositry postAlRepositry
