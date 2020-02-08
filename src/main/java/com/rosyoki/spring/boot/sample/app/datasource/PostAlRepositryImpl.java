@@ -7,7 +7,6 @@ import com.rosyoki.spring.boot.sample.app.domain.PostAlRepositry;
 import com.rosyoki.spring.boot.sample.app.domain.Postal;
 import com.rosyoki.spring.boot.sample.app.domain.Pref;
 import com.rosyoki.spring.boot.sample.app.domain.Town;
-import org.h2.util.New;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
