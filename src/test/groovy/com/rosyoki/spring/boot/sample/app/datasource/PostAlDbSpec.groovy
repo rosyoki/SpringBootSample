@@ -4,6 +4,7 @@ import com.rosyoki.spring.boot.sample.app.domain.City
 import com.rosyoki.spring.boot.sample.app.domain.NewZip
 import com.rosyoki.spring.boot.sample.app.domain.PostAlRepositry
 import com.rosyoki.spring.boot.sample.app.domain.Postal
+import com.rosyoki.spring.boot.sample.app.domain.Town
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
@@ -47,5 +48,19 @@ class PostAlDbSpec extends Specification {
         "大和市"||26
         "神戸市中央区"||79
         "相模原市"||0
+    }
+
+    @Unroll
+    def "市名と町名で検索 #city #town"() {
+        setup:
+
+        expect:
+        actual == postAlRepositry.getPostDataByCityTown(new City(city), new Town(town))
+
+        where:
+        city|town||actual
+        "大和市"|"中央林間"||FixturePostData.get()
+        "大和市"|""||Optional.empty()
+        ""|"下鶴間"||Optional.empty()
     }
 }

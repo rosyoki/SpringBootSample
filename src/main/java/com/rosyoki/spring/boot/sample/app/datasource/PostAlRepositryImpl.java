@@ -7,6 +7,7 @@ import com.rosyoki.spring.boot.sample.app.domain.PostAlRepositry;
 import com.rosyoki.spring.boot.sample.app.domain.Postal;
 import com.rosyoki.spring.boot.sample.app.domain.Pref;
 import com.rosyoki.spring.boot.sample.app.domain.Town;
+import org.h2.util.New;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -66,5 +67,29 @@ public class PostAlRepositryImpl implements PostAlRepositry {
                        )
                )
        ;
+    }
+
+    public Optional<Postal> getPostDataByCityTown(City city, Town town) {
+        return dslContext.select(
+                POST_ZIP_DATA.ZIP,
+                POST_ZIP_DATA.OLD_ZIP,
+                POST_ZIP_DATA.PREF,
+                POST_ZIP_DATA.CITY,
+                POST_ZIP_DATA.TOWN
+        ).from(POST_ZIP_DATA)
+                .where(POST_ZIP_DATA.CITY
+                        .eq(city.getValue())
+                        .and(POST_ZIP_DATA.TOWN.eq(town.getValue())
+                ))
+                .fetchOptional(
+                        record -> new Postal(
+                                new NewZip(record.getValue(POST_ZIP_DATA.ZIP)),
+                                new OldZip(record.getValue(POST_ZIP_DATA.OLD_ZIP)),
+                                new Pref(record.getValue(POST_ZIP_DATA.PREF)),
+                                new City(record.getValue(POST_ZIP_DATA.CITY)),
+                                new Town(record.getValue(POST_ZIP_DATA.TOWN))
+                        )
+                );
+
     }
 }
