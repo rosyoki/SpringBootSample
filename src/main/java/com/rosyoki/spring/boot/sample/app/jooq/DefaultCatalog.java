@@ -4,8 +4,8 @@
 package com.rosyoki.spring.boot.sample.app.jooq;
 
 
+import com.rosyoki.spring.boot.sample.app.jooq.blog_db.BlogDb;
 import com.rosyoki.spring.boot.sample.app.jooq.information_schema.InformationSchema;
-import com.rosyoki.spring.boot.sample.app.jooq.public_.Public;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +30,7 @@ import org.jooq.impl.CatalogImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DefaultCatalog extends CatalogImpl {
 
-    private static final long serialVersionUID = 782050907;
+    private static final long serialVersionUID = -1889482301;
 
     /**
      * The reference instance of <code></code>
@@ -43,9 +43,9 @@ public class DefaultCatalog extends CatalogImpl {
     public final InformationSchema INFORMATION_SCHEMA = com.rosyoki.spring.boot.sample.app.jooq.information_schema.InformationSchema.INFORMATION_SCHEMA;
 
     /**
-     * The schema <code>public</code>.
+     * The schema <code>blog_db</code>.
      */
-    public final Public PUBLIC = com.rosyoki.spring.boot.sample.app.jooq.public_.Public.PUBLIC;
+    public final BlogDb BLOG_DB = com.rosyoki.spring.boot.sample.app.jooq.blog_db.BlogDb.BLOG_DB;
 
     /**
      * No further instances allowed
@@ -64,6 +64,6 @@ public class DefaultCatalog extends CatalogImpl {
     private final List<Schema> getSchemas0() {
         return Arrays.<Schema>asList(
             InformationSchema.INFORMATION_SCHEMA,
-            Public.PUBLIC);
+            BlogDb.BLOG_DB);
     }
 }

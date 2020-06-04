@@ -4,37 +4,65 @@
 package com.rosyoki.spring.boot.sample.app.jooq.information_schema;
 
 
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Catalogs;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.CharacterSets;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.CollationCharacterSetApplicability;
 import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Collations;
 import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.ColumnPrivileges;
 import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Columns;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Constants;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Constraints;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.CrossReferences;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Domains;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.FunctionAliases;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.FunctionColumns;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Help;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InDoubt;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Indexes;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Engines;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Events;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Files;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.GlobalStatus;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.GlobalVariables;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbBufferPage;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbBufferPageLru;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbBufferPoolStats;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbCmp;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbCmpPerIndex;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbCmpPerIndexReset;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbCmpReset;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbCmpmem;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbCmpmemReset;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbFtBeingDeleted;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbFtConfig;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbFtDefaultStopword;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbFtDeleted;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbFtIndexCache;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbFtIndexTable;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbLockWaits;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbLocks;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbMetrics;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysColumns;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysDatafiles;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysFields;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysForeign;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysForeignCols;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysIndexes;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysTables;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysTablespaces;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysTablestats;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysVirtual;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbTempTableInfo;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbTrx;
 import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.KeyColumnUsage;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Locks;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.QueryStatistics;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.OptimizerTrace;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Parameters;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Partitions;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Plugins;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Processlist;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Profiling;
 import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.ReferentialConstraints;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Rights;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Roles;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Routines;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.SchemaPrivileges;
 import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Schemata;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Sequences;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.SessionState;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Sessions;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Settings;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Synonyms;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.SessionStatus;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.SessionVariables;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Statistics;
 import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.TableConstraints;
 import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.TablePrivileges;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.TableTypes;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Tablespaces;
 import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Triggers;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.TypeInfo;
-import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Users;
+import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.UserPrivileges;
 import com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Views;
 
 import javax.annotation.Generated;
@@ -54,167 +82,307 @@ import javax.annotation.Generated;
 public class Tables {
 
     /**
-     * The table <code>information_schema.catalogs</code>.
+     * The table <code>information_schema.CHARACTER_SETS</code>.
      */
-    public static final Catalogs CATALOGS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Catalogs.CATALOGS;
+    public static final CharacterSets CHARACTER_SETS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.CharacterSets.CHARACTER_SETS;
 
     /**
-     * The table <code>information_schema.collations</code>.
+     * The table <code>information_schema.COLLATIONS</code>.
      */
     public static final Collations COLLATIONS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Collations.COLLATIONS;
 
     /**
-     * The table <code>information_schema.column_privileges</code>.
+     * The table <code>information_schema.COLLATION_CHARACTER_SET_APPLICABILITY</code>.
      */
-    public static final ColumnPrivileges COLUMN_PRIVILEGES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.ColumnPrivileges.COLUMN_PRIVILEGES;
+    public static final CollationCharacterSetApplicability COLLATION_CHARACTER_SET_APPLICABILITY = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.CollationCharacterSetApplicability.COLLATION_CHARACTER_SET_APPLICABILITY;
 
     /**
-     * The table <code>information_schema.columns</code>.
+     * The table <code>information_schema.COLUMNS</code>.
      */
     public static final Columns COLUMNS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Columns.COLUMNS;
 
     /**
-     * The table <code>information_schema.constants</code>.
+     * The table <code>information_schema.COLUMN_PRIVILEGES</code>.
      */
-    public static final Constants CONSTANTS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Constants.CONSTANTS;
+    public static final ColumnPrivileges COLUMN_PRIVILEGES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.ColumnPrivileges.COLUMN_PRIVILEGES;
 
     /**
-     * The table <code>information_schema.constraints</code>.
+     * The table <code>information_schema.ENGINES</code>.
      */
-    public static final Constraints CONSTRAINTS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Constraints.CONSTRAINTS;
+    public static final Engines ENGINES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Engines.ENGINES;
 
     /**
-     * The table <code>information_schema.cross_references</code>.
+     * The table <code>information_schema.EVENTS</code>.
      */
-    public static final CrossReferences CROSS_REFERENCES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.CrossReferences.CROSS_REFERENCES;
+    public static final Events EVENTS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Events.EVENTS;
 
     /**
-     * The table <code>information_schema.domains</code>.
+     * The table <code>information_schema.FILES</code>.
      */
-    public static final Domains DOMAINS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Domains.DOMAINS;
+    public static final Files FILES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Files.FILES;
 
     /**
-     * The table <code>information_schema.function_aliases</code>.
+     * The table <code>information_schema.GLOBAL_STATUS</code>.
      */
-    public static final FunctionAliases FUNCTION_ALIASES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.FunctionAliases.FUNCTION_ALIASES;
+    public static final GlobalStatus GLOBAL_STATUS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.GlobalStatus.GLOBAL_STATUS;
 
     /**
-     * The table <code>information_schema.function_columns</code>.
+     * The table <code>information_schema.GLOBAL_VARIABLES</code>.
      */
-    public static final FunctionColumns FUNCTION_COLUMNS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.FunctionColumns.FUNCTION_COLUMNS;
+    public static final GlobalVariables GLOBAL_VARIABLES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.GlobalVariables.GLOBAL_VARIABLES;
 
     /**
-     * The table <code>information_schema.help</code>.
+     * The table <code>information_schema.INNODB_BUFFER_PAGE</code>.
      */
-    public static final Help HELP = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Help.HELP;
+    public static final InnodbBufferPage INNODB_BUFFER_PAGE = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbBufferPage.INNODB_BUFFER_PAGE;
 
     /**
-     * The table <code>information_schema.in_doubt</code>.
+     * The table <code>information_schema.INNODB_BUFFER_PAGE_LRU</code>.
      */
-    public static final InDoubt IN_DOUBT = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InDoubt.IN_DOUBT;
+    public static final InnodbBufferPageLru INNODB_BUFFER_PAGE_LRU = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbBufferPageLru.INNODB_BUFFER_PAGE_LRU;
 
     /**
-     * The table <code>information_schema.indexes</code>.
+     * The table <code>information_schema.INNODB_BUFFER_POOL_STATS</code>.
      */
-    public static final Indexes INDEXES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Indexes.INDEXES;
+    public static final InnodbBufferPoolStats INNODB_BUFFER_POOL_STATS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbBufferPoolStats.INNODB_BUFFER_POOL_STATS;
 
     /**
-     * The table <code>information_schema.key_column_usage</code>.
+     * The table <code>information_schema.INNODB_CMP</code>.
+     */
+    public static final InnodbCmp INNODB_CMP = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbCmp.INNODB_CMP;
+
+    /**
+     * The table <code>information_schema.INNODB_CMPMEM</code>.
+     */
+    public static final InnodbCmpmem INNODB_CMPMEM = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbCmpmem.INNODB_CMPMEM;
+
+    /**
+     * The table <code>information_schema.INNODB_CMPMEM_RESET</code>.
+     */
+    public static final InnodbCmpmemReset INNODB_CMPMEM_RESET = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbCmpmemReset.INNODB_CMPMEM_RESET;
+
+    /**
+     * The table <code>information_schema.INNODB_CMP_PER_INDEX</code>.
+     */
+    public static final InnodbCmpPerIndex INNODB_CMP_PER_INDEX = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbCmpPerIndex.INNODB_CMP_PER_INDEX;
+
+    /**
+     * The table <code>information_schema.INNODB_CMP_PER_INDEX_RESET</code>.
+     */
+    public static final InnodbCmpPerIndexReset INNODB_CMP_PER_INDEX_RESET = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbCmpPerIndexReset.INNODB_CMP_PER_INDEX_RESET;
+
+    /**
+     * The table <code>information_schema.INNODB_CMP_RESET</code>.
+     */
+    public static final InnodbCmpReset INNODB_CMP_RESET = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbCmpReset.INNODB_CMP_RESET;
+
+    /**
+     * The table <code>information_schema.INNODB_FT_BEING_DELETED</code>.
+     */
+    public static final InnodbFtBeingDeleted INNODB_FT_BEING_DELETED = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbFtBeingDeleted.INNODB_FT_BEING_DELETED;
+
+    /**
+     * The table <code>information_schema.INNODB_FT_CONFIG</code>.
+     */
+    public static final InnodbFtConfig INNODB_FT_CONFIG = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbFtConfig.INNODB_FT_CONFIG;
+
+    /**
+     * The table <code>information_schema.INNODB_FT_DEFAULT_STOPWORD</code>.
+     */
+    public static final InnodbFtDefaultStopword INNODB_FT_DEFAULT_STOPWORD = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbFtDefaultStopword.INNODB_FT_DEFAULT_STOPWORD;
+
+    /**
+     * The table <code>information_schema.INNODB_FT_DELETED</code>.
+     */
+    public static final InnodbFtDeleted INNODB_FT_DELETED = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbFtDeleted.INNODB_FT_DELETED;
+
+    /**
+     * The table <code>information_schema.INNODB_FT_INDEX_CACHE</code>.
+     */
+    public static final InnodbFtIndexCache INNODB_FT_INDEX_CACHE = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbFtIndexCache.INNODB_FT_INDEX_CACHE;
+
+    /**
+     * The table <code>information_schema.INNODB_FT_INDEX_TABLE</code>.
+     */
+    public static final InnodbFtIndexTable INNODB_FT_INDEX_TABLE = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbFtIndexTable.INNODB_FT_INDEX_TABLE;
+
+    /**
+     * The table <code>information_schema.INNODB_LOCKS</code>.
+     */
+    public static final InnodbLocks INNODB_LOCKS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbLocks.INNODB_LOCKS;
+
+    /**
+     * The table <code>information_schema.INNODB_LOCK_WAITS</code>.
+     */
+    public static final InnodbLockWaits INNODB_LOCK_WAITS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbLockWaits.INNODB_LOCK_WAITS;
+
+    /**
+     * The table <code>information_schema.INNODB_METRICS</code>.
+     */
+    public static final InnodbMetrics INNODB_METRICS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbMetrics.INNODB_METRICS;
+
+    /**
+     * The table <code>information_schema.INNODB_SYS_COLUMNS</code>.
+     */
+    public static final InnodbSysColumns INNODB_SYS_COLUMNS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysColumns.INNODB_SYS_COLUMNS;
+
+    /**
+     * The table <code>information_schema.INNODB_SYS_DATAFILES</code>.
+     */
+    public static final InnodbSysDatafiles INNODB_SYS_DATAFILES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysDatafiles.INNODB_SYS_DATAFILES;
+
+    /**
+     * The table <code>information_schema.INNODB_SYS_FIELDS</code>.
+     */
+    public static final InnodbSysFields INNODB_SYS_FIELDS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysFields.INNODB_SYS_FIELDS;
+
+    /**
+     * The table <code>information_schema.INNODB_SYS_FOREIGN</code>.
+     */
+    public static final InnodbSysForeign INNODB_SYS_FOREIGN = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysForeign.INNODB_SYS_FOREIGN;
+
+    /**
+     * The table <code>information_schema.INNODB_SYS_FOREIGN_COLS</code>.
+     */
+    public static final InnodbSysForeignCols INNODB_SYS_FOREIGN_COLS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysForeignCols.INNODB_SYS_FOREIGN_COLS;
+
+    /**
+     * The table <code>information_schema.INNODB_SYS_INDEXES</code>.
+     */
+    public static final InnodbSysIndexes INNODB_SYS_INDEXES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysIndexes.INNODB_SYS_INDEXES;
+
+    /**
+     * The table <code>information_schema.INNODB_SYS_TABLES</code>.
+     */
+    public static final InnodbSysTables INNODB_SYS_TABLES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysTables.INNODB_SYS_TABLES;
+
+    /**
+     * The table <code>information_schema.INNODB_SYS_TABLESPACES</code>.
+     */
+    public static final InnodbSysTablespaces INNODB_SYS_TABLESPACES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysTablespaces.INNODB_SYS_TABLESPACES;
+
+    /**
+     * The table <code>information_schema.INNODB_SYS_TABLESTATS</code>.
+     */
+    public static final InnodbSysTablestats INNODB_SYS_TABLESTATS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysTablestats.INNODB_SYS_TABLESTATS;
+
+    /**
+     * The table <code>information_schema.INNODB_SYS_VIRTUAL</code>.
+     */
+    public static final InnodbSysVirtual INNODB_SYS_VIRTUAL = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbSysVirtual.INNODB_SYS_VIRTUAL;
+
+    /**
+     * The table <code>information_schema.INNODB_TEMP_TABLE_INFO</code>.
+     */
+    public static final InnodbTempTableInfo INNODB_TEMP_TABLE_INFO = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbTempTableInfo.INNODB_TEMP_TABLE_INFO;
+
+    /**
+     * The table <code>information_schema.INNODB_TRX</code>.
+     */
+    public static final InnodbTrx INNODB_TRX = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.InnodbTrx.INNODB_TRX;
+
+    /**
+     * The table <code>information_schema.KEY_COLUMN_USAGE</code>.
      */
     public static final KeyColumnUsage KEY_COLUMN_USAGE = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.KeyColumnUsage.KEY_COLUMN_USAGE;
 
     /**
-     * The table <code>information_schema.locks</code>.
+     * The table <code>information_schema.OPTIMIZER_TRACE</code>.
      */
-    public static final Locks LOCKS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Locks.LOCKS;
+    public static final OptimizerTrace OPTIMIZER_TRACE = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.OptimizerTrace.OPTIMIZER_TRACE;
 
     /**
-     * The table <code>information_schema.query_statistics</code>.
+     * The table <code>information_schema.PARAMETERS</code>.
      */
-    public static final QueryStatistics QUERY_STATISTICS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.QueryStatistics.QUERY_STATISTICS;
+    public static final Parameters PARAMETERS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Parameters.PARAMETERS;
 
     /**
-     * The table <code>information_schema.referential_constraints</code>.
+     * The table <code>information_schema.PARTITIONS</code>.
+     */
+    public static final Partitions PARTITIONS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Partitions.PARTITIONS;
+
+    /**
+     * The table <code>information_schema.PLUGINS</code>.
+     */
+    public static final Plugins PLUGINS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Plugins.PLUGINS;
+
+    /**
+     * The table <code>information_schema.PROCESSLIST</code>.
+     */
+    public static final Processlist PROCESSLIST = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Processlist.PROCESSLIST;
+
+    /**
+     * The table <code>information_schema.PROFILING</code>.
+     */
+    public static final Profiling PROFILING = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Profiling.PROFILING;
+
+    /**
+     * The table <code>information_schema.REFERENTIAL_CONSTRAINTS</code>.
      */
     public static final ReferentialConstraints REFERENTIAL_CONSTRAINTS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.ReferentialConstraints.REFERENTIAL_CONSTRAINTS;
 
     /**
-     * The table <code>information_schema.rights</code>.
+     * The table <code>information_schema.ROUTINES</code>.
      */
-    public static final Rights RIGHTS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Rights.RIGHTS;
+    public static final Routines ROUTINES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Routines.ROUTINES;
 
     /**
-     * The table <code>information_schema.roles</code>.
-     */
-    public static final Roles ROLES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Roles.ROLES;
-
-    /**
-     * The table <code>information_schema.schemata</code>.
+     * The table <code>information_schema.SCHEMATA</code>.
      */
     public static final Schemata SCHEMATA = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Schemata.SCHEMATA;
 
     /**
-     * The table <code>information_schema.sequences</code>.
+     * The table <code>information_schema.SCHEMA_PRIVILEGES</code>.
      */
-    public static final Sequences SEQUENCES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Sequences.SEQUENCES;
+    public static final SchemaPrivileges SCHEMA_PRIVILEGES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.SchemaPrivileges.SCHEMA_PRIVILEGES;
 
     /**
-     * The table <code>information_schema.session_state</code>.
+     * The table <code>information_schema.SESSION_STATUS</code>.
      */
-    public static final SessionState SESSION_STATE = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.SessionState.SESSION_STATE;
+    public static final SessionStatus SESSION_STATUS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.SessionStatus.SESSION_STATUS;
 
     /**
-     * The table <code>information_schema.sessions</code>.
+     * The table <code>information_schema.SESSION_VARIABLES</code>.
      */
-    public static final Sessions SESSIONS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Sessions.SESSIONS;
+    public static final SessionVariables SESSION_VARIABLES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.SessionVariables.SESSION_VARIABLES;
 
     /**
-     * The table <code>information_schema.settings</code>.
+     * The table <code>information_schema.STATISTICS</code>.
      */
-    public static final Settings SETTINGS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Settings.SETTINGS;
+    public static final Statistics STATISTICS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Statistics.STATISTICS;
 
     /**
-     * The table <code>information_schema.synonyms</code>.
-     */
-    public static final Synonyms SYNONYMS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Synonyms.SYNONYMS;
-
-    /**
-     * The table <code>information_schema.table_constraints</code>.
-     */
-    public static final TableConstraints TABLE_CONSTRAINTS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.TableConstraints.TABLE_CONSTRAINTS;
-
-    /**
-     * The table <code>information_schema.table_privileges</code>.
-     */
-    public static final TablePrivileges TABLE_PRIVILEGES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.TablePrivileges.TABLE_PRIVILEGES;
-
-    /**
-     * The table <code>information_schema.table_types</code>.
-     */
-    public static final TableTypes TABLE_TYPES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.TableTypes.TABLE_TYPES;
-
-    /**
-     * The table <code>information_schema.tables</code>.
+     * The table <code>information_schema.TABLES</code>.
      */
     public static final com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Tables TABLES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Tables.TABLES;
 
     /**
-     * The table <code>information_schema.triggers</code>.
+     * The table <code>information_schema.TABLESPACES</code>.
+     */
+    public static final Tablespaces TABLESPACES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Tablespaces.TABLESPACES;
+
+    /**
+     * The table <code>information_schema.TABLE_CONSTRAINTS</code>.
+     */
+    public static final TableConstraints TABLE_CONSTRAINTS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.TableConstraints.TABLE_CONSTRAINTS;
+
+    /**
+     * The table <code>information_schema.TABLE_PRIVILEGES</code>.
+     */
+    public static final TablePrivileges TABLE_PRIVILEGES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.TablePrivileges.TABLE_PRIVILEGES;
+
+    /**
+     * The table <code>information_schema.TRIGGERS</code>.
      */
     public static final Triggers TRIGGERS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Triggers.TRIGGERS;
 
     /**
-     * The table <code>information_schema.type_info</code>.
+     * The table <code>information_schema.USER_PRIVILEGES</code>.
      */
-    public static final TypeInfo TYPE_INFO = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.TypeInfo.TYPE_INFO;
+    public static final UserPrivileges USER_PRIVILEGES = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.UserPrivileges.USER_PRIVILEGES;
 
     /**
-     * The table <code>information_schema.users</code>.
-     */
-    public static final Users USERS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Users.USERS;
-
-    /**
-     * The table <code>information_schema.views</code>.
+     * The table <code>information_schema.VIEWS</code>.
      */
     public static final Views VIEWS = com.rosyoki.spring.boot.sample.app.jooq.information_schema.tables.Views.VIEWS;
 }

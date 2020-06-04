@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static com.rosyoki.spring.boot.sample.app.jooq.public_.tables.PostZipData.POST_ZIP_DATA;
+import static com.rosyoki.spring.boot.sample.app.jooq.blog_db.tables.PostZipData.POST_ZIP_DATA;
 
 @Repository
 public class PostAlRepositryImpl implements PostAlRepositry {

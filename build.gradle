@@ -47,7 +47,7 @@ repositories {
     mavenCentral()
 }
 
-def environment = project.hasProperty('env') ? env : 'local'
+def environment = project.hasProperty('env') ? env : 'docker'
 def jooqVersion = '3.11.11'
 
 dependencies {
@@ -56,9 +56,6 @@ dependencies {
 
     runtime "mysql:mysql-connector-java:6.0.6"
     jooqRuntime "mysql:mysql-connector-java:6.0.6"
-
-    runtime "com.h2database:h2:1.4.197"
-    jooqRuntime "com.h2database:h2:1.4.197"
 
     compileOnly "org.projectlombok:lombok:1.18.6"
     compile('org.lazyluke:log4jdbc-remix:0.2.7')
@@ -104,9 +101,10 @@ else
 println "Target environment: $environment"
 
 flyway {
-    user = 'sa'
-    url = "jdbc:h2:file:./target/postal;MODE=MYSQL;DATABASE_TO_UPPER=false"
-    driver = 'org.h2.Driver'
+    user = 'sboot'
+    password = 'sboot'
+    url = "jdbc:mysql://localhost:53306/blog_db"
+    driver = 'com.mysql.cj.jdbc.Driver'
 }
 
 jooq {
@@ -114,15 +112,15 @@ jooq {
     edition = 'OSS'
     tables(sourceSets.main) {
         jdbc {
-            driver = 'org.h2.Driver'
-            url = "jdbc:h2:file:./target/postal;MODE=MYSQL;DATABASE_TO_UPPER=false"
-            user = 'sa'
-            password = ''
+            driver = 'com.mysql.cj.jdbc.Driver'
+            url = "jdbc:mysql://localhost:53306/blog_db"
+            user = 'sboot'
+            password = 'sboot'
         }
         generator {
             name = 'org.jooq.codegen.DefaultGenerator'
             database {
-                name = 'org.jooq.meta.h2.H2Database'
+                name = 'org.jooq.meta.mysql.MySQLDatabase'
                 includes = '.*'
                 excludes = '(?i:(information_schema|sys|mysql|performance_schema|flyway_schema_history)|\\..*)'
             }
