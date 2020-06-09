@@ -4,19 +4,51 @@
  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration >
-  <classPathEntry location="M2_REPO/mysql/mysql-connector-java/5.1.44/mysql-connector-java-5.1.44.jar"/>
-  <context id="context1" >
-    <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://localhost:10000/blog_db" userId="tsutsui" password="n5ercg7b" />
+  <classPathEntry location="/Users/hirofumi_tsutsui/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/8.0.20/d8d388e71c823570662a45dd33f4284141921280/mysql-connector-java-8.0.20.jar"/>
+  <context id="MySQLTables" targetRuntime="MyBatis3">
+
+    <commentGenerator>
+      <property name="suppressDate" value="true" />
+    </commentGenerator>
+
+    <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                    connectionURL="jdbc:mysql://localhost:53306/blog_db?autoReconnect=true&amp;useSSL=false&amp;nullNamePatternMatchesAll=true"
+                    userId="sboot"
+                    password="sboot" />
  
     <!-- エンティティ作成先 -->
-    <javaModelGenerator targetPackage="com.rosyoki.spring.boot.sample.app.entity" targetProject="src/main/java" />
+    <javaModelGenerator
+            targetPackage="com.rosyoki.spring.boot.sample.app.entity"
+            targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </javaModelGenerator>
  
     <!-- MapperXML作成先 -->
-    <sqlMapGenerator targetPackage="com.rosyoki.spring.boot.sample.app.mapper" targetProject="src/main/resources" />
+    <sqlMapGenerator
+            targetPackage="com.rosyoki.spring.boot.sample.app.mapper"
+            targetProject="src/main/resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
  
     <!-- Mapperインタフェース作成先 -->
-    <javaClientGenerator targetPackage="com.rosyoki.spring.boot.sample.app.mapper" targetProject="src/main/java" type="XMLMAPPER" />
-    <table tableName="%" />
+    <javaClientGenerator
+            targetPackage="com.rosyoki.spring.boot.sample.app.mapper"
+            targetProject="src/main/java" type="MIXEDMAPPER">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+    <table schema="blog_db" tableName="post_zip_data"
+           enableInsert="true"
+           enableSelectByPrimaryKey="true"
+           enableSelectByExample="false"
+           enableUpdateByPrimaryKey="true"
+           enableUpdateByExample="false"
+           enableDeleteByPrimaryKey="true"
+           enableDeleteByExample="false"
+           enableCountByExample="false"
+           selectByExampleQueryId="false"
+           modelType="flat">
+    </table>
 
   </context>
 </generatorConfiguration>
