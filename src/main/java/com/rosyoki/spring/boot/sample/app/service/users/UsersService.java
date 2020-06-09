@@ -8,8 +8,8 @@ import com.rosyoki.spring.boot.sample.app.entity.UsersExample;
 import com.rosyoki.spring.boot.sample.app.mapper.UsersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
