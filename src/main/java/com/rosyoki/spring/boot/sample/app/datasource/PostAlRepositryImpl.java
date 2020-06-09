@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Repository
 public class PostAlRepositryImpl implements PostAlRepositry {
@@ -21,12 +22,22 @@ public class PostAlRepositryImpl implements PostAlRepositry {
     private PostZipDataMapper postZipDataMapper;
 
     public List<Postal> getPostAlDataByCity(City city) {
-        return null;
+
+        return postZipDataMapper.selectByCity(city.getValue())
+                .stream().map(
+                        record -> new Postal(
+                                new NewZip(record.getZip()),
+                                 new OldZip(record.getOldZip()),
+                                new Pref(record.getPref()),
+                                new City(record.getCity()),
+                                new Town(record.getTown())
+                        )
+        ).collect(Collectors.toList());
     }
 
     public Optional<Postal> getPostDataByZip(NewZip newZip) {
 
-        PostZipData postZipData = postZipDataMapper.selectByPrimaryKey(42453L);
+        PostZipData postZipData = postZipDataMapper.selectByNewCode(newZip.getValue());
         if(postZipData != null) {
             return Optional.of(
                     new Postal(

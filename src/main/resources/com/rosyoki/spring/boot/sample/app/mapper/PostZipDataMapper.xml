@@ -30,6 +30,24 @@
     from post_zip_data
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <select id="selectByNewCode" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from post_zip_data
+    where zip = #{newCode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByCity" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from post_zip_data
+    where city = #{city,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!-- @mbg.generated: generated automatically, do not modify! -->
     delete from post_zip_data

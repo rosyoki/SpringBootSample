@@ -37,7 +37,7 @@
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 
-    <table tableName="%"
+    <table schema="blog_db" tableName="post_zip_data"
            enableInsert="true"
            enableSelectByPrimaryKey="true"
            enableSelectByExample="false"
