@@ -54,6 +54,20 @@ public class PostAlRepositryImpl implements PostAlRepositry {
     }
 
     public Optional<Postal> getPostDataByCityTown(City city, Town town) {
-        return null;
+        PostZipData postZipData = postZipDataMapper.selectByCityTown(city.getValue(), town.getValue());
+
+        if (postZipData != null) {
+            return Optional.of(
+                    new Postal(
+                            new NewZip(postZipData.getZip()),
+                            new OldZip(postZipData.getOldZip()),
+                            new Pref(postZipData.getPref()),
+                            new City(postZipData.getCity()),
+                            new Town(postZipData.getTown())
+                    )
+            );
+        } else {
+            return Optional.empty();
+        }
     }
 }

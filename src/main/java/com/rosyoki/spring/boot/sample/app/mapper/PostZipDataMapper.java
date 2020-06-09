@@ -2,6 +2,7 @@ package com.rosyoki.spring.boot.sample.app.mapper;
 
 import com.rosyoki.spring.boot.sample.app.entity.PostZipData;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -32,6 +33,8 @@ public interface PostZipDataMapper {
     PostZipData selectByNewCode(String newCode);
 
     List<PostZipData> selectByCity(String city);
+
+    PostZipData selectByCityTown(@Param("city") String city, @Param("town") String town);
 
     /**
      * @mbg.generated generated automatically, do not modify!
