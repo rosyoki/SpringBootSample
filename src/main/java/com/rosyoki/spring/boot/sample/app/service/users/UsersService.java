@@ -4,7 +4,6 @@
 package com.rosyoki.spring.boot.sample.app.service.users;
 
 import com.rosyoki.spring.boot.sample.app.entity.Users;
-import com.rosyoki.spring.boot.sample.app.entity.UsersExample;
 import com.rosyoki.spring.boot.sample.app.mapper.UsersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +28,7 @@ public class UsersService {
      * @return
      */
     public List<Users> getAllUsersData() {
-        return usersMapper.selectByExample(null);
+        return null;
     }
 
     /**
@@ -48,7 +47,7 @@ public class UsersService {
      * @param users
      */
     @Transactional
-    public void registUser(Users users) {
+    public void registerUser(Users users) {
         usersMapper.insert(users);
     }
 
@@ -59,17 +58,6 @@ public class UsersService {
      * @return
      */
     public Users getUserByLoginName(String loginName) {
-        UsersExample usersExample = new UsersExample();
-        usersExample.createCriteria().andLoginNameEqualTo(loginName);
-
-        if (usersMapper.selectByExample(usersExample) == null) {
-            return null;
-        } else {
-            if (usersMapper.selectByExample(usersExample).size() == 0) {
-                return null;
-            }
-        }
-
-        return usersMapper.selectByExample(usersExample).get(0);
+        return null;
     }
 }

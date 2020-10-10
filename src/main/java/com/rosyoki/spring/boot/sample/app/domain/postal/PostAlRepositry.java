@@ -1,4 +1,4 @@
-package com.rosyoki.spring.boot.sample.app.domain;
+package com.rosyoki.spring.boot.sample.app.domain.postal;
 
 import java.util.List;
 import java.util.Optional;

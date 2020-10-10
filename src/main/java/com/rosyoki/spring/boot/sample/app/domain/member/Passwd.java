@@ -1,5 +1,6 @@
-package com.rosyoki.spring.boot.sample.app.domain;
+package com.rosyoki.spring.boot.sample.app.domain.member;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +9,7 @@ import lombok.ToString;
 @ToString(includeFieldNames = false)
 @RequiredArgsConstructor
 @EqualsAndHashCode
-public class City {
+public class Passwd {
 
     @Getter
     public final String value;

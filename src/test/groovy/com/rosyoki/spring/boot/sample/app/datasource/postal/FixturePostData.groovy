@@ -1,11 +1,11 @@
-package com.rosyoki.spring.boot.sample.app.datasource
+package com.rosyoki.spring.boot.sample.app.datasource.postal
 
-import com.rosyoki.spring.boot.sample.app.domain.City
-import com.rosyoki.spring.boot.sample.app.domain.NewZip
-import com.rosyoki.spring.boot.sample.app.domain.OldZip
-import com.rosyoki.spring.boot.sample.app.domain.Postal
-import com.rosyoki.spring.boot.sample.app.domain.Pref
-import com.rosyoki.spring.boot.sample.app.domain.Town
+import com.rosyoki.spring.boot.sample.app.domain.postal.City
+import com.rosyoki.spring.boot.sample.app.domain.postal.NewZip
+import com.rosyoki.spring.boot.sample.app.domain.postal.OldZip
+import com.rosyoki.spring.boot.sample.app.domain.postal.Postal
+import com.rosyoki.spring.boot.sample.app.domain.postal.Pref
+import com.rosyoki.spring.boot.sample.app.domain.postal.Town
 
 class FixturePostData {
     static Optional<Postal> get(int n = 0) {

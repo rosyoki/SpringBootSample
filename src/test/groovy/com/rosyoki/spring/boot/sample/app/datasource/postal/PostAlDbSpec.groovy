@@ -1,10 +1,10 @@
-package com.rosyoki.spring.boot.sample.app.datasource
+package com.rosyoki.spring.boot.sample.app.datasource.postal
 
-import com.rosyoki.spring.boot.sample.app.domain.City
-import com.rosyoki.spring.boot.sample.app.domain.NewZip
-import com.rosyoki.spring.boot.sample.app.domain.PostAlRepositry
-import com.rosyoki.spring.boot.sample.app.domain.Postal
-import com.rosyoki.spring.boot.sample.app.domain.Town
+import com.rosyoki.spring.boot.sample.app.domain.postal.City
+import com.rosyoki.spring.boot.sample.app.domain.postal.NewZip
+import com.rosyoki.spring.boot.sample.app.domain.postal.PostAlRepositry
+import com.rosyoki.spring.boot.sample.app.domain.postal.Postal
+import com.rosyoki.spring.boot.sample.app.domain.postal.Town
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
