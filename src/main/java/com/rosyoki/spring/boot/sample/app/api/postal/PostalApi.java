@@ -3,9 +3,9 @@
  */
 package com.rosyoki.spring.boot.sample.app.api.postal;
 
-import com.rosyoki.spring.boot.sample.app.domain.City;
-import com.rosyoki.spring.boot.sample.app.domain.NewZip;
-import com.rosyoki.spring.boot.sample.app.domain.Postal;
+import com.rosyoki.spring.boot.sample.app.domain.postal.City;
+import com.rosyoki.spring.boot.sample.app.domain.postal.NewZip;
+import com.rosyoki.spring.boot.sample.app.domain.postal.Postal;
 import com.rosyoki.spring.boot.sample.app.domain.exception.NotFoundException;
 import com.rosyoki.spring.boot.sample.app.service.postal.PostAlService;
 import org.springframework.beans.factory.annotation.Autowired;

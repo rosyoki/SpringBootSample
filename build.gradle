@@ -98,4 +98,9 @@ flyway {
 mybatisGenerator {
     verbose = true
     configFile = "${projectDir}/generatorConfig.xml"
+
+    dependencies {
+        mybatisGenerator 'com.itfsw:mybatis-generator-plugin:1.3.7'
+        mybatisGenerator 'org.mybatis.generator:mybatis-generator-core:1.3.7'
+    }
 }
