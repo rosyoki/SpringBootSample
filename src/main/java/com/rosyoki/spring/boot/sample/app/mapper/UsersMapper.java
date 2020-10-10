@@ -3,6 +3,8 @@ package com.rosyoki.spring.boot.sample.app.mapper;
 import com.rosyoki.spring.boot.sample.app.entity.Users;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface UsersMapper {
     /**
@@ -52,4 +54,8 @@ public interface UsersMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(Users record);
+
+    Users selectByLoginName(String loginName);
+
+    List<Users> selectAll();
 }
