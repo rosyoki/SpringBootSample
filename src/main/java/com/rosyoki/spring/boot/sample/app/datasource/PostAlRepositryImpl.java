@@ -22,12 +22,12 @@ public class PostAlRepositryImpl implements PostAlRepositry {
     private PostZipDataMapper postZipDataMapper;
 
     public List<Postal> getPostAlDataByCity(City city) {
-
         return postZipDataMapper.selectByCity(city.getValue())
-                .stream().map(
+                .stream()
+                .map(
                         record -> new Postal(
                                 new NewZip(record.getZip()),
-                                 new OldZip(record.getOldZip()),
+                                new OldZip(record.getOldZip()),
                                 new Pref(record.getPref()),
                                 new City(record.getCity()),
                                 new Town(record.getTown())
