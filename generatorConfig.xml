@@ -18,7 +18,6 @@
 
     <plugin type="com.itfsw.mybatis.generator.plugins.MapperAnnotationPlugin">
       <property name="@Mapper" value="true"/>
-      <property name="@Repository" value="true"/>
     </plugin>
 
     <commentGenerator>
@@ -47,11 +46,24 @@
     <!-- Mapperインタフェース作成先 -->
     <javaClientGenerator
             targetPackage="com.rosyoki.spring.boot.sample.app.mapper"
-            targetProject="src/main/java" type="MIXEDMAPPER">
+            targetProject="src/main/java" type="XMLMAPPER">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 
     <table schema="blog_db" tableName="post_zip_data"
+           enableInsert="true"
+           enableSelectByPrimaryKey="true"
+           enableSelectByExample="false"
+           enableUpdateByPrimaryKey="true"
+           enableUpdateByExample="false"
+           enableDeleteByPrimaryKey="true"
+           enableDeleteByExample="false"
+           enableCountByExample="false"
+           selectByExampleQueryId="false"
+           modelType="flat">
+    </table>
+
+    <table schema="blog_db" tableName="users"
            enableInsert="true"
            enableSelectByPrimaryKey="true"
            enableSelectByExample="false"

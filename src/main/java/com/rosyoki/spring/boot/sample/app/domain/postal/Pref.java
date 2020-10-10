@@ -1,4 +1,4 @@
-package com.rosyoki.spring.boot.sample.app.domain;
+package com.rosyoki.spring.boot.sample.app.domain.postal;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -8,8 +8,9 @@ import lombok.ToString;
 @ToString(includeFieldNames = false)
 @RequiredArgsConstructor
 @EqualsAndHashCode
-public class NewZip {
+public class Pref {
 
     @Getter
     public final String value;
+
 }

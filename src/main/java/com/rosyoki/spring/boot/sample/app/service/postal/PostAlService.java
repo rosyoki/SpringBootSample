@@ -5,10 +5,10 @@ package com.rosyoki.spring.boot.sample.app.service.postal;
 
 import java.util.List;
 import java.util.Optional;
-import com.rosyoki.spring.boot.sample.app.domain.City;
-import com.rosyoki.spring.boot.sample.app.domain.NewZip;
-import com.rosyoki.spring.boot.sample.app.domain.PostAlRepositry;
-import com.rosyoki.spring.boot.sample.app.domain.Postal;
+import com.rosyoki.spring.boot.sample.app.domain.postal.City;
+import com.rosyoki.spring.boot.sample.app.domain.postal.NewZip;
+import com.rosyoki.spring.boot.sample.app.domain.postal.PostAlRepositry;
+import com.rosyoki.spring.boot.sample.app.domain.postal.Postal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
