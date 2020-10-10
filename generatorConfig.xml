@@ -7,6 +7,20 @@
   <classPathEntry location="/Users/hirofumi_tsutsui/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/8.0.20/d8d388e71c823570662a45dd33f4284141921280/mysql-connector-java-8.0.20.jar"/>
   <context id="MySQLTables" targetRuntime="MyBatis3">
 
+    <plugin type="com.itfsw.mybatis.generator.plugins.LombokPlugin">
+      <property name="@Data" value="true"/>
+      <property name="@Builder" value="false"/>
+      <property name="@AllArgsConstructor" value="true"/>
+      <property name="@NoArgsConstructor" value="true"/>
+      <property name="@Accessors(chain = true)" value="false"/>
+      <property name="supportSuperBuilderForIdea" value="false"/>
+    </plugin>
+
+    <plugin type="com.itfsw.mybatis.generator.plugins.MapperAnnotationPlugin">
+      <property name="@Mapper" value="true"/>
+      <property name="@Repository" value="true"/>
+    </plugin>
+
     <commentGenerator>
       <property name="suppressDate" value="true" />
     </commentGenerator>
