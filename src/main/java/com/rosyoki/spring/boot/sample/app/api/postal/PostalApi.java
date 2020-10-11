@@ -3,10 +3,10 @@
  */
 package com.rosyoki.spring.boot.sample.app.api.postal;
 
+import com.rosyoki.spring.boot.sample.app.domain.exception.NotFoundException;
 import com.rosyoki.spring.boot.sample.app.domain.postal.City;
 import com.rosyoki.spring.boot.sample.app.domain.postal.NewZip;
 import com.rosyoki.spring.boot.sample.app.domain.postal.Postal;
-import com.rosyoki.spring.boot.sample.app.domain.exception.NotFoundException;
 import com.rosyoki.spring.boot.sample.app.service.postal.PostAlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author hirofumi_tsutsui
@@ -34,9 +35,9 @@ public class PostalApi {
     @RequestMapping(value = "/api/postal/town/{city}", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<List<Postal>> getPostalDataByCity(@PathVariable @Valid @NotNull String city) {
         return new ResponseEntity<List<Postal>>(
-                postAlService.getPostAlDataByCity(new City(city))
+                Optional.ofNullable(postAlService.getPostAlDataByCity(new City(city)))
                         .orElseThrow(
-                                () -> new RuntimeException("List Error")
+                                () -> new NotFoundException("List Error")
                         ),HttpStatus.OK
         );
     }
@@ -45,7 +46,8 @@ public class PostalApi {
     @RequestMapping(value = "/api/postal/zip/{zip}", produces = "application/json")
     public ResponseEntity<Postal> getPostalDataByZip(@PathVariable @NotNull String zip) {
         return new ResponseEntity<Postal>(
-                postAlService.getPostDataByZip(new NewZip(zip))
+                Optional.ofNullable(
+                        postAlService.getPostDataByZip(new NewZip(zip)))
                         .orElseThrow(
                                 () -> new NotFoundException(zip + ":住所が見つかりませんでした。")
                         ),HttpStatus.OK);
