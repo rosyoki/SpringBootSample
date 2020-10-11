@@ -3,22 +3,20 @@
  */
 package com.rosyoki.spring.boot.sample.app.service.postal;
 
-import java.util.List;
-import java.util.Optional;
 import com.rosyoki.spring.boot.sample.app.domain.postal.City;
 import com.rosyoki.spring.boot.sample.app.domain.postal.NewZip;
 import com.rosyoki.spring.boot.sample.app.domain.postal.PostAlRepositry;
 import com.rosyoki.spring.boot.sample.app.domain.postal.Postal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @author hirofumi_tsutsui
  *
  */
 @Service
-@Transactional
 public class PostAlService {
 
     @Autowired
@@ -30,10 +28,8 @@ public class PostAlService {
      * @param city
      * @return
      */
-    public Optional<List<Postal>> getPostAlDataByCity(City city) {
-       return Optional.ofNullable(
-               postAlRepositry.getPostAlDataByCity(city)
-       );
+    public List<Postal> getPostAlDataByCity(City city) {
+       return postAlRepositry.getPostAlDataByCity(city);
     }
 
     /**
@@ -42,7 +38,7 @@ public class PostAlService {
      * @param newZip
      * @return
      */
-    public Optional<Postal> getPostDataByZip(NewZip newZip) {
+    public Postal getPostDataByZip(NewZip newZip) {
         return postAlRepositry.getPostDataByZip(newZip);
     }
 }

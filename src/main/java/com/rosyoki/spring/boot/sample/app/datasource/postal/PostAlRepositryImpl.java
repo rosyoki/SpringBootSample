@@ -11,8 +11,8 @@ import com.rosyoki.spring.boot.sample.app.entity.PostZipData;
 import com.rosyoki.spring.boot.sample.app.mapper.PostZipDataMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
@@ -35,39 +35,35 @@ public class PostAlRepositryImpl implements PostAlRepositry {
         ).collect(Collectors.toList());
     }
 
-    public Optional<Postal> getPostDataByZip(NewZip newZip) {
+    public Postal getPostDataByZip(NewZip newZip) {
 
         PostZipData postZipData = postZipDataMapper.selectByNewCode(newZip.getValue());
-        if(postZipData != null) {
-            return Optional.of(
-                    new Postal(
-                            new NewZip(postZipData.getZip()),
-                            new OldZip(postZipData.getOldZip()),
-                            new Pref(postZipData.getPref()),
-                            new City(postZipData.getCity()),
-                            new Town(postZipData.getTown())
-                    )
-            );
-        } else {
-            return Optional.empty();
+
+        if(postZipData == null) {
+            return null;
         }
+
+        return new Postal(
+                new NewZip(postZipData.getZip()),
+                new OldZip(postZipData.getOldZip()),
+                new Pref(postZipData.getPref()),
+                new City(postZipData.getCity()),
+                new Town(postZipData.getTown())
+        );
     }
 
-    public Optional<Postal> getPostDataByCityTown(City city, Town town) {
+    public Postal getPostDataByCityTown(City city, Town town) {
         PostZipData postZipData = postZipDataMapper.selectByCityTown(city.getValue(), town.getValue());
-
-        if (postZipData != null) {
-            return Optional.of(
-                    new Postal(
-                            new NewZip(postZipData.getZip()),
-                            new OldZip(postZipData.getOldZip()),
-                            new Pref(postZipData.getPref()),
-                            new City(postZipData.getCity()),
-                            new Town(postZipData.getTown())
-                    )
-            );
-        } else {
-            return Optional.empty();
+        if(postZipData == null) {
+            return null;
         }
+
+        return new Postal(
+                new NewZip(postZipData.getZip()),
+                new OldZip(postZipData.getOldZip()),
+                new Pref(postZipData.getPref()),
+                new City(postZipData.getCity()),
+                new Town(postZipData.getTown())
+        );
     }
 }
