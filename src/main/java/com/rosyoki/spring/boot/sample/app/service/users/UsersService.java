@@ -60,6 +60,6 @@ public class UsersService {
      * @return
      */
     public Member getUserByLoginName(LoginName loginName) {
-        return memberRepositry.getUserByLoginName(loginName).orElseThrow();
+        return memberRepositry.getUserByLoginName(loginName);
     }
 }
