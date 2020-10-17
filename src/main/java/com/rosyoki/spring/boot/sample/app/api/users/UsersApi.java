@@ -4,6 +4,7 @@
 package com.rosyoki.spring.boot.sample.app.api.users;
 
 import com.rosyoki.spring.boot.sample.app.domain.exception.NotFoundException;
+import com.rosyoki.spring.boot.sample.app.domain.member.Member;
 import com.rosyoki.spring.boot.sample.app.entity.Users;
 import com.rosyoki.spring.boot.sample.app.form.users.UsersForm;
 import com.rosyoki.spring.boot.sample.app.service.users.UsersService;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,18 +34,13 @@ public class UsersApi {
 
     @CrossOrigin(origins = "http://localhost:8081", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
     @RequestMapping(value = "/api/users", method = RequestMethod.GET, produces = "application/json")
-    public HashMap<String, List<Users>> getUsersList() {
+    public ResponseEntity<List<Member>> getUsersList() {
         log.info(">>>>> start getUsersList >>>>>");
 
-        List<Users> usersList = usersService.getAllUsersData();
-        HashMap<String, List<Users>> data = new HashMap<String, List<Users>>();
-        data.put("records", usersList);
-
-        //usersJooqService.getAllUsersData();
-
-        log.info(">>>>> end getUsersList >>>>>");
-
-        return data;
+        return new ResponseEntity<List<Member>>(
+                usersService.getAllUsersData(),
+                HttpStatus.OK
+        );
     }
 
     @CrossOrigin(origins = {"http://localhost:8081", "http://server1.rosyoki.com"})
@@ -53,11 +48,12 @@ public class UsersApi {
     public ResponseEntity<Users> getUsers(@PathVariable Long id) {
         log.info(">>>>> start getUsers >>>>>");
 
-        Optional<Users> users = usersService.getUsersById(id);
-
-        return new ResponseEntity<Users>(users.orElseThrow(
-                () -> new NotFoundException(id + ":会員が見つかりませんでした。")
-        ), HttpStatus.OK);
+        return new ResponseEntity<Users>(
+                Optional.ofNullable(usersService.getUsersById(id))
+                        .orElseThrow(
+                                () -> new NotFoundException(id + ":会員が見つかりませんでした。")),
+                HttpStatus.OK
+        );
     }
 
     @CrossOrigin(origins = {"http://localhost:8081", "http://server1.rosyoki.com"})

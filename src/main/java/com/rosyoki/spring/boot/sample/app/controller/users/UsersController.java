@@ -4,6 +4,8 @@
 package com.rosyoki.spring.boot.sample.app.controller.users;
 
 
+import com.rosyoki.spring.boot.sample.app.domain.member.LoginName;
+import com.rosyoki.spring.boot.sample.app.domain.member.Member;
 import com.rosyoki.spring.boot.sample.app.entity.Users;
 import com.rosyoki.spring.boot.sample.app.form.users.UsersForm;
 import com.rosyoki.spring.boot.sample.app.service.users.UsersService;
@@ -48,7 +50,7 @@ public class UsersController {
     public String userList(Model model) {
 
         log.debug(">>>>>>>> userList start >>>>>>>>");
-        List<Users> usersList = usersService.getAllUsersData();
+        List<Member> usersList = usersService.getAllUsersData();
         model.addAttribute("users", usersList);
 
         return "users/usersList";
@@ -65,7 +67,7 @@ public class UsersController {
 
         Users users = null;
         if (usersForm.getId() != null) {
-            users = usersService.getUsersById(usersForm.getId()).orElseThrow(() -> new RuntimeException("NotFund"));
+            users = usersService.getUsersById(usersForm.getId());
         }
 
         usersForm.setLoginName(users.getLoginName());
@@ -107,8 +109,8 @@ public class UsersController {
         }
 
         // ユーザ存在チェック
-        Users users = usersService.getUserByLoginName(usersForm.getLoginName());
-        if (users != null) {
+        Member member = usersService.getUserByLoginName(new LoginName(usersForm.getLoginName()));
+        if (member != null) {
             return registUser(usersForm, model);
         }
 
@@ -127,9 +129,9 @@ public class UsersController {
             return "users/editInput/" + usersForm.getId();
         }
 
-        // ユーザ存在チェック
-        Users users = usersService.getUserByLoginName(usersForm.getLoginName());
-        if (users == null) {
+        // 会員存在チェック
+        Member member = usersService.getUserByLoginName(new LoginName(usersForm.getLoginName()));
+        if (member == null) {
             return "users/usersList";
         }
         model.addAttribute("usersForm", usersForm);

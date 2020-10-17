@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
@@ -21,26 +20,16 @@ public class MemberRepositryImpl implements MemberRepositry {
     private UsersMapper usersMapper;
 
     @Override
-    public Optional<Member> getUsersById(Id id) {
-        Users users = usersMapper.selectByPrimaryKey(id.getValue());
-
-        if(users != null) {
-            return Optional.of(
-                    generateMember(users)
-            );
-        } else {
-            return Optional.empty();
-        }
+    public Member getUsersById(Id id) {
+        return generateMember(
+                usersMapper.selectByPrimaryKey(id.getValue())
+        );
     }
 
     @Override
-    public Optional<Member> getUserByLoginName(LoginName loginName) {
-        Users users = usersMapper.selectByLoginName(loginName.getValue());
-        if(users == null) {
-            return Optional.empty();
-        }
-        return Optional.of(
-                generateMember(users)
+    public Member getUserByLoginName(LoginName loginName) {
+        return generateMember(
+                usersMapper.selectByLoginName(loginName.getValue())
         );
     }
 
@@ -54,6 +43,9 @@ public class MemberRepositryImpl implements MemberRepositry {
     }
 
     private Member generateMember(Users users) {
+        if(users == null) {
+            return null;
+        }
         return new Member(
                 new Id(users.getId()),
                 new LoginName(users.getLoginName()),

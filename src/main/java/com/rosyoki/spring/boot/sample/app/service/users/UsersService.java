@@ -3,14 +3,15 @@
  */
 package com.rosyoki.spring.boot.sample.app.service.users;
 
+import com.rosyoki.spring.boot.sample.app.domain.member.LoginName;
+import com.rosyoki.spring.boot.sample.app.domain.member.Member;
+import com.rosyoki.spring.boot.sample.app.domain.member.MemberRepositry;
 import com.rosyoki.spring.boot.sample.app.entity.Users;
-import com.rosyoki.spring.boot.sample.app.mapper.UsersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author hirofumi_tsutsui
@@ -20,15 +21,15 @@ import java.util.Optional;
 public class UsersService {
 
     @Autowired
-    UsersMapper usersMapper;
+    MemberRepositry memberRepositry;
 
     /**
      * 全てのユーザデータを取得する。
      *
      * @return
      */
-    public List<Users> getAllUsersData() {
-        return null;
+    public List<Member> getAllUsersData() {
+        return memberRepositry.getAllUsers();
     }
 
     /**
@@ -37,8 +38,8 @@ public class UsersService {
      * @param id
      * @return
      */
-    public Optional<Users> getUsersById(Long id) {
-        return Optional.of(usersMapper.selectByPrimaryKey(id));
+    public Users getUsersById(Long id) {
+        return null;
     }
 
     /**
@@ -48,7 +49,7 @@ public class UsersService {
      */
     @Transactional
     public void registerUser(Users users) {
-        usersMapper.insert(users);
+
     }
 
     /**
@@ -57,7 +58,7 @@ public class UsersService {
      * @param loginName
      * @return
      */
-    public Users getUserByLoginName(String loginName) {
-        return null;
+    public Member getUserByLoginName(LoginName loginName) {
+        return memberRepositry.getUserByLoginName(loginName);
     }
 }
