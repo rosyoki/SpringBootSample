@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author hirofumi_tsutsui
@@ -29,8 +28,8 @@ public class UsersService {
      *
      * @return
      */
-    public List<Users> getAllUsersData() {
-        return null;
+    public List<Member> getAllUsersData() {
+        return memberRepositry.getAllUsers();
     }
 
     /**
@@ -39,8 +38,8 @@ public class UsersService {
      * @param id
      * @return
      */
-    public Optional<Users> getUsersById(Long id) {
-        return Optional.empty();
+    public Users getUsersById(Long id) {
+        return null;
     }
 
     /**

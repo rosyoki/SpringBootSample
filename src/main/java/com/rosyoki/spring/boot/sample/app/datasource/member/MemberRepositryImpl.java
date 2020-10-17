@@ -43,6 +43,9 @@ public class MemberRepositryImpl implements MemberRepositry {
     }
 
     private Member generateMember(Users users) {
+        if(users == null) {
+            return null;
+        }
         return new Member(
                 new Id(users.getId()),
                 new LoginName(users.getLoginName()),

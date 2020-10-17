@@ -50,7 +50,7 @@ public class UsersController {
     public String userList(Model model) {
 
         log.debug(">>>>>>>> userList start >>>>>>>>");
-        List<Users> usersList = usersService.getAllUsersData();
+        List<Member> usersList = usersService.getAllUsersData();
         model.addAttribute("users", usersList);
 
         return "users/usersList";
@@ -67,7 +67,7 @@ public class UsersController {
 
         Users users = null;
         if (usersForm.getId() != null) {
-            users = usersService.getUsersById(usersForm.getId()).orElseThrow(() -> new RuntimeException("NotFund"));
+            users = usersService.getUsersById(usersForm.getId());
         }
 
         usersForm.setLoginName(users.getLoginName());

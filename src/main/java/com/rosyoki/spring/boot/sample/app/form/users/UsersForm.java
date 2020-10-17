@@ -4,6 +4,7 @@
 package com.rosyoki.spring.boot.sample.app.form.users;
 
 import lombok.Data;
+
 import javax.validation.constraints.NotEmpty;
 
 /**

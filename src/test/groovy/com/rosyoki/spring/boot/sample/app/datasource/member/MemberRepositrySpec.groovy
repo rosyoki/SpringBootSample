@@ -9,12 +9,14 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 @SpringBootTest
+@Unroll
 class MemberRepositrySpec extends Specification {
 
     @Autowired
     private MemberRepositry memberRepositry
 
-    @Unroll
+    private Dbs
+
     def "IDで検索 #id"() {
         setup:
 
@@ -24,10 +26,9 @@ class MemberRepositrySpec extends Specification {
         where:
         id || actual
         1L|| FixtureMemberData.get()
-        1000L|| Optional.empty()
+        1000L|| null
     }
 
-    @Unroll
     def "ログイン名で検索 #login_name"() {
         setup:
 
@@ -37,10 +38,9 @@ class MemberRepositrySpec extends Specification {
         where:
         login_name || actual
         "rosyoki"|| FixtureMemberData.get()
-        "testaaa"|| Optional.empty()
+        "testaaa"|| null
     }
 
-    @Unroll
     def "全件取得"() {
         setup:
 

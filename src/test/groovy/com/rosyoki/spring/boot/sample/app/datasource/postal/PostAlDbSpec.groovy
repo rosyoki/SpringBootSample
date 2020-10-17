@@ -1,23 +1,18 @@
 package com.rosyoki.spring.boot.sample.app.datasource.postal
 
-import com.rosyoki.spring.boot.sample.app.domain.postal.City
-import com.rosyoki.spring.boot.sample.app.domain.postal.NewZip
-import com.rosyoki.spring.boot.sample.app.domain.postal.PostAlRepositry
-import com.rosyoki.spring.boot.sample.app.domain.postal.Postal
-import com.rosyoki.spring.boot.sample.app.domain.postal.Town
+import com.rosyoki.spring.boot.sample.app.domain.postal.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 import spock.lang.Unroll
 
-
 @SpringBootTest
+@Unroll
 class PostAlDbSpec extends Specification {
 
     @Autowired
     private PostAlRepositry postAlRepositry
 
-    @Unroll
     def "郵便番号で検索 #zip"() {
         setup:
 
@@ -28,10 +23,9 @@ class PostAlDbSpec extends Specification {
         zip || actual
         "2420007"||FixturePostData.get()
         "2420001"||FixturePostData.get(1)
-        "2420010"||Optional.empty()
+        "2420010"||null
     }
 
-    @Unroll
     def "市名で検索 #city"() {
         setup:
         List<Postal> postalList = postAlRepositry.getPostAlDataByCity(new City(city))
@@ -46,7 +40,6 @@ class PostAlDbSpec extends Specification {
         "相模原市"||0
     }
 
-    @Unroll
     def "市名と町名で検索 #city #town"() {
         setup:
 
@@ -56,7 +49,7 @@ class PostAlDbSpec extends Specification {
         where:
         city|town||actual
         "大和市"|"中央林間"||FixturePostData.get()
-        "大和市"|""||Optional.empty()
-        ""|"下鶴間"||Optional.empty()
+        "大和市"|""||null
+        ""|"下鶴間"||null
     }
 }
