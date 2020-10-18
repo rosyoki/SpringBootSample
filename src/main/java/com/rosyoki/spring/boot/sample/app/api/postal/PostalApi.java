@@ -9,7 +9,9 @@ import com.rosyoki.spring.boot.sample.app.domain.postal.NewZip;
 import com.rosyoki.spring.boot.sample.app.domain.postal.Postal;
 import com.rosyoki.spring.boot.sample.app.service.postal.PostAlService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,18 +41,27 @@ public class PostalApi {
                 Optional.ofNullable(postAlService.getPostAlDataByCity(new City(city)))
                         .orElseThrow(
                                 () -> new NotFoundException("List Error")
-                        ),HttpStatus.OK
+                        ),getHttpHeaders(),HttpStatus.OK
         );
     }
 
     @CrossOrigin(origins = {"http://localhost", "http://server1.rosyoki.com"})
     @RequestMapping(value = "/api/postal/zip/{zip}", produces = "application/json")
     public ResponseEntity<Postal> getPostalDataByZip(@PathVariable @NotNull String zip) {
+
+
         return new ResponseEntity<Postal>(
                 Optional.ofNullable(
                         postAlService.getPostDataByZip(new NewZip(zip)))
                         .orElseThrow(
                                 () -> new NotFoundException(zip + ":住所が見つかりませんでした。")
-                        ),HttpStatus.OK);
+                        ),getHttpHeaders(),HttpStatus.OK);
+    }
+
+    private HttpHeaders getHttpHeaders() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", StandardCharsets.UTF_8));
+
+        return headers;
     }
 }

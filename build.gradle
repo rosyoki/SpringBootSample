@@ -72,7 +72,10 @@ dependencies {
     testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+
     compile 'com.google.guava:guava:18.0'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.0'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.10.0'
 }
 
 if (environment == 'prod')
