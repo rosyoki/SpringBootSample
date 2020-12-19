@@ -3,6 +3,7 @@
  */
 package com.rosyoki.spring.boot.sample.app.service.users;
 
+import com.rosyoki.spring.boot.sample.app.domain.member.Id;
 import com.rosyoki.spring.boot.sample.app.domain.member.LoginName;
 import com.rosyoki.spring.boot.sample.app.domain.member.Member;
 import com.rosyoki.spring.boot.sample.app.domain.member.MemberRepositry;
@@ -38,8 +39,8 @@ public class UsersService {
      * @param id
      * @return
      */
-    public Users getUsersById(Long id) {
-        return null;
+    public Member getUsersById(Id id) {
+        return memberRepositry.getUsersById(id);
     }
 
     /**

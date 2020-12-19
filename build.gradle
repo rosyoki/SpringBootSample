@@ -44,9 +44,12 @@ def environment = project.hasProperty('env') ? env : 'docker'
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+    implementation 'org.springframework.security:spring-security-test'
+
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.20'
 
     compile('org.lazyluke:log4jdbc-remix:0.2.7')
@@ -93,7 +96,7 @@ println "Target environment: $environment"
 flyway {
     user = 'sboot'
     password = 'sboot'
-    url = "jdbc:mysql://localhost:53306/blog_db"
+    url = "jdbc:mysql://localhost:3306/blog_db"
     driver = 'com.mysql.cj.jdbc.Driver'
 }
 

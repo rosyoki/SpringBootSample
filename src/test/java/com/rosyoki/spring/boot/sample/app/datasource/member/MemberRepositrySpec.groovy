@@ -41,6 +41,18 @@ class MemberRepositrySpec extends Specification {
         "testaaa"|| null
     }
 
+    def "パスワード取得 #login_name"() {
+        setup:
+
+        expect:
+        actual == memberRepositry.getPassword(new LoginName(login_name))
+
+        where:
+        login_name || actual
+        "rosyoki"|| "password"
+        "testaaa"|| null
+    }
+
     def "全件取得"() {
         setup:
 

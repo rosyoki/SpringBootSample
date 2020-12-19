@@ -49,13 +49,15 @@ public class PostalApi {
     @RequestMapping(value = "/api/postal/zip/{zip}", produces = "application/json")
     public ResponseEntity<Postal> getPostalDataByZip(@PathVariable @NotNull String zip) {
 
+        Postal postal = Optional.ofNullable(
+                postAlService.getPostDataByZip(new NewZip(zip)))
+                .orElseThrow(
+                        () -> new NotFoundException(zip + ":住所が見つかりませんでした。")
+                );
 
         return new ResponseEntity<Postal>(
-                Optional.ofNullable(
-                        postAlService.getPostDataByZip(new NewZip(zip)))
-                        .orElseThrow(
-                                () -> new NotFoundException(zip + ":住所が見つかりませんでした。")
-                        ),getHttpHeaders(),HttpStatus.OK);
+                postal
+                ,getHttpHeaders(),HttpStatus.OK);
     }
 
     private HttpHeaders getHttpHeaders() {

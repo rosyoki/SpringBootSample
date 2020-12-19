@@ -4,9 +4,9 @@
 package com.rosyoki.spring.boot.sample.app.api.users;
 
 import com.rosyoki.spring.boot.sample.app.domain.exception.NotFoundException;
+import com.rosyoki.spring.boot.sample.app.domain.member.Id;
 import com.rosyoki.spring.boot.sample.app.domain.member.LoginName;
 import com.rosyoki.spring.boot.sample.app.domain.member.Member;
-import com.rosyoki.spring.boot.sample.app.entity.Users;
 import com.rosyoki.spring.boot.sample.app.form.users.UsersForm;
 import com.rosyoki.spring.boot.sample.app.service.users.UsersService;
 import lombok.extern.slf4j.Slf4j;
@@ -60,11 +60,11 @@ public class UsersApi {
 
     @CrossOrigin(origins = {"http://localhost:8081", "http://server1.rosyoki.com"})
     @RequestMapping(value = "/api/users/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Users> getUsers(@PathVariable Long id) {
+    public ResponseEntity<Member> getUsers(@PathVariable Long id) {
         log.info(">>>>> start getUsers >>>>>");
 
-        return new ResponseEntity<Users>(
-                Optional.ofNullable(usersService.getUsersById(id))
+        return new ResponseEntity<Member>(
+                Optional.ofNullable(usersService.getUsersById(new Id(id)))
                         .orElseThrow(
                                 () -> new NotFoundException(id + ":会員が見つかりませんでした。")),
                 HttpStatus.OK

@@ -4,6 +4,7 @@
 package com.rosyoki.spring.boot.sample.app.controller.users;
 
 
+import com.rosyoki.spring.boot.sample.app.domain.member.Id;
 import com.rosyoki.spring.boot.sample.app.domain.member.LoginName;
 import com.rosyoki.spring.boot.sample.app.domain.member.Member;
 import com.rosyoki.spring.boot.sample.app.entity.Users;
@@ -65,13 +66,10 @@ public class UsersController {
     public String editUser(UsersForm usersForm, Model model) {
         log.info(">>>>>> start editUser >>>>>>>>>");
 
-        Users users = null;
+        Member member = null;
         if (usersForm.getId() != null) {
-            users = usersService.getUsersById(usersForm.getId());
+            member = usersService.getUsersById(new Id(usersForm.getId()));
         }
-
-        usersForm.setLoginName(users.getLoginName());
-        model.addAttribute(usersForm);
 
         return "users/editInput";
     }
