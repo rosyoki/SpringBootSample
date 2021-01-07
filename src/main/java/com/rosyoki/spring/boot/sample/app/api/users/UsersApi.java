@@ -4,6 +4,7 @@
 package com.rosyoki.spring.boot.sample.app.api.users;
 
 import com.rosyoki.spring.boot.sample.app.domain.exception.NotFoundException;
+import com.rosyoki.spring.boot.sample.app.domain.member.LoginName;
 import com.rosyoki.spring.boot.sample.app.domain.member.Member;
 import com.rosyoki.spring.boot.sample.app.entity.Users;
 import com.rosyoki.spring.boot.sample.app.form.users.UsersForm;
@@ -32,6 +33,20 @@ public class UsersApi {
     @Autowired
     UsersService usersService;
 
+//    @Autowired
+//    PasswordEncoder passwordEncoder;
+
+    @CrossOrigin
+    @RequestMapping(value = "/api/users/test", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<String> getUsersTest() {
+        log.info(">>>>> start getUsersTest >>>>>");
+
+        return new ResponseEntity<String>(
+                "test",
+                HttpStatus.OK
+        );
+    }
+
     @CrossOrigin(origins = "http://localhost:8081", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
     @RequestMapping(value = "/api/users", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<List<Member>> getUsersList() {
@@ -52,6 +67,25 @@ public class UsersApi {
                 Optional.ofNullable(usersService.getUsersById(id))
                         .orElseThrow(
                                 () -> new NotFoundException(id + ":会員が見つかりませんでした。")),
+                HttpStatus.OK
+        );
+    }
+
+    @RequestMapping(value = "/api/users/passwd/{loginName}", method = RequestMethod.GET)
+    public ResponseEntity<String> getPassword(@PathVariable String loginName) {
+        log.info(">>>>> start getPassword >>>>>");
+
+        String passwd = Optional.ofNullable(
+                usersService.getUserByLoginName(new LoginName(loginName))
+        ).orElseThrow(
+                () -> new NotFoundException(loginName + ":会員が見つかりませんでした。")
+        ).passwd.getValue();
+
+//        log.debug(passwd + " >>>>>> " + passwordEncoder.encode(passwd));
+        return new ResponseEntity<String>(
+                Optional.ofNullable(passwd)
+                        .orElseThrow(
+                                () -> new NotFoundException(loginName + ":パスワードが設定されていません。")),
                 HttpStatus.OK
         );
     }
