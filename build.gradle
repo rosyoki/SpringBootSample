@@ -23,15 +23,12 @@ plugins {
 
 
 group = 'com.rosyoki.spring.boot.sample.app'
-version = '1.0-SNAPSHOT'
+version = '0.0.1'
 
 description = 'Sample Spring-Boot Project'
 
-war {
-    archiveName = 'SampleSpringApp.war'
-}
-
-sourceCompatibility = '14'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 def enc = 'UTF-8'
 tasks.withType(JavaCompile) {
