@@ -91,7 +91,9 @@ else
     sourceSets.main.resources.srcDirs 'src/main/resources/local'
     sourceSets.test.resources.srcDirs 'src/test/resources/local'
 
-println "Target environment: $environment"
+bootWar {
+    archiveName 'SpringBootSampleApp.war'
+}
 
 flyway {
     user = 'sboot'
